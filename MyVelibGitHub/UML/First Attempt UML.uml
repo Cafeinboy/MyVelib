@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Model xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_Z2l4kBpjEeim1Nm_o8ulkQ" name="First Attempt UML">
+  <packageImport xmi:type="uml:PackageImport" xmi:id="_aRwKkBpjEeim1Nm_o8ulkQ">
+    <importedPackage xmi:type="uml:Model" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#_0"/>
+  </packageImport>
+  <packagedElement xmi:type="uml:Class" xmi:id="_AzfLABpkEeim1Nm_o8ulkQ" name="User">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_dANioBpoEeim1Nm_o8ulkQ" name="name" visibility="private">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EString"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_ggM3kBpoEeim1Nm_o8ulkQ" name="numberID" visibility="private" isStatic="true">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EInt"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_kqQdMBpoEeim1Nm_o8ulkQ" name="geographicPosition" visibility="protected" type="_H77yIBsZEeiBs6N2uoHA7g">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_p5F5kBpoEeim1Nm_o8ulkQ" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_p5Jj8BpoEeim1Nm_o8ulkQ" value="1"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_0J0igBpoEeim1Nm_o8ulkQ" name="card" visibility="private" type="_DKYJ4BpkEeim1Nm_o8ulkQ"/>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_gHCrQBsZEeiBs6N2uoHA7g" name="ID" visibility="private">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EInt"/>
+    </ownedAttribute>
+    <nestedClassifier xmi:type="uml:Class" xmi:id="_-Ib6ABpjEeim1Nm_o8ulkQ" name="Bicycle">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_Skif4BpmEeim1Nm_o8ulkQ" name="Attribute1"/>
+    </nestedClassifier>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_DKYJ4BpkEeim1Nm_o8ulkQ" name="Cards">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_DlF9sBppEeim1Nm_o8ulkQ" name="timeCredit" visibility="private">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EInt"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_XH_c8BpmEeim1Nm_o8ulkQ" name="standardStation">
+    <elementImport xmi:type="uml:ElementImport" xmi:id="_bZj4cBppEeim1Nm_o8ulkQ" importedElement="_NFze8BppEeim1Nm_o8ulkQ"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_bCPE8BpmEeim1Nm_o8ulkQ" name="plusStation">
+    <elementImport xmi:type="uml:ElementImport" xmi:id="_lYEI8BppEeim1Nm_o8ulkQ" importedElement="_NFze8BppEeim1Nm_o8ulkQ"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_E20gwBpoEeim1Nm_o8ulkQ" name="Vlibre"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_FhcyIBpoEeim1Nm_o8ulkQ" name="Vmax"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_vtVJEBpoEeim1Nm_o8ulkQ" name="NoCard"/>
+  <packagedElement xmi:type="uml:Interface" xmi:id="_NFze8BppEeim1Nm_o8ulkQ" name="Station">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_QurDEBppEeim1Nm_o8ulkQ" name="stationStatus" visibility="private">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EBoolean"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_QutfUBppEeim1Nm_o8ulkQ" name="numberID" visibility="private" isStatic="true">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EString"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_k7FegBsYEeiBs6N2uoHA7g" name="ID" visibility="private">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EInt"/>
+    </ownedAttribute>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_32oigBsYEeiBs6N2uoHA7g" name="numberFreeSlots"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_ZI1hEBprEeim1Nm_o8ulkQ" name="MechanicalBicycle">
+    <nestedClassifier xmi:type="uml:Class" xmi:id="_anc0IBprEeim1Nm_o8ulkQ" name="ElecticalBicycle"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_pxjm0BprEeim1Nm_o8ulkQ" name="PolicyRiding"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_w2x9EBprEeim1Nm_o8ulkQ" name="AvoidPlus">
+    <nestedClassifier xmi:type="uml:Class" xmi:id="_1WdNYBprEeim1Nm_o8ulkQ" name="PreferPlus"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_5eJbgBprEeim1Nm_o8ulkQ" name="Uniformity"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_nUGZwBsXEeiBs6N2uoHA7g" name="Slots">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_rNfGIBsXEeiBs6N2uoHA7g" name="numberID" visibility="private" isStatic="true">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EInt"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_r72LgBsYEeiBs6N2uoHA7g" name="ID" visibility="private">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EInt"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_H77yIBsZEeiBs6N2uoHA7g" name="Point">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_K9AWcBsZEeiBs6N2uoHA7g" name="x" visibility="private">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EDouble"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_dkqOEBsZEeiBs6N2uoHA7g" name="y" visibility="private">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EDouble"/>
+    </ownedAttribute>
+  </packagedElement>
+</uml:Model>

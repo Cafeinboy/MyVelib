@@ -1,0 +1,17 @@
+package Ride;
+
+import Bike.Bike;
+
+public interface RideStrategyInterface {
+	
+	/**
+	 * This method computes the beginning and finishing stations of
+	 * the ride, given the type of bike the user asks for, and the
+	 * strategy
+	 * It sets the beginning and finishing station of the ride accordingly
+	 * @param bike
+	 */
+	
+	public void haveARide(Bike bike);
+
+}

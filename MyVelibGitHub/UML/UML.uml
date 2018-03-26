@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Model xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_h-FLoBypEein-6K093Nv2A" name="UML">
+  <packageImport xmi:type="uml:PackageImport" xmi:id="_jQX58BypEein-6K093Nv2A">
+    <importedPackage xmi:type="uml:Model" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#_0"/>
+  </packageImport>
+  <packagedElement xmi:type="uml:Class" xmi:id="_pxxKYBypEein-6K093Nv2A" name="Network">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_t1NxsBypEein-6K093Nv2A" name="stations" visibility="package"/>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_NcBAUByqEein-6K093Nv2A" name="users"/>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_RFEKoByqEein-6K093Nv2A" name="getClosestStation" concurrency="concurrent"/>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_vHNIkByqEein-6K093Nv2A" name="getRideShortestPath"/>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_66-4oByqEein-6K093Nv2A" name="getRideFastestPath"/>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_B3ND4ByrEein-6K093Nv2A" name="getRideAvoidPlusStation"/>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_CiyXgByrEein-6K093Nv2A" name="getRidePreferPlusStation"/>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_I6wmMByrEein-6K093Nv2A" name="putStationOffline"/>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_MBP2AByrEein-6K093Nv2A" name="putStationOnline"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_O-JE8ByrEein-6K093Nv2A" name="NetworkFactory">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_TTVjkByrEein-6K093Nv2A" name="network"/>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_Wk4z4ByrEein-6K093Nv2A" name="getRide" concurrency="concurrent">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_gj6BwByrEein-6K093Nv2A">
+        <body>Avec la méthode voulue en argument</body>
+      </ownedComment>
+    </ownedOperation>
+  </packagedElement>
+</uml:Model>

@@ -1,0 +1,470 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class-diagram version="1.2.2" icons="true" always-add-relationships="false" generalizations="true" realizations="true" 
+  associations="true" dependencies="false" nesting-relationships="true" router="FAN">  
+  <class id="1" language="java" name="Card.Card" project="Group52_Project_IS1220_part1_Cayocca_Hivet" 
+    file="/Group52_Project_IS1220_part1_Cayocca_Hivet/src/Card/Card.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="258" width="306" x="1870" y="845"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="2" language="java" name="User.User" project="Group52_Project_IS1220_part1_Cayocca_Hivet" 
+    file="/Group52_Project_IS1220_part1_Cayocca_Hivet/src/User/User.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="436" width="561" x="1870" y="369"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="3" language="java" name="Card.VmaxCard" project="Group52_Project_IS1220_part1_Cayocca_Hivet" 
+    file="/Group52_Project_IS1220_part1_Cayocca_Hivet/src/Card/VmaxCard.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="176" width="296" x="1198" y="1441"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="4" language="java" name="PlanningRide.PreservationOfUniformityStrategy" 
+    project="Group52_Project_IS1220_part1_Cayocca_Hivet" 
+    file="/Group52_Project_IS1220_part1_Cayocca_Hivet/src/PlanningRide/PreservationOfUniformityStrategy.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="116" width="506" x="2860" y="845"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <interface id="5" language="java" name="Bike.BikeStrategyCardInterface" 
+    project="Group52_Project_IS1220_part1_Cayocca_Hivet" 
+    file="/Group52_Project_IS1220_part1_Cayocca_Hivet/src/Bike/BikeStrategyCardInterface.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="116" width="255" x="932" y="2337"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <class id="6" language="java" name="Bike.MechanicalBike" project="Group52_Project_IS1220_part1_Cayocca_Hivet" 
+    file="/Group52_Project_IS1220_part1_Cayocca_Hivet/src/Bike/MechanicalBike.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="176" width="220" x="1227" y="2337"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <interface id="7" language="java" name="PlanningRide.PlanningRideStrategy" 
+    project="Group52_Project_IS1220_part1_Cayocca_Hivet" 
+    file="/Group52_Project_IS1220_part1_Cayocca_Hivet/src/PlanningRide/PlanningRideStrategy.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="96" width="506" x="3684" y="1441"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <interface id="8" language="java" name="Ride.RideStrategyInterface" 
+    project="Group52_Project_IS1220_part1_Cayocca_Hivet" 
+    file="/Group52_Project_IS1220_part1_Cayocca_Hivet/src/Ride/RideStrategyInterface.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="96" width="215" x="2584" y="1441"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <class id="9" language="java" name="Network.PlusStation" project="Group52_Project_IS1220_part1_Cayocca_Hivet" 
+    file="/Group52_Project_IS1220_part1_Cayocca_Hivet/src/Network/PlusStation.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="116" width="332" x="154" y="2337"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="10" language="java" name="Network.Station" project="Group52_Project_IS1220_part1_Cayocca_Hivet" 
+    file="/Group52_Project_IS1220_part1_Cayocca_Hivet/src/Network/Station.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="856" width="400" x="492" y="1441"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="11" language="java" name="Bike.Bike" project="Group52_Project_IS1220_part1_Cayocca_Hivet" 
+    file="/Group52_Project_IS1220_part1_Cayocca_Hivet/src/Bike/Bike.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="238" width="226" x="932" y="1441"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="12" language="java" name="GPSCoordinate.GPSCoordinate" project="Group52_Project_IS1220_part1_Cayocca_Hivet" 
+    file="/Group52_Project_IS1220_part1_Cayocca_Hivet/src/GPSCoordinate/GPSCoordinate.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="236" width="374" x="2544" y="2337"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="13" language="java" name="Bike.ElectricalBike" project="Group52_Project_IS1220_part1_Cayocca_Hivet" 
+    file="/Group52_Project_IS1220_part1_Cayocca_Hivet/src/Bike/ElectricalBike.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="176" width="220" x="1487" y="2337"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="14" language="java" name="Network.Network" project="Group52_Project_IS1220_part1_Cayocca_Hivet" 
+    file="/Group52_Project_IS1220_part1_Cayocca_Hivet/src/Network/Network.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="276" width="435" x="492" y="53"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="15" language="java" name="Network.ParkingSlot" project="Group52_Project_IS1220_part1_Cayocca_Hivet" 
+    file="/Group52_Project_IS1220_part1_Cayocca_Hivet/src/Network/ParkingSlot.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="416" width="226" x="532" y="845"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="16" language="java" name="Network.StandardStation" project="Group52_Project_IS1220_part1_Cayocca_Hivet" 
+    file="/Group52_Project_IS1220_part1_Cayocca_Hivet/src/Network/StandardStation.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="96" width="366" x="526" y="2337"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <interface id="17" language="java" name="User.Functionnality" project="Group52_Project_IS1220_part1_Cayocca_Hivet" 
+    file="/Group52_Project_IS1220_part1_Cayocca_Hivet/src/User/Functionnality.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="116" width="222" x="1587" y="845"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <class id="18" language="java" name="User.UserFactory" project="Group52_Project_IS1220_part1_Cayocca_Hivet" 
+    file="/Group52_Project_IS1220_part1_Cayocca_Hivet/src/User/UserFactory.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="116" width="236" x="185" y="53"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="19" language="java" name="Card.NoCard" project="Group52_Project_IS1220_part1_Cayocca_Hivet" 
+    file="/Group52_Project_IS1220_part1_Cayocca_Hivet/src/Card/NoCard.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="156" width="296" x="1534" y="1441"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="20" language="java" name="Card.VlibreCard" project="Group52_Project_IS1220_part1_Cayocca_Hivet" 
+    file="/Group52_Project_IS1220_part1_Cayocca_Hivet/src/Card/VlibreCard.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="176" width="296" x="1870" y="1441"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="21" language="java" name="PlanningRide.AvoidPlusStationStrategy" 
+    project="Group52_Project_IS1220_part1_Cayocca_Hivet" 
+    file="/Group52_Project_IS1220_part1_Cayocca_Hivet/src/PlanningRide/AvoidPlusStationStrategy.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="116" width="506" x="3406" y="845"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="22" language="java" name="PlanningRide.FastestPath" project="Group52_Project_IS1220_part1_Cayocca_Hivet" 
+    file="/Group52_Project_IS1220_part1_Cayocca_Hivet/src/PlanningRide/FastestPath.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="116" width="506" x="3952" y="845"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <interface id="23" language="java" name="Card.CardStrategyBikeInterface" 
+    project="Group52_Project_IS1220_part1_Cayocca_Hivet" 
+    file="/Group52_Project_IS1220_part1_Cayocca_Hivet/src/Card/CardStrategyBikeInterface.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="116" width="296" x="2206" y="1441"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <class id="24" language="java" name="PlanningRide.ShortestPath" project="Group52_Project_IS1220_part1_Cayocca_Hivet" 
+    file="/Group52_Project_IS1220_part1_Cayocca_Hivet/src/PlanningRide/ShortestPath.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="116" width="506" x="4498" y="845"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="25" language="java" name="Time.Time" project="Group52_Project_IS1220_part1_Cayocca_Hivet" 
+    file="/Group52_Project_IS1220_part1_Cayocca_Hivet/src/Time/Time.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="176" width="269" x="3124" y="53"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="26" language="java" name="Ride.Ride" project="Group52_Project_IS1220_part1_Cayocca_Hivet" 
+    file="/Group52_Project_IS1220_part1_Cayocca_Hivet/src/Ride/Ride.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="556" width="452" x="2347" y="845"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="27" language="java" name="PlanningRide.PreferPlusStationStrategy" 
+    project="Group52_Project_IS1220_part1_Cayocca_Hivet" 
+    file="/Group52_Project_IS1220_part1_Cayocca_Hivet/src/PlanningRide/PreferPlusStationStrategy.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="116" width="506" x="5044" y="845"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <generalization id="28">    
+    <end type="SOURCE" refId="19"/>    
+    <end type="TARGET" refId="1"/>  
+  </generalization>  
+  <realization id="29">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="7"/>  
+  </realization>  
+  <association id="30">    
+    <end type="SOURCE" refId="15" navigable="false">      
+      <attribute id="31" name="bike"/>      
+      <multiplicity id="32" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="11" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="33">    
+    <end type="SOURCE" refId="2" navigable="false">      
+      <attribute id="34" name="card"/>      
+      <multiplicity id="35" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="1" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="36">    
+    <end type="SOURCE" refId="16"/>    
+    <end type="TARGET" refId="10"/>  
+  </generalization>  
+  <association id="37">    
+    <end type="SOURCE" refId="10" navigable="false">      
+      <attribute id="38" name="parkingSlots"/>      
+      <multiplicity id="39" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="15" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="40">    
+    <bendpoint x="501" y="369"/>    
+    <bendpoint x="501" y="845"/>    
+    <end type="SOURCE" refId="14" navigable="false">      
+      <attribute id="41" name="stations"/>      
+      <multiplicity id="42" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="10" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="43">    
+    <end type="SOURCE" refId="15" navigable="false">      
+      <attribute id="44" name="station"/>      
+      <multiplicity id="45" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="10" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="46">    
+    <end type="SOURCE" refId="11"/>    
+    <end type="TARGET" refId="5"/>  
+  </realization>  
+  <realization id="47">    
+    <end type="SOURCE" refId="21"/>    
+    <end type="TARGET" refId="7"/>  
+  </realization>  
+  <association id="48">    
+    <end type="SOURCE" refId="26" navigable="false">      
+      <attribute id="49" name="rideStrategy"/>      
+      <multiplicity id="50" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="7" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="51">    
+    <end type="SOURCE" refId="14" navigable="false">      
+      <attribute id="52" name="users"/>      
+      <multiplicity id="53" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="2" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="54">    
+    <end type="SOURCE" refId="2" navigable="false">      
+      <attribute id="55" name="allRide"/>      
+      <multiplicity id="56" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="26" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="57">    
+    <end type="SOURCE" refId="9"/>    
+    <end type="TARGET" refId="10"/>  
+  </generalization>  
+  <realization id="58">    
+    <end type="SOURCE" refId="1"/>    
+    <end type="TARGET" refId="23"/>  
+  </realization>  
+  <association id="59">    
+    <bendpoint x="2829" y="845"/>    
+    <bendpoint x="2829" y="1441"/>    
+    <end type="SOURCE" refId="2" navigable="false">      
+      <attribute id="60" name="location"/>      
+      <multiplicity id="61" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="12" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="62">    
+    <end type="SOURCE" refId="13"/>    
+    <end type="TARGET" refId="11"/>  
+  </generalization>  
+  <generalization id="63">    
+    <end type="SOURCE" refId="3"/>    
+    <end type="TARGET" refId="1"/>  
+  </generalization>  
+  <association id="64">    
+    <end type="SOURCE" refId="26" navigable="false">      
+      <attribute id="65" name="listStation"/>      
+      <multiplicity id="66" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="10" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="67">    
+    <end type="SOURCE" refId="26" navigable="false">      
+      <attribute id="68" name="bike"/>      
+      <multiplicity id="69" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="11" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="70">    
+    <end type="SOURCE" refId="20"/>    
+    <end type="TARGET" refId="1"/>  
+  </generalization>  
+  <realization id="71">    
+    <end type="SOURCE" refId="2"/>    
+    <end type="TARGET" refId="17"/>  
+  </realization>  
+  <association id="72">    
+    <end type="SOURCE" refId="10" navigable="false">      
+      <attribute id="73" name="coordinates"/>      
+      <multiplicity id="74" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="12" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="75">    
+    <end type="SOURCE" refId="24"/>    
+    <end type="TARGET" refId="7"/>  
+  </realization>  
+  <generalization id="76">    
+    <end type="SOURCE" refId="6"/>    
+    <end type="TARGET" refId="11"/>  
+  </generalization>  
+  <association id="77">    
+    <bendpoint x="1839" y="845"/>    
+    <end type="SOURCE" refId="10" navigable="false">      
+      <attribute id="78" name="users"/>      
+      <multiplicity id="79" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="2" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="80">    
+    <end type="SOURCE" refId="2" navigable="false">      
+      <attribute id="81" name="ride"/>      
+      <multiplicity id="82" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="26" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="83">    
+    <bendpoint x="2553" y="1441"/>    
+    <end type="SOURCE" refId="26" navigable="false">      
+      <attribute id="84" name="finishingPoint"/>      
+      <multiplicity id="85" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="12" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="86">    
+    <end type="SOURCE" refId="27"/>    
+    <end type="TARGET" refId="7"/>  
+  </realization>  
+  <association id="87">    
+    <bendpoint x="2532" y="1441"/>    
+    <end type="SOURCE" refId="26" navigable="false">      
+      <attribute id="88" name="beginingPoint"/>      
+      <multiplicity id="89" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="12" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="90">    
+    <end type="SOURCE" refId="22"/>    
+    <end type="TARGET" refId="7"/>  
+  </realization>  
+  <realization id="91">    
+    <end type="SOURCE" refId="26"/>    
+    <end type="TARGET" refId="8"/>  
+  </realization>  
+  <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+    sort-features="false" accessors="true" visibility="true">    
+    <attributes public="true" package="true" protected="true" private="true" static="true"/>    
+    <operations public="true" package="true" protected="true" private="true" static="true"/>  
+  </classifier-display>  
+  <association-display labels="true" multiplicity="true"/>
+</class-diagram>
