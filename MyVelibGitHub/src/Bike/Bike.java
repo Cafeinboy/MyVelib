@@ -5,7 +5,7 @@ import Time.Time;
 
 /**
  * This class is providing the necessary function to be a bike, so it is defined as abstract and all the bike has been extended to this class.
- * @author K�vin HIVET 
+ * @author Kevin HIVET 
  *
  */
 public abstract class Bike implements BikeStrategyCardInterface {
