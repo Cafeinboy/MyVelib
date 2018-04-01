@@ -40,5 +40,4 @@ public abstract class Bike implements BikeStrategyCardInterface {
 		int time2 = Time.getTimeInMinuteSinceCreation();
 		return Time.getDuration(time1,time2);
 	}
-	
 }
