@@ -4,14 +4,14 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 import Network.ParkingSlot;
+import Time.Time;
 
 public class LogTotalRecord {
 	
-	private ArrayList<Record> log;
+	private ArrayList<Record> log = new ArrayList<Record>();
 
 	public LogTotalRecord() {
 		super();
-		this.log = new ArrayList<Record>();
 	}
 
 	public ArrayList<Record> getLog() {
@@ -24,20 +24,17 @@ public class LogTotalRecord {
 	
 	public Record searchARecordInProgress(ParkingSlot park) {
 		for (Record record : log) {
-			if(record.getSlot().equals(park) && record.getEndingTime() == -1) {
+			if(record.getSlot().equals(park) && record.getEndingTime() == Integer.MAX_VALUE) {
 				return record;
 			}
 		}
 		return null;
 	}
 	
-	public void putAnEndForARecord(ParkingSlot park, int endingTime) {
-		for (Record record : log) {
-			if(record.getSlot().equals(park) && record.getEndingTime() == Integer.MAX_VALUE) {
-				record.setEndingTime(endingTime);
-				break;
-			}
-		}
+	public void putAnEndForARecord(ParkingSlot park) {
+		int endingTime = Time.getTimeInMinuteSinceCreation();
+		Record record = searchARecordInProgress(park);
+		record.setEndingTime(endingTime);
 	}
 	
 	public ArrayList<Double> balanceStation(int minTime, int maxTime, int numberOfSlots) {
@@ -51,10 +48,12 @@ public class LogTotalRecord {
 			int end = Math.min(record.getEndingTime(),maxTime);
 			sumRateOfOccupation+= end-begin;
 			
-			numberOfRentOperation++;
-			
-			if (record.getEndingTime()!=Integer.MAX_VALUE) {
+			if (record.getBeginningTime() >= minTime) {
 				numberOfReturnOperation++;
+			}
+			
+			if (record.getEndingTime() <= maxTime) {
+				numberOfRentOperation++;
 			}			
 		}
 		

@@ -2,6 +2,11 @@ package RecordSystem;
 
 import Network.ParkingSlot;
 
+/**
+ * This class provides record to give a summary about the characteristics of station, if the bike is here since the creation of a slot the beginning time is -1
+ * @author admin
+ *
+ */
 public class Record {
 	
 	private int beginningTime;
@@ -44,5 +49,6 @@ public class Record {
 
 	public void setSlot(ParkingSlot slot) {
 		this.slot = slot;
-	}	
+	}
+	
 }
