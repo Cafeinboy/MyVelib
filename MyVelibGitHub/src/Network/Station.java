@@ -8,6 +8,7 @@ import Bike.*;
 import GPSCoordinate.*;
 import RecordSystem.*;
 import Ride.*;
+import Time.Time;
 import User.*;
 
 public abstract class Station extends Observable {
@@ -77,6 +78,7 @@ public abstract class Station extends Observable {
 		this.parkingSlots.add(parkingSlot);
 		if(parkingSlot.isFree() && !parkingSlot.isOutOfOrder()) {
 			this.full = false;
+			this.allRecord.addRecord(new Record(Time.getTimeInMinuteSinceCreation(), parkingSlot));
 		}
 	}
 
@@ -132,6 +134,7 @@ public abstract class Station extends Observable {
 		else {
 			ParkingSlot nextSpot = this.getFreeSlots().get(0);
 			nextSpot.giveBike(bike);
+			this.allRecord.addRecord(new Record(Time.getTimeInMinuteSinceCreation(), nextSpot));
 			if(this.numberOfFreeSpots() == 0) {
 				this.getFull();
 			}
@@ -322,6 +325,7 @@ public abstract class Station extends Observable {
 			else {
 				ParkingSlot nextSpot = this.getFreeSlots().get(0);
 				nextSpot.giveBike(bike);
+				this.allRecord.putAnEndForARecord(nextSpot);
 				if(this.numberOfFreeSpots() == 0) {
 					this.getFull();
 				}
@@ -350,7 +354,9 @@ public abstract class Station extends Observable {
 					user.getRide().haveARide(bike);
 				}
 				else {
-					Bike realbike = this.getSlotsWithMechanicalBike().get(0).takeBike();
+					ParkingSlot nextSlot = this.getSlotsWithMechanicalBike().get(0);
+					Bike realbike = nextSlot.takeBike();
+					this.allRecord.addRecord(new Record(Time.getTimeInMinuteSinceCreation(), nextSlot));
 					this.setFull(false);
 					user.getRide().setBike(realbike);
 				}
@@ -361,7 +367,9 @@ public abstract class Station extends Observable {
 					user.getRide().haveARide(bike);
 				}
 				else {
-					Bike realbike = this.getSlotsWithElectricalBike().get(0).takeBike();
+					ParkingSlot nextSlot = this.getSlotsWithElectricalBike().get(0);
+					Bike realbike = nextSlot.takeBike();
+					this.allRecord.addRecord(new Record(Time.getTimeInMinuteSinceCreation(), nextSlot));
 					this.setFull(false);
 					user.getRide().setBike(realbike);
 				}
