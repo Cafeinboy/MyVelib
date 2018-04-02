@@ -326,6 +326,7 @@ public abstract class Station extends Observable {
 				ParkingSlot nextSpot = this.getFreeSlots().get(0);
 				nextSpot.giveBike(bike);
 				this.allRecord.putAnEndForARecord(nextSpot);
+				user.putAnEndToTheRide(this);
 				if(this.numberOfFreeSpots() == 0) {
 					this.getFull();
 				}

@@ -5,10 +5,12 @@ import java.util.Arrays;
 import java.util.Observable;
 import java.util.Observer;
 
+import Time.Time;
 import Bike.*;
 import Card.*;
 import GPSCoordinate.*;
 import Network.PlusStation;
+import Network.Station;
 import PlanningRide.*;
 import Ride.*;
 
@@ -34,7 +36,7 @@ public class User implements Observer, Functionnality {
 		numberID++;
 		this.location = new GPSCoordinate();
 		this.card = new NoCard();
-		this.ride = new Ride();
+		this.ride = null;
 		this.allRide = new ArrayList<Ride>();
 	}
 	
@@ -45,7 +47,7 @@ public class User implements Observer, Functionnality {
 		this.location = new GPSCoordinate();
 		this.ID = numberID;
 		numberID++;
-		this.ride = new Ride();
+		this.ride = null;
 		this.allRide = new ArrayList<Ride>();
 	}
 
@@ -56,7 +58,7 @@ public class User implements Observer, Functionnality {
 		this.card = card;
 		this.ID = numberID;
 		numberID++;
-		this.ride = new Ride();
+		this.ride = null;
 		this.allRide = new ArrayList<Ride>();
 	}
 	
@@ -107,7 +109,7 @@ public class User implements Observer, Functionnality {
 	}
 
 	//Attention il va falloir appeler la fonction pour recalculer un trajet 
-	//là-dedans
+	//lï¿½-dedans
 	@Override
 	public void update(Observable o, Object arg) {
 		if(arg instanceof String) {
@@ -132,9 +134,26 @@ public class User implements Observer, Functionnality {
 		this.ride.setPrice(price);
 		return price;
 	}
+	
+	/**
+	 * This function permit to add the ride in the historic of the user and so, that permit to compute different kinds of data after for the user.
+	 * This function put an end for the ride.
+	 */
+	public void putAnEndToTheRide(Station finishingStation) {
+		int price = this.getPriceOfTheRide();
+		this.ride.setPrice(price);
+		
+		this.ride.setEndingTime(Time.getTimeInMinuteSinceCreation());
+		
+		this.ride.changeFinishingStation(finishingStation);
+		
+		this.allRide.add(this.ride);
+		this.ride=null;
+	}
 
 	/**
 	 * This method returns an ArrayList with the total number of ride, the total time on a bike, the total charges, and the total time earned since the beginning for a client.
+	 * That take into account the ride in progress.
 	 * @return 
 	 * ArrayList(Integer) (total number of ride, the total time on a bike, the total charges, the total time earned)
 	 */
@@ -151,6 +170,10 @@ public class User implements Observer, Functionnality {
 			if (ride.getListStation().get(1) instanceof PlusStation) {
 				totalEarnCredit+=5;
 			}
+		}
+		if (this.ride != null) {
+			numberOfRides++;
+			totalTimeOnBike+= Time.getTimeInMinuteSinceCreation()-ride.getBeginingTime();
 		}
 		return new ArrayList<Integer>(Arrays.asList(numberOfRides,totalTimeOnBike,totalCharges,totalEarnCredit));
 	}
