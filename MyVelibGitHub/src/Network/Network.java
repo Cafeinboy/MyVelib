@@ -121,6 +121,7 @@ public class Network {
 		return closestStation;
 	}
 	
+	
 	/**
 	 * The main method creates an instance of a Network, and it is the unique
 	 * instance that will always be used

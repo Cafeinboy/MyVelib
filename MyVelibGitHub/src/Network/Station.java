@@ -110,6 +110,10 @@ public abstract class Station extends Observable {
 		this.name = name;
 	}
 	
+	public LogTotalRecord getAllRecord() {
+		return allRecord;
+	}
+
 	@Override
 	public boolean equals(Object station) {
 		if (station instanceof Station) {
