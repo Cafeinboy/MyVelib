@@ -97,7 +97,24 @@ public class Network {
 	
 	
 	//Methods
-
+	
+	public static Network findANetworkFromName(String name) throws NetworkFactoryException {
+		
+		Network net = null;
+		
+		for (Network netSearch : entireNet) {
+			if (netSearch.getName().equalsIgnoreCase(name)) {
+				net = netSearch;
+				break;
+			}
+		}
+		
+		if (net == null) {
+			throw new NetworkFactoryException();
+		}
+		
+		return net;
+	}
 	
 	/**
 	 * Returns the available (not offline) stations in order to compute a ride
@@ -129,25 +146,5 @@ public class Network {
 			}
 		}
 		return closestStation;
-	}
-	
-	public static Network findANetworkFromName(String name) throws NetworkFactoryException {
-		
-		Network net = null;
-		
-		for (Network netSearch : entireNet) {
-			if (netSearch.getName().equalsIgnoreCase(name)) {
-				net = netSearch;
-				break;
-			}
-		}
-		
-		if (net == null) {
-			throw new NetworkFactoryException();
-		}
-		
-		return net;
-		
-	}
-	
+	}	
 }
