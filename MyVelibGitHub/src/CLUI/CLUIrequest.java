@@ -7,7 +7,7 @@ public abstract class CLUIrequest {
 	public static void main(String[] args) {
 		
 		Scanner scan = new Scanner(System.in);
-		String str = "";
+		String str = " ";
 		
 		while (!str.equals("exit")) {
 			System.out.println("Hi, this is the new system Velib");
