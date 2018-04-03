@@ -8,7 +8,7 @@ import User.UserFactory;
 public abstract class FactoryCommandTerminal {
 	
 	public static String command(String str) {
-		
+				
 		String[] words = str.split(" ");
 		
 		if (words[0].equalsIgnoreCase("exit") && words.length == 1) {
@@ -114,7 +114,8 @@ public abstract class FactoryCommandTerminal {
 	public static void addUser(String name, String cardType, String velibNetwork) {
 				
 		try {
-			User user = UserFactory.createUser(name,cardType,velibNetwork);			
+			User user = UserFactory.createUser(name,cardType,velibNetwork);	
+			System.out.println("Done");
 		} catch (UserFactoryException e) {
 			System.out.println(e.getMessage());
 		} catch (NetworkFactoryException e) {
