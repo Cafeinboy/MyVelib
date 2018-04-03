@@ -21,18 +21,7 @@ public class UserFactory {
 	 */
 	public static User createUser(String name, String card , String velibNetwork) throws UserFactoryException, NetworkFactoryException {
 		
-		Network net = null;
-		
-		for (Network netSearch : Network.entireNet) {
-			if (netSearch.getName().equalsIgnoreCase(velibNetwork)) {
-				net = netSearch;
-				break;
-			}
-		}
-		
-		if (net == null) {
-			throw new NetworkFactoryException();
-		}
+		Network net = Network.findANetworkFromName(velibNetwork);
 		
 		if (card == null) {
 			return null;
