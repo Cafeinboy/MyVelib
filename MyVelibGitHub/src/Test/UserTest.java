@@ -12,7 +12,6 @@ import Exception.NetworkFactoryException;
 import Exception.UserFactoryException;
 import GPSCoordinate.GPSCoordinate;
 import Network.Network;
-import Ride.Ride;
 import User.User;
 import User.UserFactory;
 
