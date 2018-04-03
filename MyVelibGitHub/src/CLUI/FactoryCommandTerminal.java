@@ -114,7 +114,7 @@ public abstract class FactoryCommandTerminal {
 	public static void addUser(String name, String cardType, String velibNetwork) {
 				
 		try {
-			User user = UserFactory.createUser(name,cardType, velibNetwork);			
+			User user = UserFactory.createUser(name,cardType,velibNetwork);			
 		} catch (UserFactoryException e) {
 			System.out.println(e.getMessage());
 		} catch (NetworkFactoryException e) {
