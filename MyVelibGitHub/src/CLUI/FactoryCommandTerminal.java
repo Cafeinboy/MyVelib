@@ -6,50 +6,50 @@ public abstract class FactoryCommandTerminal {
 		
 		String[] words = str.split(" ");
 		
-		if (words[0].equalsIgnoreCase("exit")) {
+		if (words[0].equalsIgnoreCase("exit") && words.length == 1) {
 			return "exit";
 		}
-		else if (words[0].equalsIgnoreCase("help")) {
+		else if (words[0].equalsIgnoreCase("help") && words.length == 1) {
 			help();
 			return "";
-		}else if (words[0].equalsIgnoreCase("addUser")) {
+		}else if (words[0].equalsIgnoreCase("addUser") && words.length == 4) {
 			addUser();
 			return "";
 		}
-		else if (words[0].equalsIgnoreCase("offline")) {
+		else if (words[0].equalsIgnoreCase("offline") && words.length == 3) {
 			goOffline();
 			return "";
 		}
-		else if (words[0].equalsIgnoreCase("online")) {
+		else if (words[0].equalsIgnoreCase("online") && words.length == 3) {
 			goOnline();
 			return "";
 		}
-		else if (words[0].equalsIgnoreCase("rentBike")) {
+		else if (words[0].equalsIgnoreCase("rentBike") && words.length == 3) {
 			rentABike();
 			return "";
 		}
-		else if (words[0].equalsIgnoreCase("returnBike")) {
+		else if (words[0].equalsIgnoreCase("returnBike") && words.length == 4) {
 			returnABike();
 			return "";
 		}
-		else if (words[0].equalsIgnoreCase("displayStation")) {
+		else if (words[0].equalsIgnoreCase("displayStation") && words.length == 3) {
 			displayStation();
 			return "";
 		}
-		else if (words[0].equalsIgnoreCase("displayUser")) {
+		else if (words[0].equalsIgnoreCase("displayUser") && words.length == 3) {
 			displayUser();
 			return "";
 		}
-		else if (words[0].equalsIgnoreCase("display")) {
+		else if (words[0].equalsIgnoreCase("display") && words.length == 2) {
 			displayNetwork();
 			return "";
 		}
-		else if (words[0].equalsIgnoreCase("sortStation")) {
+		else if (words[0].equalsIgnoreCase("sortStation") && words.length == 3) {
 			displayNetwork();
 			return "";
 		}
 		else {
-			System.out.println("A problem has occurred retry your command");
+			System.out.println("Wrong command ! \n A problem has occurred retry your command");
 			return "";
 		}
 		
@@ -89,41 +89,61 @@ public abstract class FactoryCommandTerminal {
 	
 	public static void setupVelibNetwork() {
 		
+		System.out.println("Not yet implemented");
+		
 	}
 	
 	public static void setupNetworkFromSpecification() {
+		
+		System.out.println("Not yet implemented");
 		
 	}
 	
 	public static void addUser() {
 		
+		System.out.println("Not yet implemented");
+		
 	}
 	
 	public static void goOffline() {
+		
+		System.out.println("Not yet implemented");
 		
 	}
 	
 	public static void goOnline() {
 		
+		System.out.println("Not yet implemented");
+		
 	}
 	
 	public static void rentABike() {
+		
+		System.out.println("Not yet implemented");
 		
 	}
 	
 	public static void returnABike() {
 		
+		System.out.println("Not yet implemented");
+		
 	}
 	
 	public static void displayStation() {
+		
+		System.out.println("Not yet implemented");
 		
 	}
 	
 	public static void displayUser() {
 		
+		System.out.println("Not yet implemented");
+		
 	}
 	
 	public static void displayNetwork() {
+		
+		System.out.println("Not yet implemented");
 		
 	}
 }
