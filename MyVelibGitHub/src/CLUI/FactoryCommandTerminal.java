@@ -1,5 +1,8 @@
 package CLUI;
 
+import User.User;
+import User.UserFactory;
+
 public abstract class FactoryCommandTerminal {
 	
 	public static String command(String str) {
@@ -12,8 +15,14 @@ public abstract class FactoryCommandTerminal {
 		else if (words[0].equalsIgnoreCase("help") && words.length == 1) {
 			help();
 			return "";
+		}else if (words[0].equalsIgnoreCase("setup") && words.length == 2) {
+			setupVelibNetwork(words[1]);
+			return "";
+		}else if (words[0].equalsIgnoreCase("setup") && words.length == 6) {
+			setupNetworkFromSpecification();
+			return "";
 		}else if (words[0].equalsIgnoreCase("addUser") && words.length == 4) {
-			addUser();
+			addUser(words[1], words[2], words[3]);
 			return "";
 		}
 		else if (words[0].equalsIgnoreCase("offline") && words.length == 3) {
@@ -49,7 +58,8 @@ public abstract class FactoryCommandTerminal {
 			return "";
 		}
 		else {
-			System.out.println("Wrong command ! \n A problem has occurred retry your command");
+			System.out.println("Wrong command ! \n"
+					+ "A problem has occurred retry your command\n\n");
 			return "";
 		}
 		
@@ -87,7 +97,7 @@ public abstract class FactoryCommandTerminal {
 		
 	}
 	
-	public static void setupVelibNetwork() {
+	public static void setupVelibNetwork(String name) {
 		
 		System.out.println("Not yet implemented");
 		
@@ -99,9 +109,13 @@ public abstract class FactoryCommandTerminal {
 		
 	}
 	
-	public static void addUser() {
+	public static void addUser(String name, String cardType, String velibNetwork) {
 		
-		System.out.println("Not yet implemented");
+		try {
+			User user = UserFactory.createUser(name,cardType);
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
 		
 	}
 	
