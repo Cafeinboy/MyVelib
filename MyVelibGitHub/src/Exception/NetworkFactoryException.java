@@ -9,7 +9,7 @@ public class NetworkFactoryException extends Exception {
 
 	public NetworkFactoryException() {
 		super();
-		System.out.println("This network does not exist, rectify the entrance");
+		System.out.println("This network does not exist, rectify the entrance.\n");
 	}
 
 }

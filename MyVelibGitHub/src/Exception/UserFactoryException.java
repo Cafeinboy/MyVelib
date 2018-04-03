@@ -9,7 +9,7 @@ public class UserFactoryException extends Exception {
 
 	public UserFactoryException() {
 		super();
-		System.out.println("Something went wrong, rectify the entry. Read the Javadoc");
+		System.out.println("Something went wrong, rectify the entry. Read the Javadoc.\n");
 	}
 
 }
