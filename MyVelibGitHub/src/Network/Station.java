@@ -5,6 +5,8 @@ import java.util.Arrays;
 import java.util.Observable;
 
 import Bike.*;
+import Exception.NetworkFactoryException;
+import Exception.StationFactoryException;
 import GPSCoordinate.*;
 import RecordSystem.*;
 import Ride.*;
@@ -134,6 +136,28 @@ public abstract class Station extends Observable {
 			}
 		}
 		return null;
+	}
+	
+	public static Station findAStationFromID(Integer integer) throws StationFactoryException {
+		
+		Station stat = null;
+		
+		for (Network netSearch : Network.entireNet) {
+			for (Station statSearch : netSearch.getStations()) {
+				if (statSearch.getID() == (int) integer) {
+					stat = statSearch;
+					break;
+				}
+			}
+			
+		}
+		
+		if (stat == null) {
+			throw new StationFactoryException();
+		}
+		
+		return stat;
+		
 	}
 	
 	/**
@@ -395,5 +419,5 @@ public abstract class Station extends Observable {
 			System.err.println("User already has a bike");
 		}
 	}
-	
+		
 }
