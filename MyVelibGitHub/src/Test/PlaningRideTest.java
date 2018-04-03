@@ -6,6 +6,7 @@ import org.junit.Test;
 
 import Bike.ElectricalBike;
 import Bike.MechanicalBike;
+import Exception.NetworkFactoryException;
 import Exception.UserFactoryException;
 import GPSCoordinate.GPSCoordinate;
 import Network.Network;
@@ -24,7 +25,7 @@ public class PlaningRideTest {
 	//Creation of a network and a User
 	
 	@Test
-	public void testNetwork() throws UserFactoryException {
+	public void testNetwork() throws UserFactoryException, NetworkFactoryException {
 		
 		Network net1 = new Network("Paris");
 		
@@ -103,7 +104,7 @@ public class PlaningRideTest {
 		assertEquals(net1.getAvailableStations().size(), 7);
 
 		
-		User user = UserFactory.createUser("BroulQ", "nocard");
+		User user = UserFactory.createUser("BroulQ", "nocard", "net1");
 		
 		//PreferPlusStation strategy
 		user.takeARide(new GPSCoordinate(3,3), new GPSCoordinate(25,4), new PreferPlusStationStrategy(), new MechanicalBike(), net1);

@@ -1,7 +1,9 @@
 	package User;
 
 import Card.*;
+import Exception.NetworkFactoryException;
 import Exception.UserFactoryException;
+import Network.Network;
 
 public class UserFactory {
 	
@@ -15,35 +17,61 @@ public class UserFactory {
 	 * This Factory return a User from the specification of the String in input. 
 	 * @throws UserFactoryException
 	 * Just to say if you have put something not correct in the code. Read again what is said above. 
+	 * @throws NetworkFactoryException 
 	 */
-	public static User createUser(String name, String card ) throws UserFactoryException {
+	public static User createUser(String name, String card , String velibNetwork) throws UserFactoryException, NetworkFactoryException {
+		
+		Network net = null;
+		
+		for (Network netSearch : Network.entireNet) {
+			if (netSearch.getName().equalsIgnoreCase(velibNetwork)) {
+				net = netSearch;
+				break;
+			}
+		}
+		
+		if (net == null) {
+			throw new NetworkFactoryException();
+		}
 		
 		if (card == null) {
 			return null;
 			}
 		
 		else if(card.equalsIgnoreCase("NoCard")) {
-				return new User(name, new NoCard());
+			User user = new User(name, new NoCard());
+			net.addUser(user);
+			return user;
 			} 
 		
 		else if(card.equalsIgnoreCase("No Card")) {
-				return new User(name, new NoCard());
+			User user = new User(name, new NoCard());
+			net.addUser(user);
+			return user;
 			} 
 		
 		else if(card.equalsIgnoreCase("Vlibre")) {
-				return new User(name, new VlibreCard());
+			User user = new User(name, new VlibreCard());
+			net.addUser(user);
+			return user;
 			}
 		
 		else if(card.equalsIgnoreCase("V libre")) {
-				return new User(name, new VlibreCard());
+			User user = new User(name, new VlibreCard());
+			net.addUser(user);
+			return user;
 			}
 		
 		else if(card.equalsIgnoreCase("Vmax")) {
-				return new User(name, new VmaxCard());
+			User user = new User(name, new VmaxCard());
+			net.addUser(user);
+			return user;
 			}
 		
 		else if(card.equalsIgnoreCase("V max")) {
-				return new User(name, new VmaxCard());
+			User user = new User(name, new VmaxCard());
+			net.addUser(user);
+			return user;
 			}
 		
 		throw new UserFactoryException();		

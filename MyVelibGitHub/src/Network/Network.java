@@ -11,7 +11,7 @@ public class Network {
 	
 	private ArrayList<Station> stations;
 	private ArrayList<User> users;
-	static ArrayList<Network> entireNet = new ArrayList<Network>();
+	public static ArrayList<Network> entireNet = new ArrayList<Network>();
 	private String name;
 	
 	//Constructor

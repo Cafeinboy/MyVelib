@@ -1,5 +1,7 @@
 package CLUI;
 
+import Exception.NetworkFactoryException;
+import Exception.UserFactoryException;
 import User.User;
 import User.UserFactory;
 
@@ -110,13 +112,14 @@ public abstract class FactoryCommandTerminal {
 	}
 	
 	public static void addUser(String name, String cardType, String velibNetwork) {
-		
+				
 		try {
-			User user = UserFactory.createUser(name,cardType);
-		} catch (Exception e) {
-			// TODO: handle exception
-		}
-		
+			User user = UserFactory.createUser(name,cardType, velibNetwork);			
+		} catch (UserFactoryException e) {
+			System.out.println(e.getMessage());
+		} catch (NetworkFactoryException e) {
+			System.out.println(e.getMessage());
+		}		
 	}
 	
 	public static void goOffline() {
