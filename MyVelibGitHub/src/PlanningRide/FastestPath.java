@@ -12,7 +12,7 @@ import Network.*;
 /**
  * This class provide a method implemented by {@link PlanningRideStrategy}, to find a fastest path, by walking at 4km/k and bicycling at 20km/h for a { @link ElectricalBike} and at 15km/h for a 
  * { @link MechanicalBike}
- * @author Kévin HIVET
+ * @author Kï¿½vin HIVET
  *
  */
 public class FastestPath implements PlanningRideStrategy{
@@ -34,9 +34,9 @@ public class FastestPath implements PlanningRideStrategy{
 	 * @return ArrayList
 	 * Return the list of two stations, in the first place the begin station, in the second place the end station.
 	 */
-	public ArrayList<Station> planARide(GPSCoordinate beginingPoint, GPSCoordinate finishingPoint, Bike bike) {
+	public ArrayList<Station> planARide(GPSCoordinate beginingPoint, GPSCoordinate finishingPoint, Bike bike, Network net) {
 
-		ArrayList<Station> availableStation = Network.getAvailableStations();
+		ArrayList<Station> availableStation = net.getAvailableStations();
 		
 		double timeMin = GPSCoordinate.distance(availableStation.get(0).getCoordinates(),beginingPoint)/4. + GPSCoordinate.distance(availableStation.get(0).getCoordinates(),finishingPoint)/4.;
 		Station stationBeg = availableStation.get(0);

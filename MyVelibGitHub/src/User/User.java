@@ -9,6 +9,7 @@ import Time.Time;
 import Bike.*;
 import Card.*;
 import GPSCoordinate.*;
+import Network.Network;
 import Network.PlusStation;
 import Network.Station;
 import PlanningRide.*;
@@ -103,8 +104,8 @@ public class User implements Observer, Functionnality {
 	 * @param rideStrategy
 	 * @param bikeType
 	 */
-	public void takeARide(GPSCoordinate beginingPoint, GPSCoordinate finishingPoint, PlanningRideStrategy rideStrategy, Bike wishBike) {
-		this.ride = new Ride(beginingPoint, finishingPoint, rideStrategy);
+	public void takeARide(GPSCoordinate beginingPoint, GPSCoordinate finishingPoint, PlanningRideStrategy rideStrategy, Bike wishBike, Network net) {
+		this.ride = new Ride(beginingPoint, finishingPoint, rideStrategy, net);
 		this.ride.haveARide(wishBike);
 	}
 

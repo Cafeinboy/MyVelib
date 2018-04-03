@@ -32,9 +32,9 @@ public class AvoidPlusStationStrategy implements PlanningRideStrategy{
 	 * Return the list of two stations, in the first place the begin station, in the second place the end station.
 	 */
 	@Override
-	public ArrayList<Station> planARide(GPSCoordinate beginingPoint, GPSCoordinate finishingPoint, Bike bike) {
+	public ArrayList<Station> planARide(GPSCoordinate beginingPoint, GPSCoordinate finishingPoint, Bike bike, Network net) {
 		
-		ArrayList<Station> availableStation = Network.getAvailableStations();
+		ArrayList<Station> availableStation = net.getAvailableStations();
 		double distanceBeg = GPSCoordinate.distance(availableStation.get(0).getCoordinates(),beginingPoint);
 		Station stationBeg = availableStation.get(0);
 				
@@ -46,7 +46,7 @@ public class AvoidPlusStationStrategy implements PlanningRideStrategy{
 			}			
 		}
 		
-		ArrayList<Station> listNonPlus = Network.getNonPlusStations(Network.getAvailableStations());
+		ArrayList<Station> listNonPlus = Network.getNonPlusStations(net.getAvailableStations());
 		double distanceFin = GPSCoordinate.distance(listNonPlus.get(0).getCoordinates(),finishingPoint);
 		Station stationFin = listNonPlus.get(0);		
 		

@@ -125,6 +125,17 @@ public abstract class Station extends Observable {
 	
 	//Methods
 	
+	public Network knowHisNetwork() {
+		for (Network net : Network.entireNet) {
+			for (Station stat : net.getStations()) {
+				if (stat.getID() == this.getID()) {
+					return net;
+				}
+			}
+		}
+		return null;
+	}
+	
 	/**
 	 * Adds a bike to the station, if possible, and puts it in the first
 	 * free parking slot
@@ -322,7 +333,7 @@ public abstract class Station extends Observable {
 			if(this.isFull() || !this.isOnline()) {
 				System.out.println("You cannot return a bike here");
 				Ride oldRide = user.getRide();
-				Ride newRide = new Ride(oldRide.getListStation().get(1).getCoordinates(), oldRide.getFinishingPoint(), oldRide.getRideStrategy());
+				Ride newRide = new Ride(oldRide.getListStation().get(1).getCoordinates(), oldRide.getFinishingPoint(), oldRide.getRideStrategy(), oldRide.getListStation().get(1).knowHisNetwork());
 				newRide.haveARide(oldRide.getBike());
 				user.getRide().setListStation(new ArrayList<Station>(Arrays.asList(oldRide.getListStation().get(0), newRide.getListStation().get(1))));
 			}

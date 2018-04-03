@@ -32,9 +32,9 @@ public class MostUsedStation implements StrategySort{
 	
 	
 	
-	public static ArrayList<Station> sort(int minTime, int maxTime) {
+	public static ArrayList<Station> sort(int minTime, int maxTime, Network net) {
 		SortMethod method = new MostUsedStation().new SortMethod(minTime, maxTime);
-		ArrayList<Station> network = new ArrayList<Station>(Network.getStations());
+		ArrayList<Station> network = new ArrayList<Station>(net.getStations());
 		Collections.sort(network,method);
 		return network;
 	}

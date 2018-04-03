@@ -26,7 +26,9 @@ public class PlaningRideTest {
 	@Test
 	public void testNetwork() throws UserFactoryException {
 		
-		PlusStation opera = new PlusStation(true, new GPSCoordinate(5,5), "Opéra");
+		Network net1 = new Network("Paris");
+		
+		PlusStation opera = new PlusStation(true, new GPSCoordinate(5,5), "Opï¿½ra");
 		for(int k = 0; k < 10; k++) {
 			opera.addParkingSlot(new ParkingSlot(opera));
 		}
@@ -36,9 +38,9 @@ public class PlaningRideTest {
 
 		}
 		
-		Network.addStation(opera);
+		net1.addStation(opera);
 		
-		PlusStation chatelet = new PlusStation(true, new GPSCoordinate(11,17), "Châtelet");
+		PlusStation chatelet = new PlusStation(true, new GPSCoordinate(11,17), "Chï¿½telet");
 		for(int k = 0; k < 10; k++) {
 			chatelet.addParkingSlot(new ParkingSlot(chatelet));
 		}
@@ -46,7 +48,7 @@ public class PlaningRideTest {
 			chatelet.addBike(new MechanicalBike());
 			chatelet.addBike(new ElectricalBike());
 		}
-		Network.addStation(chatelet);
+		net1.addStation(chatelet);
 		
 		PlusStation luxembourg = new PlusStation(true, new GPSCoordinate(20,11), "Luxembourg");
 		for(int k = 0; k < 10; k++) {
@@ -56,9 +58,9 @@ public class PlaningRideTest {
 			luxembourg.addBike(new MechanicalBike());
 			luxembourg.addBike(new ElectricalBike());
 		}
-		Network.addStation(luxembourg);
+		net1.addStation(luxembourg);
 		
-		PlusStation odeon = new PlusStation(true, new GPSCoordinate(25,5), "Odéon");
+		PlusStation odeon = new PlusStation(true, new GPSCoordinate(25,5), "Odï¿½on");
 		for(int k = 0; k < 10; k++) {
 			odeon.addParkingSlot(new ParkingSlot(odeon));
 		}
@@ -66,7 +68,7 @@ public class PlaningRideTest {
 			odeon.addBike(new MechanicalBike());
 			odeon.addBike(new ElectricalBike());
 		}
-		Network.addStation(odeon);
+		net1.addStation(odeon);
 		
 		StandardStation montparnasse = new StandardStation(true, new GPSCoordinate(8,18), "Montparnasse");
 		for(int k = 0; k < 10; k++) {
@@ -76,7 +78,7 @@ public class PlaningRideTest {
 			montparnasse.addBike(new MechanicalBike());
 			montparnasse.addBike(new ElectricalBike());
 		}
-		Network.addStation(montparnasse);
+		net1.addStation(montparnasse);
 		
 		StandardStation invalides = new StandardStation(true, new GPSCoordinate(10,15), "Invalides");
 		for(int k = 0; k < 10; k++) {
@@ -86,9 +88,9 @@ public class PlaningRideTest {
 			invalides.addBike(new MechanicalBike());
 			invalides.addBike(new ElectricalBike());
 		}
-		Network.addStation(invalides);
+		net1.addStation(invalides);
 		
-		StandardStation defense = new StandardStation(true, new GPSCoordinate(24,4), "Défense");
+		StandardStation defense = new StandardStation(true, new GPSCoordinate(24,4), "Dï¿½fense");
 		for(int k = 0; k < 10; k++) {
 			defense.addParkingSlot(new ParkingSlot(defense));
 		}
@@ -96,102 +98,102 @@ public class PlaningRideTest {
 			defense.addBike(new MechanicalBike());
 			defense.addBike(new ElectricalBike());
 		}
-		Network.addStation(defense);
+		net1.addStation(defense);
 		
-		assertEquals(Network.getAvailableStations().size(), 7);
+		assertEquals(net1.getAvailableStations().size(), 7);
 
 		
 		User user = UserFactory.createUser("BroulQ", "nocard");
 		
 		//PreferPlusStation strategy
-		user.takeARide(new GPSCoordinate(3,3), new GPSCoordinate(25,4), new PreferPlusStationStrategy(), new MechanicalBike());
-		assertEquals(user.getRide().getListStation().get(0), Network.getStations().get(0));
-		assertEquals(user.getRide().getListStation().get(1), Network.getStations().get(3));
+		user.takeARide(new GPSCoordinate(3,3), new GPSCoordinate(25,4), new PreferPlusStationStrategy(), new MechanicalBike(), net1);
+		assertEquals(user.getRide().getListStation().get(0), net1.getStations().get(0));
+		assertEquals(user.getRide().getListStation().get(1), net1.getStations().get(3));
 		
-		user.takeARide(new GPSCoordinate(3,3), new GPSCoordinate(25,3.9), new PreferPlusStationStrategy(), new MechanicalBike());
-		assertEquals(user.getRide().getListStation().get(0), Network.getStations().get(0));
-		assertEquals(user.getRide().getListStation().get(1), Network.getStations().get(3));
+		user.takeARide(new GPSCoordinate(3,3), new GPSCoordinate(25,3.9), new PreferPlusStationStrategy(), new MechanicalBike(), net1);
+		assertEquals(user.getRide().getListStation().get(0), net1.getStations().get(0));
+		assertEquals(user.getRide().getListStation().get(1), net1.getStations().get(3));
 		
-		Network.getStations().get(3).goOffline();
-		user.takeARide(new GPSCoordinate(3,3), new GPSCoordinate(25,4), new PreferPlusStationStrategy(), new MechanicalBike());
-		assertEquals(user.getRide().getListStation().get(0), Network.getStations().get(0));
-		assertEquals(user.getRide().getListStation().get(1), Network.getStations().get(6));
+		net1.getStations().get(3).goOffline();
+		user.takeARide(new GPSCoordinate(3,3), new GPSCoordinate(25,4), new PreferPlusStationStrategy(), new MechanicalBike(), net1);
+		assertEquals(user.getRide().getListStation().get(0), net1.getStations().get(0));
+		assertEquals(user.getRide().getListStation().get(1), net1.getStations().get(6));
 		
-		Network.getStations().get(3).setStatus(true);
-		user.takeARide(new GPSCoordinate(3,3), new GPSCoordinate(25,3.9), new PreferPlusStationStrategy(), new MechanicalBike());
-		assertEquals(user.getRide().getListStation().get(0), Network.getStations().get(0));
-		assertEquals(user.getRide().getListStation().get(1), Network.getStations().get(3));
+		net1.getStations().get(3).setStatus(true);
+		user.takeARide(new GPSCoordinate(3,3), new GPSCoordinate(25,3.9), new PreferPlusStationStrategy(), new MechanicalBike(), net1);
+		assertEquals(user.getRide().getListStation().get(0), net1.getStations().get(0));
+		assertEquals(user.getRide().getListStation().get(1), net1.getStations().get(3));
 		
-		user.takeARide(new GPSCoordinate(5,20), new GPSCoordinate(20,8), new PreferPlusStationStrategy(), new MechanicalBike());
-		assertEquals(user.getRide().getListStation().get(0), Network.getStations().get(4));
-		assertEquals(user.getRide().getListStation().get(1), Network.getStations().get(2));
+		user.takeARide(new GPSCoordinate(5,20), new GPSCoordinate(20,8), new PreferPlusStationStrategy(), new MechanicalBike(), net1);
+		assertEquals(user.getRide().getListStation().get(0), net1.getStations().get(4));
+		assertEquals(user.getRide().getListStation().get(1), net1.getStations().get(2));
 		
-		Network.getStations().get(2).goOffline();
-		user.takeARide(new GPSCoordinate(5,20), new GPSCoordinate(20,8), new PreferPlusStationStrategy(), new MechanicalBike());
-		assertEquals(user.getRide().getListStation().get(0), Network.getStations().get(4));
-		assertEquals(user.getRide().getListStation().get(1), Network.getStations().get(3));
-		Network.getStations().get(2).setStatus(true);
+		net1.getStations().get(2).goOffline();
+		user.takeARide(new GPSCoordinate(5,20), new GPSCoordinate(20,8), new PreferPlusStationStrategy(), new MechanicalBike(), net1);
+		assertEquals(user.getRide().getListStation().get(0), net1.getStations().get(4));
+		assertEquals(user.getRide().getListStation().get(1), net1.getStations().get(3));
+		net1.getStations().get(2).setStatus(true);
 		
 		//AvoidPlusStation strategy
 		
-		user.takeARide(new GPSCoordinate(3,3), new GPSCoordinate(25,4), new AvoidPlusStationStrategy(), new MechanicalBike());
-		assertEquals(user.getRide().getListStation().get(0), Network.getStations().get(0));
-		assertEquals(user.getRide().getListStation().get(1), Network.getStations().get(6));
+		user.takeARide(new GPSCoordinate(3,3), new GPSCoordinate(25,4), new AvoidPlusStationStrategy(), new MechanicalBike(), net1);
+		assertEquals(user.getRide().getListStation().get(0), net1.getStations().get(0));
+		assertEquals(user.getRide().getListStation().get(1), net1.getStations().get(6));
 		
-		Network.getStations().get(6).goOffline();
-		user.takeARide(new GPSCoordinate(3,3), new GPSCoordinate(25,4), new AvoidPlusStationStrategy(), new MechanicalBike());
-		assertEquals(user.getRide().getListStation().get(0), Network.getStations().get(0));
-		assertEquals(user.getRide().getListStation().get(1), Network.getStations().get(5));
-		Network.getStations().get(6).setStatus(true);
+		net1.getStations().get(6).goOffline();
+		user.takeARide(new GPSCoordinate(3,3), new GPSCoordinate(25,4), new AvoidPlusStationStrategy(), new MechanicalBike(), net1);
+		assertEquals(user.getRide().getListStation().get(0), net1.getStations().get(0));
+		assertEquals(user.getRide().getListStation().get(1), net1.getStations().get(5));
+		net1.getStations().get(6).setStatus(true);
 		
-		user.takeARide(new GPSCoordinate(10,18), new GPSCoordinate(24,11), new AvoidPlusStationStrategy(), new MechanicalBike());
-		assertEquals(user.getRide().getListStation().get(0), Network.getStations().get(1));
-		assertEquals(user.getRide().getListStation().get(1), Network.getStations().get(6));
+		user.takeARide(new GPSCoordinate(10,18), new GPSCoordinate(24,11), new AvoidPlusStationStrategy(), new MechanicalBike(), net1);
+		assertEquals(user.getRide().getListStation().get(0), net1.getStations().get(1));
+		assertEquals(user.getRide().getListStation().get(1), net1.getStations().get(6));
 		
-		Network.getStations().get(6).goOffline();
-		Network.getStations().get(5).goOffline();
-		user.takeARide(new GPSCoordinate(10,18), new GPSCoordinate(24,11), new AvoidPlusStationStrategy(), new MechanicalBike());
-		assertEquals(user.getRide().getListStation().get(0), Network.getStations().get(1));
-		assertEquals(user.getRide().getListStation().get(1), Network.getStations().get(4));
-		Network.getStations().get(6).setStatus(true);
-		Network.getStations().get(5).setStatus(true);
+		net1.getStations().get(6).goOffline();
+		net1.getStations().get(5).goOffline();
+		user.takeARide(new GPSCoordinate(10,18), new GPSCoordinate(24,11), new AvoidPlusStationStrategy(), new MechanicalBike(), net1);
+		assertEquals(user.getRide().getListStation().get(0), net1.getStations().get(1));
+		assertEquals(user.getRide().getListStation().get(1), net1.getStations().get(4));
+		net1.getStations().get(6).setStatus(true);
+		net1.getStations().get(5).setStatus(true);
 		
 		//ShortestPath strategy
 		
 		//Ne marche pas dans cette version, la version correcte existe mais dans un autre projet,
 		//elle arrive asap
 		
-		user.takeARide(new GPSCoordinate(5,4), new GPSCoordinate(10,16), new ShortestPath(), new MechanicalBike());
-		assertEquals(user.getRide().getListStation().get(0), Network.getStations().get(0));
-		assertEquals(user.getRide().getListStation().get(1), Network.getStations().get(1));
+		user.takeARide(new GPSCoordinate(5,4), new GPSCoordinate(10,16), new ShortestPath(), new MechanicalBike(), net1);
+		assertEquals(user.getRide().getListStation().get(0), net1.getStations().get(0));
+		assertEquals(user.getRide().getListStation().get(1), net1.getStations().get(1));
 	
 		//FastestPath strategy
 		
-		user.takeARide(new GPSCoordinate(8,18), new GPSCoordinate(25,5), new FastestPath(), new MechanicalBike());
-		assertEquals(user.getRide().getListStation().get(0), Network.getStations().get(4));
-		assertEquals(user.getRide().getListStation().get(1), Network.getStations().get(3));
+		user.takeARide(new GPSCoordinate(8,18), new GPSCoordinate(25,5), new FastestPath(), new MechanicalBike(), net1);
+		assertEquals(user.getRide().getListStation().get(0), net1.getStations().get(4));
+		assertEquals(user.getRide().getListStation().get(1), net1.getStations().get(3));
 		
-		user.takeARide(new GPSCoordinate(8,18), new GPSCoordinate(25,5), new FastestPath(), new ElectricalBike());
-		assertEquals(user.getRide().getListStation().get(0), Network.getStations().get(4));
-		assertEquals(user.getRide().getListStation().get(1), Network.getStations().get(3));
+		user.takeARide(new GPSCoordinate(8,18), new GPSCoordinate(25,5), new FastestPath(), new ElectricalBike(), net1);
+		assertEquals(user.getRide().getListStation().get(0), net1.getStations().get(4));
+		assertEquals(user.getRide().getListStation().get(1), net1.getStations().get(3));
 		
-		user.takeARide(new GPSCoordinate(3,4), new GPSCoordinate(10,16), new FastestPath(), new MechanicalBike());
-		assertEquals(user.getRide().getListStation().get(0), Network.getStations().get(0));
-		assertEquals(user.getRide().getListStation().get(1), Network.getStations().get(5));
+		user.takeARide(new GPSCoordinate(3,4), new GPSCoordinate(10,16), new FastestPath(), new MechanicalBike(), net1);
+		assertEquals(user.getRide().getListStation().get(0), net1.getStations().get(0));
+		assertEquals(user.getRide().getListStation().get(1), net1.getStations().get(5));
 		
-		user.takeARide(new GPSCoordinate(5,5), new GPSCoordinate(10,17), new FastestPath(), new MechanicalBike());
-		assertEquals(user.getRide().getListStation().get(0), Network.getStations().get(0));
-		assertEquals(user.getRide().getListStation().get(1), Network.getStations().get(1));
-		//Ici on teste le cas où la strategy donne des résultats différents avec un vélo électrique
-		//et un vélo classique. Le point d'arrivée a pour cela été choisi au terme de longs et 
+		user.takeARide(new GPSCoordinate(5,5), new GPSCoordinate(10,17), new FastestPath(), new MechanicalBike(), net1);
+		assertEquals(user.getRide().getListStation().get(0), net1.getStations().get(0));
+		assertEquals(user.getRide().getListStation().get(1), net1.getStations().get(1));
+		//Ici on teste le cas oï¿½ la strategy donne des rï¿½sultats diffï¿½rents avec un vï¿½lo ï¿½lectrique
+		//et un vï¿½lo classique. Le point d'arrivï¿½e a pour cela ï¿½tï¿½ choisi au terme de longs et 
 		//fastidieux calculs.
-		user.takeARide(new GPSCoordinate(5,5), new GPSCoordinate(22,7.1), new FastestPath(), new MechanicalBike());
-		assertEquals(user.getRide().getListStation().get(0), Network.getStations().get(0));
-		assertEquals(user.getRide().getListStation().get(1), Network.getStations().get(2));
+		user.takeARide(new GPSCoordinate(5,5), new GPSCoordinate(22,7.1), new FastestPath(), new MechanicalBike(), net1);
+		assertEquals(user.getRide().getListStation().get(0), net1.getStations().get(0));
+		assertEquals(user.getRide().getListStation().get(1), net1.getStations().get(2));
 		
-		user.takeARide(new GPSCoordinate(5,5), new GPSCoordinate(22,7.1), new FastestPath(), new ElectricalBike());
-		assertEquals(user.getRide().getListStation().get(0), Network.getStations().get(0));
-		assertEquals(user.getRide().getListStation().get(1), Network.getStations().get(6));
+		user.takeARide(new GPSCoordinate(5,5), new GPSCoordinate(22,7.1), new FastestPath(), new ElectricalBike(), net1);
+		assertEquals(user.getRide().getListStation().get(0), net1.getStations().get(0));
+		assertEquals(user.getRide().getListStation().get(1), net1.getStations().get(6));
 		
 	}
 

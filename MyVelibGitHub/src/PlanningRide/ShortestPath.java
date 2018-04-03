@@ -9,7 +9,7 @@ import Network.*;
 
 /**
  * This class provide a method implemented by {@link PlanningRideStrategy}, to find a ShortestPath
- * @author Kévin HIVET
+ * @author Kï¿½vin HIVET
  *
  */
 public class ShortestPath implements PlanningRideStrategy{
@@ -32,9 +32,9 @@ public class ShortestPath implements PlanningRideStrategy{
 	 * Return the list of two stations, in the first place the begin station, in the second place the end station.
 	 */
 	@Override
-	public ArrayList<Station> planARide(GPSCoordinate beginingPoint, GPSCoordinate finishingPoint, Bike bike) {
+	public ArrayList<Station> planARide(GPSCoordinate beginingPoint, GPSCoordinate finishingPoint, Bike bike, Network net) {
 		
-		ArrayList<Station> availableStation = Network.getAvailableStations();
+		ArrayList<Station> availableStation = net.getAvailableStations();
 		
 		double distanceMin = GPSCoordinate.distance(availableStation.get(0).getCoordinates(),beginingPoint) + GPSCoordinate.distance(availableStation.get(1).getCoordinates(),finishingPoint);
 		Station stationBeg = availableStation.get(0);

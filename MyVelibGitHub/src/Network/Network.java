@@ -9,21 +9,20 @@ public class Network {
 	
 	//Attributes
 	
-	private static ArrayList<Station> stations = new ArrayList<Station>();
-	private static ArrayList<User> users = new ArrayList<User>();
-	
+	private ArrayList<Station> stations;
+	private ArrayList<User> users;
+	static ArrayList<Network> entireNet = new ArrayList<Network>();
+	private String name;
 	
 	//Constructor
-	
-	/**
-	 * The constructor is private so that there is only one isntance
-	 * of a Network object
-	 */
-	
-	private Network() {
+		
+	public Network(String name) {
 		super();
-			Network.stations = new ArrayList<Station>();
-			Network.users = new ArrayList<User>();
+			this.stations = new ArrayList<Station>();
+			this.users = new ArrayList<User>();
+			this.name = name;
+
+			entireNet.add(this);
 		}
 	
 	
@@ -69,20 +68,30 @@ public class Network {
 	
 
 
-	public static ArrayList<Station> getStations() {
-		return stations;
-	}
-
-	public static ArrayList<User> getUsers() {
-		return users;
-	}
-
-	public static void addStation(Station station) {
-		Network.stations.add(station);
+	public ArrayList<Station> getStations() {
+		return this.stations;
 	}
 	
-	public static void addUser(User user) {
-		Network.users.add(user);
+	public String getName() {
+		return name;
+	}
+
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+
+	public ArrayList<User> getUsers() {
+		return this.users;
+	}
+
+	public void addStation(Station station) {
+		this.stations.add(station);
+	}
+	
+	public void addUser(User user) {
+		this.users.add(user);
 	}
 	
 	
@@ -93,9 +102,9 @@ public class Network {
 	 * Returns the available (not offline) stations in order to compute a ride
 	 * @return
 	 */
-	public static ArrayList<Station> getAvailableStations() {
+	public ArrayList<Station> getAvailableStations() {
 		ArrayList<Station> availableStations = new ArrayList<Station>();
-		for(Station station : Network.stations) {
+		for(Station station : this.stations) {
 			if(station.isOnline()) {
 				availableStations.add(station);
 			}
@@ -108,10 +117,10 @@ public class Network {
 	 * @param a
 	 * @return
 	 */
-	public static Station getClosestStationTo(GPSCoordinate a) {
-		Station closestStation = Network.getAvailableStations().get(0);
+	public Station getClosestStationTo(GPSCoordinate a) {
+		Station closestStation = this.getAvailableStations().get(0);
 		double distance = GPSCoordinate.distance(closestStation.getCoordinates(),a);
-		for(Station station : Network.stations) {
+		for(Station station : this.stations) {
 			double tempdist = GPSCoordinate.distance(station.getCoordinates(),a);
 			if(tempdist<distance) {
 				closestStation = station;
@@ -122,17 +131,4 @@ public class Network {
 	}
 	
 	
-	/**
-	 * The main method creates an instance of a Network, and it is the unique
-	 * instance that will always be used
-	 * @param args
-	 */
-	
-	public static void main(String[] args) {
-		
-		Network network = new Network();
-		
-	}
-	
-
 }

@@ -8,7 +8,7 @@ import Network.*;
 
 /**
  * 
- * @author Kévin HIVET
+ * @author Kï¿½vin HIVET
  * This class has been implemented to provide the good function for a new kind strategy to ride. Without that a strategy ride has no sense to exist.
  */
 public interface PlanningRideStrategy {
@@ -24,6 +24,6 @@ public interface PlanningRideStrategy {
 	 * @return ArrayList
 	 * Return the list of two stations, in the first place the begin station, in the second place the end station.
 	 */
-	public ArrayList<Station> planARide(GPSCoordinate beginingPoint,GPSCoordinate finishingPoint, Bike bike);
+	public ArrayList<Station> planARide(GPSCoordinate beginingPoint,GPSCoordinate finishingPoint, Bike bike, Network net);
 
 }

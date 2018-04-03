@@ -3,6 +3,7 @@ package Ride;
 import java.util.ArrayList;
 import Bike.Bike;
 import GPSCoordinate.*;
+import Network.Network;
 import Network.Station;
 import PlanningRide.*;
 
@@ -18,14 +19,16 @@ public class Ride implements RideStrategyInterface{
 	private int price;
 	private PlanningRideStrategy rideStrategy;
 	private ArrayList<Station> listStation;
+	private Network net;
 	
 	//Constructors
 	
-	public Ride(GPSCoordinate beginingPoint, GPSCoordinate finishingPoint, PlanningRideStrategy rideStrategy) {
+	public Ride(GPSCoordinate beginingPoint, GPSCoordinate finishingPoint, PlanningRideStrategy rideStrategy, Network net) {
 		super();
 		this.beginingPoint = beginingPoint;
 		this.finishingPoint = finishingPoint;
 		this.rideStrategy = rideStrategy;
+		this.net = net;
 	}
 
 	public Ride() {
@@ -124,7 +127,7 @@ public class Ride implements RideStrategyInterface{
 	//New /!\
 	@Override
 	public void haveARide(Bike wishBike) {
-		this.listStation = this.rideStrategy.planARide(this.beginingPoint,this.finishingPoint, wishBike);
+		this.listStation = this.rideStrategy.planARide(this.beginingPoint,this.finishingPoint, wishBike, this.net);
 	}
 	
 

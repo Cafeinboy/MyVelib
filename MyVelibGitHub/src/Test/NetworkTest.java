@@ -256,29 +256,31 @@ public class NetworkTest {
 	@Test
 	public void networkTest() {
 		
-		assertEquals(Network.getAvailableStations().size(), 0);
-		assertEquals(Network.getPlusStations(Network.getAvailableStations()).size(), 0);
-		assertEquals(Network.getNonPlusStations(Network.getAvailableStations()).size() ,0);
-		assertEquals(Network.getStations().size(), 0);
-		assertEquals(Network.getUsers().size(), 0);
+		Network net = new Network("Paris");
 		
-		Network.addStation(new StandardStation(true, new GPSCoordinate(5, 10), "test station 1"));
-		Network.addStation(new PlusStation(true, new GPSCoordinate(10, 10), "test station 2"));
+		assertEquals(net.getAvailableStations().size(), 0);
+		assertEquals(Network.getPlusStations(net.getAvailableStations()).size(), 0);
+		assertEquals(Network.getNonPlusStations(net.getAvailableStations()).size() ,0);
+		assertEquals(net.getStations().size(), 0);
+		assertEquals(net.getUsers().size(), 0);
 		
-		assertEquals(Network.getAvailableStations().size(), 2);
-		assertEquals(Network.getPlusStations(Network.getAvailableStations()).size(), 1);
-		assertEquals(Network.getNonPlusStations(Network.getAvailableStations()).size() ,1);
-		assertEquals(Network.getStations().size(), 2);
-		assertEquals(Network.getPlusStations(Network.getAvailableStations()).get(0).getName(), "test station 2");
+		net.addStation(new StandardStation(true, new GPSCoordinate(5, 10), "test station 1"));
+		net.addStation(new PlusStation(true, new GPSCoordinate(10, 10), "test station 2"));
 		
-		Network.addUser(new User());
-		assertEquals(Network.getUsers().size(), 1);
+		assertEquals(net.getAvailableStations().size(), 2);
+		assertEquals(Network.getPlusStations(net.getAvailableStations()).size(), 1);
+		assertEquals(Network.getNonPlusStations(net.getAvailableStations()).size() ,1);
+		assertEquals(net.getStations().size(), 2);
+		assertEquals(Network.getPlusStations(net.getAvailableStations()).get(0).getName(), "test station 2");
 		
-		Network.getPlusStations(Network.getAvailableStations()).get(0).goOffline();
-		assertEquals(Network.getAvailableStations().size(), 1);
-		assertEquals(Network.getPlusStations(Network.getAvailableStations()).size(), 0);
-		assertEquals(Network.getNonPlusStations(Network.getAvailableStations()).size() ,1);
-		assertEquals(Network.getStations().size(), 2);
+		net.addUser(new User());
+		assertEquals(net.getUsers().size(), 1);
+		
+		Network.getPlusStations(net.getAvailableStations()).get(0).goOffline();
+		assertEquals(net.getAvailableStations().size(), 1);
+		assertEquals(Network.getPlusStations(net.getAvailableStations()).size(), 0);
+		assertEquals(Network.getNonPlusStations(net.getAvailableStations()).size() ,1);
+		assertEquals(net.getStations().size(), 2);
 		
 	}
 }
