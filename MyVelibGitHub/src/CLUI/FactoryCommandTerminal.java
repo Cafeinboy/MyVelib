@@ -145,7 +145,7 @@ public abstract class FactoryCommandTerminal {
 			    }
 			}
 			
-			System.out.println("Done correctly");
+			System.out.println("Done correctly\n");
 			
 		} catch (NumberFormatException e) {
 			System.out.println("An argument in the command is not correct, please try it again, or please read the Javadoc.\n");
@@ -157,7 +157,7 @@ public abstract class FactoryCommandTerminal {
 				
 		try {
 			User user = UserFactory.createUser(name,cardType,velibNetwork);	
-			System.out.println("Done correctly");
+			System.out.println("Done correctly\n");
 		} catch (UserFactoryException e) {
 		} catch (NetworkFactoryException e) {
 		} 
@@ -171,7 +171,7 @@ public abstract class FactoryCommandTerminal {
 			int ID = Integer.parseInt(IDStation);
 			Station stat = Station.findAStationFromID(ID);
 			stat.goOffline();;				
-			System.out.println("Done correctly");
+			System.out.println("Done correctly\n");
 		} catch (NumberFormatException e) {
 			System.out.println("An argument in the command is not correct, please try it again, or please read the Javadoc.\n");
 		} catch (StationFactoryException e) {
@@ -190,7 +190,7 @@ public abstract class FactoryCommandTerminal {
 			int ID = Integer.parseInt(IDStation);
 			Station stat = Station.findAStationFromID(ID);
 			stat.setStatus(true);		
-			System.out.println("Done correctly");
+			System.out.println("Done correctly\n");
 		} catch (NumberFormatException e) {
 			System.out.println("An argument in the command is not correct, please try it again, or please read the Javadoc.\n");
 		} catch (StationFactoryException e) {
@@ -212,7 +212,7 @@ public abstract class FactoryCommandTerminal {
 			
 			stat.takeBike(new MechanicalBike(), user);
 			
-			System.out.println("Done correctly");
+			System.out.println("Done correctly\n");
 		} catch (NumberFormatException e) {
 			System.out.println("An argument in the command is not correct, please try it again, or please read the Javadoc.\n");
 		} catch (UserFindFactoryException e) {
@@ -240,7 +240,7 @@ public abstract class FactoryCommandTerminal {
 			
 			System.out.println("The price of the course was : " + user.getAllRide().get(user.getAllRide().size() -1).getPrice());
 			
-			System.out.println("Done correctly");
+			System.out.println("Done correctly\n");
 		} catch (NumberFormatException e) {
 			System.out.println("An argument in the command is not correct, please try it again, or please read the Javadoc.\n");
 		} catch (UserFindFactoryException e) {
