@@ -76,6 +76,10 @@ public class User implements Observer, Functionnality {
 	public GPSCoordinate getLocation() {
 		return location;
 	}
+	
+	public void setLocation(double x, double y) {
+		this.location = new GPSCoordinate(x, y);
+	}
 
 	public Card getCard() {
 		return card;
@@ -116,6 +120,12 @@ public class User implements Observer, Functionnality {
 		if(arg instanceof String) {
 			String message = (String) arg;
 			System.out.println(message);
+			Ride oldRide = this.getRide();
+			Ride newRide = new Ride(oldRide.getListStation().get(0).getCoordinates(), oldRide.getFinishingPoint(), oldRide.getRideStrategy(), oldRide.getListStation().get(1).knowHisNetwork());
+			newRide.haveARide(oldRide.getBike());
+			this.getRide().setListStation(new ArrayList<Station>(Arrays.asList(oldRide.getListStation().get(0), newRide.getListStation().get(1))));
+	
+			System.out.println("Your new destination station is " + this.getRide().getListStation().get(1).getName());
 		}
 		else {
 			System.err.println("Wrong type of argument");

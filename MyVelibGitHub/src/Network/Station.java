@@ -402,6 +402,9 @@ public abstract class Station extends Observable {
 					this.getFull();
 				}
 				user.getRide().setBike(null);
+				if(this instanceof PlusStation) {
+					user.getCard().addTimecredit(5);
+				}
 			}
 			
 		}
