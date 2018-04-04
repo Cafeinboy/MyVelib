@@ -34,6 +34,7 @@ public abstract class Station extends Observable {
 	
 	public Station() {
 		super();
+		this.users = new ArrayList<User>();
 	}
 	
 	public Station(boolean status, GPSCoordinate coordinates) {
