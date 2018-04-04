@@ -21,14 +21,14 @@ public abstract class FactoryCommandTerminal {
 			setupVelibNetwork(words[1]);
 			return "";
 		}else if (words[0].equalsIgnoreCase("setup") && words.length == 6) {
-			setupNetworkFromSpecification();
+			setupNetworkFromSpecification(words[1], words[2], words[3], words[4], words[5]);
 			return "";
 		}else if (words[0].equalsIgnoreCase("addUser") && words.length == 4) {
 			addUser(words[1], words[2], words[3]);
 			return "";
 		}
 		else if (words[0].equalsIgnoreCase("offline") && words.length == 3) {
-			goOffline();
+			goOffline(words[1], words[2]);
 			return "";
 		}
 		else if (words[0].equalsIgnoreCase("online") && words.length == 3) {
@@ -105,7 +105,8 @@ public abstract class FactoryCommandTerminal {
 		
 	}
 	
-	public static void setupNetworkFromSpecification() {
+	public static void setupNetworkFromSpecification(String name, String nStations, String nSlots, String sideArea, String nBikes) {
+		
 		
 		System.out.println("Not yet implemented");
 		
@@ -121,7 +122,13 @@ public abstract class FactoryCommandTerminal {
 		} 
 	}
 	
-	public static void goOffline() {
+	public static void goOffline(String velibNet, String IDStation) {
+		
+		try {
+			int ID = Integer.parseInt(IDStation);
+		} catch (NumberFormatException e) {
+			System.out.println("An argument in the command is not correct, please try it again, or please read the Javadoc.\n");
+		}
 		
 		System.out.println("Not yet implemented");
 		

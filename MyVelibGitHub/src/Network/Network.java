@@ -13,6 +13,7 @@ public class Network {
 	private ArrayList<Station> stations;
 	private ArrayList<User> users;
 	public static ArrayList<Network> entireNet = new ArrayList<Network>();
+	private int sizeArea;
 	private String name;
 	
 	//Constructor
@@ -22,6 +23,17 @@ public class Network {
 			this.stations = new ArrayList<Station>();
 			this.users = new ArrayList<User>();
 			this.name = name;
+			this.sizeArea = 0;
+
+			entireNet.add(this);
+		}
+	
+	public Network(String name, int sizeArea) {
+		super();
+			this.stations = new ArrayList<Station>();
+			this.users = new ArrayList<User>();
+			this.name = name;
+			this.sizeArea = sizeArea;
 
 			entireNet.add(this);
 		}
@@ -82,6 +94,13 @@ public class Network {
 		this.name = name;
 	}
 
+	public int getSizeArea() {
+		return sizeArea;
+	}
+
+	public void setSizeArea(int sizeArea) {
+		this.sizeArea = sizeArea;
+	}
 
 	public ArrayList<User> getUsers() {
 		return this.users;

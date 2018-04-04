@@ -138,18 +138,17 @@ public abstract class Station extends Observable {
 		return null;
 	}
 	
-	public static Station findAStationFromID(Integer integer) throws StationFactoryException {
+	public static Station findAStationFromID(String velibNet, Integer integer) throws StationFactoryException, NetworkFactoryException {
+		
+		Network net = Network.findANetworkFromName(velibNet);
 		
 		Station stat = null;
 		
-		for (Network netSearch : Network.entireNet) {
-			for (Station statSearch : netSearch.getStations()) {
-				if (statSearch.getID() == (int) integer) {
-					stat = statSearch;
-					break;
-				}
+		for (Station statSearch : net.getStations()) {
+			if (statSearch.getID() == (int) integer) {
+				stat = statSearch;
+				break;
 			}
-			
 		}
 		
 		if (stat == null) {
