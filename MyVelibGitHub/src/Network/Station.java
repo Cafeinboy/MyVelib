@@ -451,6 +451,7 @@ public abstract class Station extends Observable {
 		else {
 			System.err.println("User already has a bike");
 		}
+		
 	}
 		
 }
