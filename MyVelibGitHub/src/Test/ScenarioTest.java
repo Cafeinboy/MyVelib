@@ -26,7 +26,7 @@ public class ScenarioTest {
 		//Building network
 		Network paris = new Network("Paris", 30);
 		
-		PlusStation opera = new PlusStation(true, new GPSCoordinate(5,5), "Opéra");
+		PlusStation opera = new PlusStation(true, new GPSCoordinate(5,5), "Opï¿½ra");
 		for(int k = 0; k < 10; k++) {
 			opera.addParkingSlot(new ParkingSlot(opera));
 		}
@@ -38,7 +38,7 @@ public class ScenarioTest {
 		
 		paris.addStation(opera);
 		
-		PlusStation chatelet = new PlusStation(true, new GPSCoordinate(11,17), "Châtelet");
+		PlusStation chatelet = new PlusStation(true, new GPSCoordinate(11,17), "Chï¿½telet");
 		for(int k = 0; k < 10; k++) {
 			chatelet.addParkingSlot(new ParkingSlot(chatelet));
 		}
