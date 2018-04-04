@@ -40,8 +40,8 @@ public class Ride implements RideStrategyInterface{
 	public Ride() {
 		super();
 		this.listStation = new ArrayList<Station>(); 
-		this.listStation.add(new StandardStation()); 
-		this.listStation.add(new StandardStation());
+		this.listStation.add(new StandardStation(true, new GPSCoordinate())); 
+		this.listStation.add(new StandardStation(true, new GPSCoordinate()));
 	}
 	
 	//Getters and Setters

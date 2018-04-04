@@ -414,7 +414,7 @@ public abstract class Station extends Observable {
 				if(this instanceof PlusStation) {
 					user.getCard().addTimecredit(5);
 				}
-				this.removeUser(user);
+				
 
 			}
 			
