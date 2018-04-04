@@ -138,7 +138,7 @@ public class NetworkTest {
 			standStation.giveBackBike(user1);
 			
 			assertTrue(standStation.isFull());
-			
+			 
 			standStation.takeBike(new ElectricalBike(), user2);
 			assertEquals(standStation.numberOfFreeSpots(), 1);
 			
