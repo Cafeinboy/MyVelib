@@ -143,6 +143,12 @@ public abstract class Station extends Observable {
 		return false;
 	}
 	
+
+	@Override
+	public String toString() {
+		return "Station []";
+	}
+	
 	//Methods
 	
 	public Network knowHisNetwork() {
@@ -401,9 +407,11 @@ public abstract class Station extends Observable {
 				if(this.numberOfFreeSpots() == 0) {
 					this.getFull();
 				}
+
 				if(this instanceof PlusStation) {
 					user.getCard().addTimecredit(5);
 				}
+
 			}
 			
 		}
@@ -411,8 +419,6 @@ public abstract class Station extends Observable {
 			System.err.println("User does not have a bike");
 		}
 	}
-	
-	
 	
 	/**
 	 * This function allows a User to take a bike of the wanted type,
