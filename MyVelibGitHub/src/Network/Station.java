@@ -297,7 +297,7 @@ public abstract class Station extends Observable {
 	 * the observers list, and changes its status
 	 */
 	public void getFull() {
-		String message = "Your destination station" + this.getName() + " has no more available parking slots. Computing new destination ...";
+		String message = "Your destination station " + this.getName() + " has no more available parking slots. Computing new destination ...";
 		this.notifyUsers(message);
 		this.setUsers(new ArrayList<User>());
 		this.setFull(true);	
@@ -442,7 +442,6 @@ public abstract class Station extends Observable {
 					this.allRecord.putAnEndForARecord(nextSlot);
 					this.setFull(false);
 					user.getRide().setBike(realbike);
-					this.addUser(user);
 				}
 			}
 			else if (bike instanceof ElectricalBike) {
