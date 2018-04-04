@@ -401,7 +401,6 @@ public abstract class Station extends Observable {
 				if(this.numberOfFreeSpots() == 0) {
 					this.getFull();
 				}
-				user.getRide().setBike(null);
 				if(this instanceof PlusStation) {
 					user.getCard().addTimecredit(5);
 				}
