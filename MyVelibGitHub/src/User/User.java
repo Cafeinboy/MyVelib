@@ -161,6 +161,7 @@ public class User implements Observer, Functionnality {
 		this.allRide.add(this.ride);
 		this.ride=null;
 	}
+	
 
 	/**
 	 * This method returns an ArrayList with the total number of ride, the total time on a bike, the total charges, and the total time earned since the beginning for a client.

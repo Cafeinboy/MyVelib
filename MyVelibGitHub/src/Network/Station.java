@@ -413,6 +413,8 @@ public abstract class Station extends Observable {
 		}
 	}
 	
+	
+	
 	/**
 	 * This function allows a User to take a bike of the wanted type,
 	 * it will check if such a bike is available (even though that should

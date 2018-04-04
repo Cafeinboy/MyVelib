@@ -1,6 +1,8 @@
 package Ride;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+
 import Bike.Bike;
 import GPSCoordinate.*;
 import Network.Network;
@@ -123,6 +125,7 @@ public class Ride implements RideStrategyInterface{
 	public void changeFinishingStation(Station station) {
 		listStation.set(1, station);
 	}
+
 
 	//New /!\
 	@Override
