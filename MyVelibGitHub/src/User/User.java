@@ -37,7 +37,7 @@ public class User implements Observer, Functionnality {
 		numberID++;
 		this.location = new GPSCoordinate();
 		this.card = new NoCard();
-		this.ride = null;
+		this.ride = new Ride();
 		this.allRide = new ArrayList<Ride>();
 	}
 	
@@ -48,7 +48,7 @@ public class User implements Observer, Functionnality {
 		this.location = new GPSCoordinate();
 		this.ID = numberID;
 		numberID++;
-		this.ride = null;
+		this.ride = new Ride();
 		this.allRide = new ArrayList<Ride>();
 	}
 
@@ -59,7 +59,7 @@ public class User implements Observer, Functionnality {
 		this.card = card;
 		this.ID = numberID;
 		numberID++;
-		this.ride = null;
+		this.ride = new Ride();
 		this.allRide = new ArrayList<Ride>();
 	}
 	
@@ -159,7 +159,7 @@ public class User implements Observer, Functionnality {
 		this.ride.changeFinishingStation(finishingStation);
 		
 		this.allRide.add(this.ride);
-		this.ride=null;
+		this.ride = new Ride();
 	}
 	
 
@@ -183,7 +183,7 @@ public class User implements Observer, Functionnality {
 				totalEarnCredit+=5;
 			}
 		}
-		if (this.ride != null) {
+		if (this.ride.getNet() != null) {
 			numberOfRides++;
 			totalTimeOnBike+= Time.getTimeInMinuteSinceCreation()-ride.getBeginingTime();
 		}

@@ -32,6 +32,10 @@ public abstract class Station extends Observable {
 	
 	//Constructor
 	
+	public Station() {
+		super();
+	}
+	
 	public Station(boolean status, GPSCoordinate coordinates) {
 		super();
 		uniqueID = uniqueID + 1;
@@ -44,7 +48,7 @@ public abstract class Station extends Observable {
 		this.full = true;
 		this.allRecord = new LogTotalRecord();
 	}
-	
+
 	public Station(boolean status, GPSCoordinate coordinates, String name) {
 		super();
 		uniqueID = uniqueID + 1;

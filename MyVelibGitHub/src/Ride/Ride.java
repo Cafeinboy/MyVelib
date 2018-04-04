@@ -6,6 +6,7 @@ import java.util.Arrays;
 import Bike.Bike;
 import GPSCoordinate.*;
 import Network.Network;
+import Network.StandardStation;
 import Network.Station;
 import PlanningRide.*;
 
@@ -31,10 +32,16 @@ public class Ride implements RideStrategyInterface{
 		this.finishingPoint = finishingPoint;
 		this.rideStrategy = rideStrategy;
 		this.net = net;
+		this.listStation = new ArrayList<Station>(); 
+		this.listStation.add(new StandardStation()); 
+		this.listStation.add(new StandardStation());
 	}
 
 	public Ride() {
 		super();
+		this.listStation = new ArrayList<Station>(); 
+		this.listStation.add(new StandardStation()); 
+		this.listStation.add(new StandardStation());
 	}
 	
 	//Getters and Setters
@@ -95,6 +102,13 @@ public class Ride implements RideStrategyInterface{
 		return this.price;
 	}
 	
+	public Network getNet() {
+		return net;
+	}
+
+	public void setNet(Network net) {
+		this.net = net;
+	}
 
 	public PlanningRideStrategy getRideStrategy() {
 		return rideStrategy;

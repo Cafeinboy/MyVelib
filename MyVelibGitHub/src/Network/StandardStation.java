@@ -6,6 +6,10 @@ public class StandardStation extends Station {
 
 	//Constructor
 	
+	public StandardStation() {
+		super();
+	}
+	
 	public StandardStation(boolean status, GPSCoordinate coordinates,
 			String name) {
 		super(status, coordinates, name);
