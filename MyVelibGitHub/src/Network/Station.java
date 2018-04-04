@@ -32,6 +32,19 @@ public abstract class Station extends Observable {
 	
 	//Constructor
 	
+	public Station(boolean status, GPSCoordinate coordinates) {
+		super();
+		uniqueID = uniqueID + 1;
+		this.ID = uniqueID;
+		this.status = status;
+		this.parkingSlots = new ArrayList<ParkingSlot>();
+		this.coordinates = coordinates;
+		this.users = new ArrayList<User>();
+		//There are no Parking slots so it is full
+		this.full = true;
+		this.allRecord = new LogTotalRecord();
+	}
+	
 	public Station(boolean status, GPSCoordinate coordinates, String name) {
 		super();
 		uniqueID = uniqueID + 1;
@@ -80,7 +93,12 @@ public abstract class Station extends Observable {
 		this.parkingSlots.add(parkingSlot);
 		if(parkingSlot.isFree() && !parkingSlot.isOutOfOrder()) {
 			this.full = false;
-			this.allRecord.addRecord(new Record(Time.getTimeInMinuteSinceCreation(), parkingSlot));
+		}
+	}
+	
+	public void addNParkingSlot(int N) {
+		for (int i = 0; i < N; i++) {
+			this.addParkingSlot(new ParkingSlot(this));			
 		}
 	}
 
@@ -176,6 +194,21 @@ public abstract class Station extends Observable {
 			if(this.numberOfFreeSpots() == 0) {
 				this.getFull();
 			}
+		}
+	}
+	
+	public boolean addBikeWithReturnInformation(Bike bike) {
+		if(this.isFull()) {
+			return false;
+		}
+		else {
+			ParkingSlot nextSpot = this.getFreeSlots().get(0);
+			nextSpot.giveBike(bike);
+			this.allRecord.addRecord(new Record(Time.getTimeInMinuteSinceCreation(), nextSpot));
+			if(this.numberOfFreeSpots() == 0) {
+				this.getFull();
+			}
+			return true;
 		}
 	}
 	
@@ -363,7 +396,7 @@ public abstract class Station extends Observable {
 			else {
 				ParkingSlot nextSpot = this.getFreeSlots().get(0);
 				nextSpot.giveBike(bike);
-				this.allRecord.putAnEndForARecord(nextSpot);
+				this.allRecord.addRecord(new Record(Time.getTimeInMinuteSinceCreation(), nextSpot));
 				user.putAnEndToTheRide(this);
 				if(this.numberOfFreeSpots() == 0) {
 					this.getFull();
@@ -395,7 +428,7 @@ public abstract class Station extends Observable {
 				else {
 					ParkingSlot nextSlot = this.getSlotsWithMechanicalBike().get(0);
 					Bike realbike = nextSlot.takeBike();
-					this.allRecord.addRecord(new Record(Time.getTimeInMinuteSinceCreation(), nextSlot));
+					this.allRecord.putAnEndForARecord(nextSlot);
 					this.setFull(false);
 					user.getRide().setBike(realbike);
 				}

@@ -1,11 +1,13 @@
 package CLUI;
 
-import Exception.NetworkFactoryException;
-import Exception.StationFactoryException;
-import Exception.UserFactoryException;
-import Network.Station;
-import User.User;
-import User.UserFactory;
+import java.awt.FontFormatException;
+import java.util.Random;
+
+import Bike.MechanicalBike;
+import Exception.*;
+import GPSCoordinate.GPSCoordinate;
+import Network.*;
+import User.*;
 
 public abstract class FactoryCommandTerminal {
 	
@@ -72,13 +74,13 @@ public abstract class FactoryCommandTerminal {
 	public static void help() {
 		System.out.println("Hi, you have asked help so I am here. You can see bellow all the commad available and the arguments required");
 		System.out.println("          setup <velibnetworkName>\n"
-				+ "To create a myVelib network with given name and consisting of 10 stations each of which has 10 parking slots"
+				+ "To create a myVelib network with given name and consisting of 10 standard stations each of which has 10 parking slots"
 				+ "and such that stations are arranged on a square grid whose of side 4km and initially populated with a 75%"
-				+ " bikes randomly distributed over the 10 stations.\n");
+				+ " mechanical bikes randomly distributed over the 10 stations.\n");
 		System.out.println("          setup <name> <nstations> <nslots> <sidearea> <nbikes> \n"
-				+ "To create a myVelib network with given name and consisting of nstations stations each of which has nslots"
+				+ "To create a myVelib network with given name and consisting of nstations standard stations each of which has nslots"
 				+ " parking slots and such that stations are arranged on a square grid whose of side "
-				+ "sidearea and initially populated with a nbikes bikes randomly distributed over the nstations stations.\n");
+				+ "sidearea and initially populated with a nbikes mechanical bikes randomly distributed over the nstations stations.\n");
 		System.out.println("          addUser <userName> <cardType> <velibnetworkName>\n"
 				+ "To add a user with name userName and card cardType (i.e. ‘‘none’’ if the user has no card) to a myVelib network velibnetworkName.\n");
 		System.out.println("          offline <velibnetworkName> <stationID>\n"
@@ -103,14 +105,51 @@ public abstract class FactoryCommandTerminal {
 	
 	public static void setupVelibNetwork(String name) {
 		
-		System.out.println("Not yet implemented");
+		FactoryCommandTerminal.setupNetworkFromSpecification(name, "10", "10", "4", "75");
 		
 	}
 	
-	public static void setupNetworkFromSpecification(String name, String nStations, String nSlots, String sideArea, String nBikes) {
+	public static void setupNetworkFromSpecification(String name, String nStations, String nSlots, String sideSquare, String nBikes) {
 		
-		
-		System.out.println("Not yet implemented");
+		try {
+			
+			int nStations1 = Integer.parseInt(nStations);
+			int nSlots1 = Integer.parseInt(nSlots);
+			int sideSquare1 = Integer.parseInt(sideSquare);
+			int nBikes1 = Integer.parseInt(nBikes);
+			double step = sideSquare1/(Math.sqrt((double) nSlots1)-1);
+			double x = 0;
+			double y = 0;
+			
+			//Creating network and all stations required
+			Network net = new Network(name);
+			for (int i = 0; i < nStations1; i++) {
+				Station statInProgress = new StandardStation(true, new GPSCoordinate());
+				net.addStation(statInProgress);
+				statInProgress.addNParkingSlot(nSlots1);
+				if ( (int) x/sideSquare1 == 1) {
+					y = y + step;
+					x = x % sideSquare1;
+				}
+				else {
+					x = x + step;
+				}				
+			}
+			
+			//Distributing the bikes on the system randomly
+			int totalBikes = 0;
+			while (totalBikes != nBikes1) {
+			    int randomNum = new Random().nextInt(nStations1);
+			    if (net.getStations().get(randomNum).addBikeWithReturnInformation(new MechanicalBike())) {
+			    	totalBikes++;
+			    }
+			}
+			
+			System.out.println("Done correctly");
+			
+		} catch (NumberFormatException e) {
+			System.out.println("An argument in the command is not correct, please try it again, or please read the Javadoc.\n");
+		}
 		
 	}
 	
@@ -118,7 +157,7 @@ public abstract class FactoryCommandTerminal {
 				
 		try {
 			User user = UserFactory.createUser(name,cardType,velibNetwork);	
-			System.out.println("Done");
+			System.out.println("Done correctly");
 		} catch (UserFactoryException e) {
 		} catch (NetworkFactoryException e) {
 		} 
@@ -130,7 +169,7 @@ public abstract class FactoryCommandTerminal {
 			int ID = Integer.parseInt(IDStation);
 			Station stat = Station.findAStationFromID(velibNet, ID);
 			stat.goOffline();;				
-			System.out.println("Done");
+			System.out.println("Done correctly");
 		} catch (NumberFormatException e) {
 			System.out.println("An argument in the command is not correct, please try it again, or please read the Javadoc.\n");
 		} catch (StationFactoryException e) {
@@ -147,7 +186,7 @@ public abstract class FactoryCommandTerminal {
 			int ID = Integer.parseInt(IDStation);
 			Station stat = Station.findAStationFromID(velibNet, ID);
 			stat.setStatus(true);		
-			System.out.println("Done");
+			System.out.println("Done correctly");
 		} catch (NumberFormatException e) {
 			System.out.println("An argument in the command is not correct, please try it again, or please read the Javadoc.\n");
 		} catch (StationFactoryException e) {

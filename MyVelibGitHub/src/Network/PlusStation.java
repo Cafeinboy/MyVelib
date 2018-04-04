@@ -7,6 +7,11 @@ public class PlusStation extends Station {
 	
 	//Constructor
 
+	public PlusStation(boolean status, GPSCoordinate coordinates) {
+		super(status, coordinates);
+		// TODO Auto-generated constructor stub
+	}
+
 	public PlusStation(boolean status, GPSCoordinate coordinates,
 			String name) {
 		super(status, coordinates, name);

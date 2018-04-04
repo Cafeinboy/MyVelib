@@ -10,6 +10,11 @@ public class StandardStation extends Station {
 			String name) {
 		super(status, coordinates, name);
 	}
+
+	public StandardStation(boolean status, GPSCoordinate coordinates) {
+		super(status, coordinates);
+		// TODO Auto-generated constructor stub
+	}
 	
 	
 
