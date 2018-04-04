@@ -16,6 +16,10 @@ public class Time {
 		return timeInMinuteSinceCreation;
 	}
 	
+	public static void setTimeInMinuteSinceCreation(int timeInMinuteSinceCreation) {
+		Time.timeInMinuteSinceCreation = timeInMinuteSinceCreation;
+	}
+
 	public static int getDuration(int time1, int time2) {
 		return Math.abs(time1-time2);
 	}

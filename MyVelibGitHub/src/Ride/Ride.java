@@ -1,7 +1,6 @@
 package Ride;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 import Bike.Bike;
 import GPSCoordinate.*;

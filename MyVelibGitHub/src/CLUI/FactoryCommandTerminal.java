@@ -1,12 +1,12 @@
 package CLUI;
 
-import java.awt.FontFormatException;
 import java.util.Random;
 
 import Bike.MechanicalBike;
 import Exception.*;
 import GPSCoordinate.GPSCoordinate;
 import Network.*;
+import Time.Time;
 import User.*;
 
 public abstract class FactoryCommandTerminal {
@@ -40,11 +40,11 @@ public abstract class FactoryCommandTerminal {
 			return "";
 		}
 		else if (words[0].equalsIgnoreCase("rentBike") && words.length == 3) {
-			rentABike();
+			rentABike(words[1], words[2]);
 			return "";
 		}
 		else if (words[0].equalsIgnoreCase("returnBike") && words.length == 4) {
-			returnABike();
+			returnABike(words[1], words[2], words[3]);
 			return "";
 		}
 		else if (words[0].equalsIgnoreCase("displayStation") && words.length == 3) {
@@ -166,8 +166,10 @@ public abstract class FactoryCommandTerminal {
 	public static void goOffline(String velibNet, String IDStation) {
 		
 		try {
+			// just to know the existence ... 
+			Network net = Network.findANetworkFromName(velibNet);
 			int ID = Integer.parseInt(IDStation);
-			Station stat = Station.findAStationFromID(velibNet, ID);
+			Station stat = Station.findAStationFromID(ID);
 			stat.goOffline();;				
 			System.out.println("Done correctly");
 		} catch (NumberFormatException e) {
@@ -183,8 +185,10 @@ public abstract class FactoryCommandTerminal {
 	public static void goOnline(String velibNet, String IDStation) {
 		
 		try {
+			// just to know the existence ... 
+			Network net = Network.findANetworkFromName(velibNet);
 			int ID = Integer.parseInt(IDStation);
-			Station stat = Station.findAStationFromID(velibNet, ID);
+			Station stat = Station.findAStationFromID(ID);
 			stat.setStatus(true);		
 			System.out.println("Done correctly");
 		} catch (NumberFormatException e) {
@@ -197,16 +201,53 @@ public abstract class FactoryCommandTerminal {
 		
 	}
 	
-	public static void rentABike() {
+	public static void rentABike(String userID, String stationID) {
 		
-		System.out.println("Not yet implemented");
-		
+		try {
+			int statID = Integer.parseInt(stationID);
+			Station stat = Station.findAStationFromID(statID);
+			
+			int userID1 = Integer.parseInt(userID);
+			User user = User.findAUserFromID(userID1);
+			
+			stat.takeBike(new MechanicalBike(), user);
+			
+			System.out.println("Done correctly");
+		} catch (NumberFormatException e) {
+			System.out.println("An argument in the command is not correct, please try it again, or please read the Javadoc.\n");
+		} catch (UserFindFactoryException e) {
+			
+		} catch (StationFactoryException e) {
+			
+		}
 	}
 	
-	public static void returnABike() {
+	public static void returnABike(String userID, String stationID, String time) {
 		
-		System.out.println("Not yet implemented");
-		
+		try {
+			int statID = Integer.parseInt(stationID);
+			Station stat = Station.findAStationFromID(statID);
+			
+			int userID1 = Integer.parseInt(userID);
+			User user = User.findAUserFromID(userID1);
+			
+			int time1 = Integer.parseInt(time);
+			
+			int timeOfSimulation = Time.getTimeInMinuteSinceCreation();
+			Time.setTimeInMinuteSinceCreation(time1);
+			stat.giveBackBike(user);
+			Time.setTimeInMinuteSinceCreation(timeOfSimulation);
+			
+			System.out.println("The price of the course was : " + user.getAllRide().get(user.getAllRide().size() -1).getPrice());
+			
+			System.out.println("Done correctly");
+		} catch (NumberFormatException e) {
+			System.out.println("An argument in the command is not correct, please try it again, or please read the Javadoc.\n");
+		} catch (UserFindFactoryException e) {
+			
+		} catch (StationFactoryException e) {
+			
+		}
 	}
 	
 	public static void displayStation() {

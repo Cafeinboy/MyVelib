@@ -8,6 +8,9 @@ import java.util.Observer;
 import Time.Time;
 import Bike.*;
 import Card.*;
+import Exception.NetworkFactoryException;
+import Exception.StationFactoryException;
+import Exception.UserFindFactoryException;
 import GPSCoordinate.*;
 import Network.Network;
 import Network.PlusStation;
@@ -28,6 +31,8 @@ public class User implements Observer, Functionnality {
 	private Ride ride;
 	private ArrayList<Ride> allRide;
 	
+	private static ArrayList<User> listOfUsers = new ArrayList<User>();
+	
 	//Constructors
 	
 	public User() {
@@ -39,6 +44,8 @@ public class User implements Observer, Functionnality {
 		this.card = new NoCard();
 		this.ride = new Ride();
 		this.allRide = new ArrayList<Ride>();
+		
+		listOfUsers.add(this);
 	}
 	
 	public User(String name, Card card) {
@@ -50,6 +57,8 @@ public class User implements Observer, Functionnality {
 		numberID++;
 		this.ride = new Ride();
 		this.allRide = new ArrayList<Ride>();
+		
+		listOfUsers.add(this);
 	}
 
 	public User(String name, GPSCoordinate location, Card card) {
@@ -61,6 +70,8 @@ public class User implements Observer, Functionnality {
 		numberID++;
 		this.ride = new Ride();
 		this.allRide = new ArrayList<Ride>();
+		
+		listOfUsers.add(this);
 	}
 	
 	//Methods
@@ -131,6 +142,25 @@ public class User implements Observer, Functionnality {
 		else {
 			System.err.println("Wrong type of argument");
 		}
+	}
+	
+	public static User findAUserFromID(int userID) throws UserFindFactoryException {
+				
+		User user = null;
+		
+		for (User userSearch : listOfUsers) {
+			if (userSearch.getID() == userID) {
+				user = userSearch;
+				break;
+			}
+		}
+		
+		if (user == null) {
+			throw new UserFindFactoryException();
+		}
+		
+		return user;
+		
 	}
 	
 	/**
