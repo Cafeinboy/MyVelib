@@ -111,6 +111,7 @@ public class User implements Observer, Functionnality {
 	public void takeARide(GPSCoordinate beginingPoint, GPSCoordinate finishingPoint, PlanningRideStrategy rideStrategy, Bike wishBike, Network net) {
 		this.ride = new Ride(beginingPoint, finishingPoint, rideStrategy, net);
 		this.ride.haveARide(wishBike);
+		this.ride.getListStation().get(1).addUser(this);
 	}
 
 	//Attention il va falloir appeler la fonction pour recalculer un trajet 
@@ -156,6 +157,7 @@ public class User implements Observer, Functionnality {
 		
 		this.ride.setEndingTime(Time.getTimeInMinuteSinceCreation());
 		
+		this.ride.getListStation().get(1).removeUser(this);
 		this.ride.changeFinishingStation(finishingStation);
 		
 		this.allRide.add(this.ride);

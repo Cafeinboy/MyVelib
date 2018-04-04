@@ -26,7 +26,7 @@ public class ScenarioTest {
 		//Building network
 		Network paris = new Network("Paris", 30);
 		
-		PlusStation opera = new PlusStation(true, new GPSCoordinate(5,5), "Opï¿½ra");
+		PlusStation opera = new PlusStation(true, new GPSCoordinate(5,5), "Opéra");
 		for(int k = 0; k < 10; k++) {
 			opera.addParkingSlot(new ParkingSlot(opera));
 		}
@@ -38,7 +38,7 @@ public class ScenarioTest {
 		
 		paris.addStation(opera);
 		
-		PlusStation chatelet = new PlusStation(true, new GPSCoordinate(11,17), "Chï¿½telet");
+		PlusStation chatelet = new PlusStation(true, new GPSCoordinate(11,17), "Châtelet");
 		for(int k = 0; k < 10; k++) {
 			chatelet.addParkingSlot(new ParkingSlot(chatelet));
 		}
@@ -58,7 +58,7 @@ public class ScenarioTest {
 		}
 		paris.addStation(luxembourg);
 		
-		PlusStation odeon = new PlusStation(true, new GPSCoordinate(25,5), "Odï¿½on");
+		PlusStation odeon = new PlusStation(true, new GPSCoordinate(25,5), "Odéon");
 		for(int k = 0; k < 10; k++) {
 			odeon.addParkingSlot(new ParkingSlot(odeon));
 		}
@@ -142,6 +142,14 @@ public class ScenarioTest {
 			assertFalse(luxembourg.isFull());
 			luxembourg.giveBackBike(paul);
 			luxembourg.giveBackBike(jacques);
+			
+			assertTrue(luxembourg.isFull());
+			
+			Time.addTime(5);;
+			
+			odeon.giveBackBike(pierre);
+			
+			assertEquals(luxembourg.getUsers().size(), 0);
 	
 	}
 

@@ -301,7 +301,7 @@ public abstract class Station extends Observable {
 	 * the observers list, and changes its status
 	 */
 	public void getFull() {
-		String message = "Your destination station" + this.getName() + " has no more available parking slots. Computing new destination ...";
+		String message = "Your destination station " + this.getName() + " has no more available parking slots. Computing new destination ...";
 		this.notifyUsers(message);
 		this.setUsers(new ArrayList<User>());
 		this.setFull(true);	
@@ -411,10 +411,10 @@ public abstract class Station extends Observable {
 				if(this.numberOfFreeSpots() == 0) {
 					this.getFull();
 				}
-
 				if(this instanceof PlusStation) {
 					user.getCard().addTimecredit(5);
 				}
+				this.removeUser(user);
 
 			}
 			
