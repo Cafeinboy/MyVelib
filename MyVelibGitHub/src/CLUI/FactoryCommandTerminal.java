@@ -1,7 +1,9 @@
 package CLUI;
 
 import Exception.NetworkFactoryException;
+import Exception.StationFactoryException;
 import Exception.UserFactoryException;
+import Network.Station;
 import User.User;
 import User.UserFactory;
 
@@ -32,7 +34,7 @@ public abstract class FactoryCommandTerminal {
 			return "";
 		}
 		else if (words[0].equalsIgnoreCase("online") && words.length == 3) {
-			goOnline();
+			goOnline(words[1], words[2]);
 			return "";
 		}
 		else if (words[0].equalsIgnoreCase("rentBike") && words.length == 3) {
@@ -126,17 +128,33 @@ public abstract class FactoryCommandTerminal {
 		
 		try {
 			int ID = Integer.parseInt(IDStation);
+			Station stat = Station.findAStationFromID(velibNet, ID);
+			stat.goOffline();;				
+			System.out.println("Done");
 		} catch (NumberFormatException e) {
 			System.out.println("An argument in the command is not correct, please try it again, or please read the Javadoc.\n");
+		} catch (StationFactoryException e) {
+			
+		} catch (NetworkFactoryException e) {
+			
 		}
-		
-		System.out.println("Not yet implemented");
 		
 	}
 	
-	public static void goOnline() {
+	public static void goOnline(String velibNet, String IDStation) {
 		
-		System.out.println("Not yet implemented");
+		try {
+			int ID = Integer.parseInt(IDStation);
+			Station stat = Station.findAStationFromID(velibNet, ID);
+			stat.setStatus(true);		
+			System.out.println("Done");
+		} catch (NumberFormatException e) {
+			System.out.println("An argument in the command is not correct, please try it again, or please read the Javadoc.\n");
+		} catch (StationFactoryException e) {
+			
+		} catch (NetworkFactoryException e) {
+			
+		}
 		
 	}
 	
