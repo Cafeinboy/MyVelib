@@ -368,8 +368,9 @@ public abstract class Station extends Observable {
 				if(this.numberOfFreeSpots() == 0) {
 					this.getFull();
 				}
+				user.getRide().setBike(null);
 			}
-			user.getRide().setBike(null);
+			
 		}
 		else {
 			System.err.println("User does not have a bike");
