@@ -407,10 +407,10 @@ public abstract class Station extends Observable {
 				if(this.numberOfFreeSpots() == 0) {
 					this.getFull();
 				}
-
 				if(this instanceof PlusStation) {
 					user.getCard().addTimecredit(5);
 				}
+				this.removeUser(user);
 
 			}
 			
@@ -442,6 +442,7 @@ public abstract class Station extends Observable {
 					this.allRecord.putAnEndForARecord(nextSlot);
 					this.setFull(false);
 					user.getRide().setBike(realbike);
+					this.addUser(user);
 				}
 			}
 			else if (bike instanceof ElectricalBike) {

@@ -138,10 +138,16 @@ public class ScenarioTest {
 			
 			Time.addTime(5);
 			
+			System.out.println(luxembourg.getUsers().size());
+			
 			assertTrue(luxembourg.isOnline());
 			assertFalse(luxembourg.isFull());
 			luxembourg.giveBackBike(paul);
 			luxembourg.giveBackBike(jacques);
+			
+			assertTrue(luxembourg.isFull());
+			
+			System.out.println(pierre.getRide().getListStation().get(1).getName());
 	
 	}
 
