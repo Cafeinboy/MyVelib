@@ -331,6 +331,7 @@ public abstract class FactoryCommandTerminal {
 	
 
 	private static void scenario(String string) {
+		
 		ReadAText.readAText(string);		
 	}
 	

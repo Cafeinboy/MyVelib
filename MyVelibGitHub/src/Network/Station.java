@@ -452,6 +452,7 @@ public abstract class Station extends Observable {
 					this.allRecord.putAnEndForARecord(nextSlot);
 					this.setFull(false);
 					user.getRide().setBike(realbike);
+					realbike.setRentTime(Time.getTimeInMinuteSinceCreation());
 				}
 			}
 			else if (bike instanceof ElectricalBike) {
@@ -465,6 +466,7 @@ public abstract class Station extends Observable {
 					this.allRecord.addRecord(new Record(Time.getTimeInMinuteSinceCreation(), nextSlot));
 					this.setFull(false);
 					user.getRide().setBike(realbike);
+					realbike.setRentTime(Time.getTimeInMinuteSinceCreation());
 				}
 			}
 		}
