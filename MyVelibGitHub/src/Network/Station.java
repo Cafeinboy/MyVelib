@@ -452,6 +452,7 @@ public abstract class Station extends Observable {
 					this.allRecord.putAnEndForARecord(nextSlot);
 					this.setFull(false);
 					user.getRide().setBike(realbike);
+					user.getRide().changeBeginingStation(this);
 					realbike.setRentTime(Time.getTimeInMinuteSinceCreation());
 				}
 			}
@@ -466,6 +467,7 @@ public abstract class Station extends Observable {
 					this.allRecord.addRecord(new Record(Time.getTimeInMinuteSinceCreation(), nextSlot));
 					this.setFull(false);
 					user.getRide().setBike(realbike);
+					user.getRide().changeBeginingStation(this);
 					realbike.setRentTime(Time.getTimeInMinuteSinceCreation());
 				}
 			}
