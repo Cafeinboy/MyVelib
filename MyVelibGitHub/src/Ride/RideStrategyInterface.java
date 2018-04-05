@@ -1,7 +1,6 @@
 package Ride;
 
 import Bike.Bike;
-import Network.Network;
 
 public interface RideStrategyInterface {
 	

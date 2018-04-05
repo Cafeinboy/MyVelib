@@ -5,7 +5,6 @@ import java.util.Arrays;
 import java.util.Observable;
 
 import Bike.*;
-import Exception.NetworkFactoryException;
 import Exception.StationFactoryException;
 import GPSCoordinate.*;
 import RecordSystem.*;
@@ -151,7 +150,9 @@ public abstract class Station extends Observable {
 
 	@Override
 	public String toString() {
-		return "Station []";
+		ArrayList<Double> list = this.getAllRecord().balanceStation(0, Time.getTimeInMinuteSinceCreation(), this.getNumberOfSpots());
+		return "Station : " + this.name + "\n     Number Of Rent Operation : " + list.get(0) + "\n     Number Of Return Operation : " + list.get(1)
+			+ "\n     Average Rate Of Occupation : " + list.get(2) + "\n";
 	}
 	
 	//Methods

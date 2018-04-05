@@ -1,6 +1,5 @@
 package Time;
 
-import Time.*;
 import Bike.*;
 import Card.*;
 

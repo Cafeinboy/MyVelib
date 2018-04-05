@@ -46,7 +46,7 @@ public class UserTest {
 	
 	@Test
 	public void factoryTest() throws UserFactoryException, NetworkFactoryException {
-		Network net1= new Network("net1");
+		new Network("net1");
 		Object test1 = UserFactory.createUser("User 1", "no card", "net1");
 		assertTrue(test1 instanceof User);
 		User user1 = (User) test1;

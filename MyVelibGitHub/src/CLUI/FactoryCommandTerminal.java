@@ -48,11 +48,11 @@ public abstract class FactoryCommandTerminal {
 			return "";
 		}
 		else if (words[0].equalsIgnoreCase("displayStation") && words.length == 3) {
-			displayStation();
+			displayStation(words[1], words[2]);
 			return "";
 		}
 		else if (words[0].equalsIgnoreCase("displayUser") && words.length == 3) {
-			displayUser();
+			displayUser(words[1], words[2]);
 			return "";
 		}
 		else if (words[0].equalsIgnoreCase("display") && words.length == 2) {
@@ -156,7 +156,7 @@ public abstract class FactoryCommandTerminal {
 	public static void addUser(String name, String cardType, String velibNetwork) {
 				
 		try {
-			User user = UserFactory.createUser(name,cardType,velibNetwork);	
+			UserFactory.createUser(name,cardType,velibNetwork);	
 			System.out.println("Done correctly\n");
 		} catch (UserFactoryException e) {
 		} catch (NetworkFactoryException e) {
@@ -167,7 +167,7 @@ public abstract class FactoryCommandTerminal {
 		
 		try {
 			// just to know the existence ... 
-			Network net = Network.findANetworkFromName(velibNet);
+			Network.findANetworkFromName(velibNet);
 			int ID = Integer.parseInt(IDStation);
 			Station stat = Station.findAStationFromID(ID);
 			stat.goOffline();;				
@@ -186,7 +186,7 @@ public abstract class FactoryCommandTerminal {
 		
 		try {
 			// just to know the existence ... 
-			Network net = Network.findANetworkFromName(velibNet);
+			Network.findANetworkFromName(velibNet);
 			int ID = Integer.parseInt(IDStation);
 			Station stat = Station.findAStationFromID(ID);
 			stat.setStatus(true);		
@@ -250,15 +250,45 @@ public abstract class FactoryCommandTerminal {
 		}
 	}
 	
-	public static void displayStation() {
+	public static void displayStation(String velibNet, String stationID) {
 		
-		System.out.println("Not yet implemented");
-		
+		try {
+			Network.findANetworkFromName(velibNet);
+			
+			int ID = Integer.parseInt(stationID);
+			Station stat = Station.findAStationFromID(ID);
+			
+			System.out.println(stat);
+			
+			System.out.println("Done correctly\n");
+		} catch (NetworkFactoryException e) {
+			
+		} catch (StationFactoryException e) {
+			
+		} catch (NumberFormatException e) {
+			System.out.println("An argument in the command is not correct, please try it again, or please read the Javadoc.\n");
+		}
+				
 	}
 	
-	public static void displayUser() {
+	public static void displayUser(String velibNet, String userID) {
 		
-		System.out.println("Not yet implemented");
+		try {
+			Network.findANetworkFromName(velibNet);
+			
+			int ID = Integer.parseInt(userID);
+			User user = User.findAUserFromID(ID);
+			
+			System.out.println(user);
+			
+			System.out.println("Done correctly\n");
+		} catch (NetworkFactoryException e) {
+			
+		} catch (UserFindFactoryException e) {
+			
+		} catch (NumberFormatException e) {
+			System.out.println("An argument in the command is not correct, please try it again, or please read the Javadoc.\n");
+		}
 		
 	}
 	

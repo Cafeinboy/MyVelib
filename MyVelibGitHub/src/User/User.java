@@ -8,8 +8,6 @@ import java.util.Observer;
 import Time.Time;
 import Bike.*;
 import Card.*;
-import Exception.NetworkFactoryException;
-import Exception.StationFactoryException;
 import Exception.UserFindFactoryException;
 import GPSCoordinate.*;
 import Network.Network;
@@ -221,5 +219,14 @@ public class User implements Observer, Functionnality {
 		}
 		return new ArrayList<Integer>(Arrays.asList(numberOfRides,totalTimeOnBike,totalCharges,totalEarnCredit));
 	}
+
+	@Override
+	public String toString() {
+		ArrayList<Integer> list = this.balance();
+		return "User : " + this.name + "\n     Number Of Rides : " + list.get(0) + "\n     Total Time On Bike : " + list.get(1)
+			+ "\n     Total Charges : " + list.get(2) + "\n     Total Earn Credit : " + list.get(3) + "\n";
+	}
+	
+	
 				
 }
