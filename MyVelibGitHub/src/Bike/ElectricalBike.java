@@ -4,7 +4,7 @@ import Card.*;
 
 /**
  * A class to know the kind of the bike. Here it is a ElectricalcalBike.
- * @author Kévin HIVET
+ * @author Kï¿½vin HIVET
  *
  */
 public class ElectricalBike extends Bike {
@@ -30,5 +30,12 @@ public class ElectricalBike extends Bike {
 	public int getSpeed() {
 		return speed;
 	}
+
+	@Override
+	public String toString() {
+		return "Electrical Bike";
+	}
+	
+	
 
 }
