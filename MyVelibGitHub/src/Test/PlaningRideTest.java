@@ -104,7 +104,7 @@ public class PlaningRideTest {
 		assertEquals(net1.getAvailableStations().size(), 7);
 
 		
-		User user = UserFactory.createUser("BroulQ", "nocard", "net1");
+		User user = UserFactory.createUser("BroulQ", "nocard", "paris");
 		
 		//PreferPlusStation strategy
 		user.takeARide(new GPSCoordinate(3,3), new GPSCoordinate(25,4), new PreferPlusStationStrategy(), new MechanicalBike(), net1);

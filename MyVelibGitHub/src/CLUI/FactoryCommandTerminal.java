@@ -363,4 +363,6 @@ public abstract class FactoryCommandTerminal {
 			System.out.println("An argument in the command is not correct, please try it again, or please read the Javadoc.\n");
 		}
 	}
+	
+//	private static void haveARide(String)
 }
