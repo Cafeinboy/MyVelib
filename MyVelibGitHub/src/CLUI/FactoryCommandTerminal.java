@@ -8,6 +8,8 @@ import Bike.MechanicalBike;
 import Exception.*;
 import GPSCoordinate.GPSCoordinate;
 import Network.*;
+import PlanningRide.PlanningRideFactory;
+import PlanningRide.PlanningRideStrategy;
 import ReadFile.ReadAText;
 import Time.Time;
 import User.*;
@@ -78,6 +80,10 @@ public abstract class FactoryCommandTerminal {
 			addTime(words[1]);
 			return "";
 		}
+		else if (words[0].equalsIgnoreCase("havearide") && words.length == 9) {
+			haveARide(words[1], words[2], words[3], words[4], words[5], words[6], words[7], words[8]);
+			return "";
+		}
 		else if (words[0].equalsIgnoreCase("") && words.length == 1) {
 			return "";
 		}
@@ -120,8 +126,11 @@ public abstract class FactoryCommandTerminal {
 				+ "To display the stations in increasing order w.r.t. to the sorting policy (as of Section 2.4) of user sortpolicy.\n");
 		System.out.println("          display <velibnetworkName>\n"
 				+ "To display the entire status (stations, parking bays, users) of an a myVelib network velibnetworkName.\n");
+		System.out.println("          haveARide <String xFirst> <String yFirst> <String xSecond> <String ySecond> <String rideStrategy> <String kindBikeWish> <String velibNetwork> <String userID>\n"
+				+ "To have a ride to a user in a certain network, a certain strategy, a certain wish bike, between two points the "
+				+ "first (begining) and the second (finishing). Each point has two coordinates x and y.\n");
 		System.out.println("          scenario <fileName>\n"
-				+ "To launch a scenario from a text file by giving his name if it has been upload in the folder scenario, else you have to indicate the "
+				+ "To launch a scenario from a text file by giving his name if it has been upload in the folder scenario (for example ScenarioTXT\\SmallScenario), else you have to indicate the "
 				+ "complete path.\n");
 		
 	}
@@ -364,5 +373,40 @@ public abstract class FactoryCommandTerminal {
 		}
 	}
 	
-//	private static void haveARide(String)
+	private static void haveARide(String xFirst, String yFirst, String xSecond, String ySecond, String rideStrategy, String kindBikeWish, String velibNetwork, String userID) {
+		
+		try {
+			double xFirst1 = Double.parseDouble(xFirst);
+			double yFirst1 = Double.parseDouble(yFirst);
+			GPSCoordinate beginingPoint = new GPSCoordinate(xFirst1, yFirst1);
+			
+			double xSecond1 = Double.parseDouble(xSecond);
+			double ySecond1 = Double.parseDouble(xSecond);
+			GPSCoordinate finishingPoint = new GPSCoordinate(xSecond1, ySecond1);
+			
+			PlanningRideStrategy strategy = PlanningRideFactory.createAStrategy(rideStrategy);
+			
+			Bike bike = BikeFactory.createABike(kindBikeWish);
+			
+			Network net = Network.findANetworkFromName(velibNetwork);
+			
+			int ID = Integer.parseInt(userID);
+			User user = User.findAUserFromID(ID);
+			
+			user.takeARide(beginingPoint, finishingPoint, strategy, bike, net);
+			
+			
+		} catch (NumberFormatException e) {
+			System.out.println("An argument in the command is not correct, please try it again, or please read the Javadoc.\n");
+		} catch (UserFindFactoryException e) {
+			System.out.println("An argument in the command is not correct, please try it again, or please read the Javadoc.\n");
+		} catch (NetworkFactoryException e) {
+			System.out.println("An argument in the command is not correct, please try it again, or please read the Javadoc.\n");
+		} catch (BikeFactoryException e) {
+			System.out.println("An argument in the command is not correct, please try it again, or please read the Javadoc.\n");
+		} catch (PlanningRideFactoryException e) {
+			System.out.println("An argument in the command is not correct, please try it again, or please read the Javadoc.\n");
+		}
+		
+	}
 }
