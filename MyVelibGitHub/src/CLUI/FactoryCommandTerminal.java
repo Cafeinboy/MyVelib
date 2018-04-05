@@ -57,11 +57,11 @@ public abstract class FactoryCommandTerminal {
 			return "";
 		}
 		else if (words[0].equalsIgnoreCase("display") && words.length == 2) {
-			displayNetwork();
+			displayNetwork(words[1]);
 			return "";
 		}
 		else if (words[0].equalsIgnoreCase("sortStation") && words.length == 3) {
-			displayNetwork();
+			sortStation();
 			return "";
 		}
 		else if (words[0].equalsIgnoreCase("scenario") && words.length == 2) {
@@ -273,7 +273,7 @@ public abstract class FactoryCommandTerminal {
 			int ID = Integer.parseInt(stationID);
 			Station stat = Station.findAStationFromID(ID);
 			
-			System.out.println(stat);
+			System.out.println(stat.toStringBalance());
 			
 			System.out.println("Done correctly\n");
 		} catch (NetworkFactoryException e) {
@@ -294,7 +294,7 @@ public abstract class FactoryCommandTerminal {
 			int ID = Integer.parseInt(userID);
 			User user = User.findAUserFromID(ID);
 			
-			System.out.println(user);
+			System.out.println(user.toStringBalance());
 			
 			System.out.println("Done correctly\n");
 		} catch (NetworkFactoryException e) {
@@ -307,7 +307,23 @@ public abstract class FactoryCommandTerminal {
 		
 	}
 	
-	public static void displayNetwork() {
+	public static void displayNetwork(String velibNet) {
+		
+		try {
+			Network net = Network.findANetworkFromName(velibNet);
+			
+			System.out.println(net.getStations());
+			System.out.println(net.getUsers());
+
+			System.out.println("Done correctly\n");
+			
+		} catch (NetworkFactoryException e) {
+			
+		}
+		
+	}
+	
+	private static void sortStation() {
 		
 		System.out.println("Not yet implemented");
 		

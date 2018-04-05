@@ -222,6 +222,10 @@ public class User implements Observer, Functionnality {
 
 	@Override
 	public String toString() {
+		return "User : " + this.name + "\n";
+	}
+	
+	public String toStringBalance() {
 		ArrayList<Integer> list = this.balance();
 		return "User : " + this.name + "\n     Number Of Rides : " + list.get(0) + "\n     Total Time On Bike : " + list.get(1)
 			+ "\n     Total Charges : " + list.get(2) + "\n     Total Earn Credit : " + list.get(3) + "\n";

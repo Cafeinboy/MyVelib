@@ -48,7 +48,10 @@ public class ParkingSlot {
 		this.station = station;
 	}
 
-
+	@Override
+	public String toString() {
+		return "ParkingSlot : slotID " + slotID + "; bike : " + bike + "\n";
+	}
 
 	//Getters and setters
 
