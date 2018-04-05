@@ -106,7 +106,9 @@ public abstract class FactoryCommandTerminal {
 		System.out.println("          online <velibnetworkName> <stationID>\n"
 				+ "To put online the station stationID of the myVelib network velibnetworkName.\n");
 		System.out.println("          rentBike <userID> <stationID>\n"
-				+ "To let the user userID renting a bike from station stationID (if no bikes are available should behave accordingly).\n");
+				+ "To let the user userID renting a mechanical bike from station stationID (if no bikes are available should behave accordingly).\n");
+		System.out.println("          rentBike <userID> <stationID> <kindBike>\n"
+						+ "To let the user userID renting a bike (kind choosen by kindBike) from station stationID (if no bikes are available should behave accordingly).\n");
 		System.out.println("          returnBike <userID> <stationID> <time>\n"
 				+ "To let the user userID returning a bike to station stationID at a given instant of time time (if no parking bay is "
 				+ "available should behave accordingly). This command should display the cost of the rent.\n");
