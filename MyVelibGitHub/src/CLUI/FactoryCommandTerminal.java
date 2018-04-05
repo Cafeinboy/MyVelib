@@ -68,6 +68,10 @@ public abstract class FactoryCommandTerminal {
 			scenario(words[1]);
 			return "";
 		}
+		else if (words[0].equalsIgnoreCase("addtime") && words.length == 2) {
+			addTime(words[1]);
+			return "";
+		}
 		else if (words[0].equalsIgnoreCase("") && words.length == 1) {
 			return "";
 		}
@@ -312,5 +316,17 @@ public abstract class FactoryCommandTerminal {
 
 	private static void scenario(String string) {
 		ReadAText.readAText(string);		
+	}
+	
+	private static void addTime(String time) {
+		
+		try {
+			int addTime = Integer.parseInt(time);
+			Time.addTime(addTime);
+			
+			System.out.println("Done correctly\n");
+		} catch (NumberFormatException e) {
+			System.out.println("An argument in the command is not correct, please try it again, or please read the Javadoc.\n");
+		}
 	}
 }
