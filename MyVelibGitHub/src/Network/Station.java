@@ -292,10 +292,10 @@ public abstract class Station extends Observable {
 	 * the observers list, and changes its status
 	 */
 	public void goOffline() {
+		this.setStatus(false);	
 		String message = "Your destination station " + this.getName() + " has gone offline. Computing new destination ...";
 		this.notifyUsers(message);
 		this.setUsers(new ArrayList<User>());
-		this.setStatus(false);	
 	}
 	
 	/**
