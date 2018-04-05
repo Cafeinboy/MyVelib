@@ -5,7 +5,7 @@ import Exception.NetworkFactoryException;
 import Exception.UserFactoryException;
 import Network.Network;
 
-public class UserFactory {
+public abstract class UserFactory {
 	
 	/**
 	 * This function accept two string in entry :

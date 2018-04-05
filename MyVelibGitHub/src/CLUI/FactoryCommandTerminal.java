@@ -2,6 +2,8 @@ package CLUI;
 
 import java.util.Random;
 
+import Bike.Bike;
+import Bike.BikeFactory;
 import Bike.MechanicalBike;
 import Exception.*;
 import GPSCoordinate.GPSCoordinate;
@@ -42,6 +44,10 @@ public abstract class FactoryCommandTerminal {
 		}
 		else if (words[0].equalsIgnoreCase("rentBike") && words.length == 3) {
 			rentABike(words[1], words[2]);
+			return "";
+		}
+		else if (words[0].equalsIgnoreCase("rentBike") && words.length == 4) {
+			rentABike(words[1], words[2], words[3]);
 			return "";
 		}
 		else if (words[0].equalsIgnoreCase("returnBike") && words.length == 4) {
@@ -218,6 +224,11 @@ public abstract class FactoryCommandTerminal {
 	
 	public static void rentABike(String userID, String stationID) {
 		
+		rentABike(userID, stationID, "mechanical");
+	}
+	
+	public static void rentABike(String userID, String stationID, String bike) {
+		
 		try {
 			int statID = Integer.parseInt(stationID);
 			Station stat = Station.findAStationFromID(statID);
@@ -225,7 +236,9 @@ public abstract class FactoryCommandTerminal {
 			int userID1 = Integer.parseInt(userID);
 			User user = User.findAUserFromID(userID1);
 			
-			stat.takeBike(new MechanicalBike(), user);
+			Bike bike1 = BikeFactory.createABike(bike);
+			
+			stat.takeBike(bike1, user);
 			
 			System.out.println("Done correctly\n");
 		} catch (NumberFormatException e) {
@@ -233,6 +246,8 @@ public abstract class FactoryCommandTerminal {
 		} catch (UserFindFactoryException e) {
 			
 		} catch (StationFactoryException e) {
+			
+		} catch (BikeFactoryException e) {
 			
 		}
 	}
