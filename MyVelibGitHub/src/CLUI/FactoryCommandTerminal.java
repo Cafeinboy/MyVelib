@@ -6,6 +6,7 @@ import Bike.MechanicalBike;
 import Exception.*;
 import GPSCoordinate.GPSCoordinate;
 import Network.*;
+import ReadFile.ReadAText;
 import Time.Time;
 import User.*;
 
@@ -63,6 +64,13 @@ public abstract class FactoryCommandTerminal {
 			displayNetwork();
 			return "";
 		}
+		else if (words[0].equalsIgnoreCase("scenario") && words.length == 2) {
+			scenario(words[1]);
+			return "";
+		}
+		else if (words[0].equalsIgnoreCase("") && words.length == 1) {
+			return "";
+		}
 		else {
 			System.out.println("Wrong command ! \n"
 					+ "A problem has occurred retry your command\n\n");
@@ -71,7 +79,7 @@ public abstract class FactoryCommandTerminal {
 		
 	}
 	
-	public static void help() {
+	private static void help() {
 		System.out.println("Hi, you have asked help so I am here. You can see bellow all the commad available and the arguments required");
 		System.out.println("          setup <velibnetworkName>\n"
 				+ "To create a myVelib network with given name and consisting of 10 standard stations each of which has 10 parking slots"
@@ -100,6 +108,9 @@ public abstract class FactoryCommandTerminal {
 				+ "To display the stations in increasing order w.r.t. to the sorting policy (as of Section 2.4) of user sortpolicy.\n");
 		System.out.println("          display <velibnetworkName>\n"
 				+ "To display the entire status (stations, parking bays, users) of an a myVelib network velibnetworkName.\n");
+		System.out.println("          scenario <fileName>\n"
+				+ "To launch a scenario from a text file by giving his name if it has been upload in the folder scenario, else you have to indicate the "
+				+ "complete path.\n");
 		
 	}
 	
@@ -296,5 +307,10 @@ public abstract class FactoryCommandTerminal {
 		
 		System.out.println("Not yet implemented");
 		
+	}
+	
+
+	private static void scenario(String string) {
+		ReadAText.readAText(string);		
 	}
 }
