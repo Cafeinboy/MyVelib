@@ -9,7 +9,7 @@ public class StationFactoryException extends Exception{
 
 	public StationFactoryException() {
 		super();
-		System.out.println("This station does not exist, rectify the entrance.\n");
+		System.err.println("This station does not exist, rectify the entrance.\n");
 	}
 
 }

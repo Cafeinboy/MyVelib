@@ -9,7 +9,7 @@ public class BikeFactoryException extends Exception {
 
 	public BikeFactoryException() {
 		super();
-		System.out.println("This bike does not exist, rectify the entrance.\n");
+		System.err.println("This bike does not exist, rectify the entrance.\n");
 	}
 
 }

@@ -9,7 +9,7 @@ public class PlanningRideFactoryException extends Exception {
 
 	public PlanningRideFactoryException() {
 		super();
-		System.out.println("This strategy does not exist, rectify the entrance.\n");
+		System.err.println("This strategy does not exist, rectify the entrance.\n");
 	}
 
 }

@@ -9,7 +9,7 @@ public class UserFindFactoryException extends Exception{
 
 	public UserFindFactoryException() {
 		super();
-		System.out.println("This User does not exist, rectify the entrance.\n");
+		System.err.println("This User does not exist, rectify the entrance.\n");
 	}
 
 }
