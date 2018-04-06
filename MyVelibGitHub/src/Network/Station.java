@@ -5,7 +5,7 @@ import java.util.Arrays;
 import java.util.Observable;
 
 import Bike.*;
-import Exception.StationFactoryException;
+import Exception.StationFindException;
 import GPSCoordinate.*;
 import RecordSystem.*;
 import Ride.*;
@@ -172,7 +172,7 @@ public abstract class Station extends Observable {
 		return null;
 	}
 	
-	public static Station findAStationFromID(Integer integer) throws StationFactoryException {
+	public static Station findAStationFromID(Integer integer) throws StationFindException {
 				
 		Station stat = null;
 		for (Network net : Network.entireNet) {
@@ -186,7 +186,7 @@ public abstract class Station extends Observable {
 		
 		
 		if (stat == null) {
-			throw new StationFactoryException();
+			throw new StationFindException();
 		}
 		
 		return stat;
