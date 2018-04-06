@@ -101,56 +101,91 @@ public class ScenarioTest {
 		
 		//Creating users
 
-			User pierre = UserFactory.createUser("Pierre", "NoCard", "Paris");
-			User paul = UserFactory.createUser("Paul", "Vlibre", "Paris");
-			User jacques = UserFactory.createUser("Jacques", "Vmax", "Paris");
-			
-			
-			//Doing stuff
-			
-			pierre.setLocation(4, 4);
-			pierre.takeARide(pierre.getLocation(), new GPSCoordinate(21, 12), new FastestPath(), new MechanicalBike(), paris);
-			assertEquals(pierre.getRide().getListStation().get(0), opera);
-			assertEquals(pierre.getRide().getListStation().get(1), luxembourg);
-			
-			Time.addTime(2);
-			
-			opera.takeBike(new MechanicalBike(),  pierre);
-			assertTrue(pierre.getRide().getBike() instanceof MechanicalBike);
-			
-			paul.setLocation(26,5);
-			paul.takeARide(paul.getLocation(), new GPSCoordinate(21, 12), new PreferPlusStationStrategy(), new ElectricalBike(), paris);
-			assertEquals(paul.getRide().getListStation().get(0), odeon);
-			assertEquals(paul.getRide().getListStation().get(1), luxembourg);
-			
-			jacques.setLocation(24,4);
-			jacques.takeARide(jacques.getLocation(), new GPSCoordinate(21, 12), new PreferPlusStationStrategy(), new ElectricalBike(), paris);
-			assertEquals(jacques.getRide().getListStation().get(0), defense);
-			assertEquals(jacques.getRide().getListStation().get(1), luxembourg);
-			
-			Time.addTime(2);
-			
-			odeon.takeBike(new ElectricalBike(),  paul);
-			assertTrue(paul.getRide().getBike() instanceof ElectricalBike);
-			
-			defense.takeBike(new ElectricalBike(),  jacques);
-			assertTrue(jacques.getRide().getBike() instanceof ElectricalBike);
-			
-			Time.addTime(5);
-			
-			assertTrue(luxembourg.isOnline());
-			assertFalse(luxembourg.isFull());
-			luxembourg.giveBackBike(paul);
-			luxembourg.giveBackBike(jacques);
-			
-			assertTrue(luxembourg.isFull());
-			
-			Time.addTime(5);;
-			
-			odeon.giveBackBike(pierre);
-			
-			assertEquals(luxembourg.getUsers().size(), 0);
-	
+		User pierre = UserFactory.createUser("Pierre", "NoCard", "Paris");
+		User paul = UserFactory.createUser("Paul", "Vlibre", "Paris");
+		User jacques = UserFactory.createUser("Jacques", "Vmax", "Paris");
+		
+		
+		//Doing stuff
+		
+		pierre.setLocation(4, 4);
+		pierre.takeARide(pierre.getLocation(), new GPSCoordinate(21, 12), new FastestPath(), new MechanicalBike(), paris);
+		assertEquals(pierre.getRide().getListStation().get(0), opera);
+		assertEquals(pierre.getRide().getListStation().get(1), luxembourg);
+		
+		Time.addTime(2);
+		
+		opera.takeBike(new MechanicalBike(),  pierre);
+		assertTrue(pierre.getRide().getBike() instanceof MechanicalBike);
+		
+		paul.setLocation(26,5);
+		paul.takeARide(paul.getLocation(), new GPSCoordinate(21, 12), new PreferPlusStationStrategy(), new ElectricalBike(), paris);
+		assertEquals(paul.getRide().getListStation().get(0), odeon);
+		assertEquals(paul.getRide().getListStation().get(1), luxembourg);
+		
+		jacques.setLocation(24,4);
+		jacques.takeARide(jacques.getLocation(), new GPSCoordinate(21, 12), new PreferPlusStationStrategy(), new ElectricalBike(), paris);
+		assertEquals(jacques.getRide().getListStation().get(0), defense);
+		assertEquals(jacques.getRide().getListStation().get(1), luxembourg);
+		
+		Time.addTime(2);
+		
+		odeon.takeBike(new ElectricalBike(),  paul);
+		assertTrue(paul.getRide().getBike() instanceof ElectricalBike);
+		
+		defense.takeBike(new ElectricalBike(),  jacques);
+		assertTrue(jacques.getRide().getBike() instanceof ElectricalBike);
+		
+		Time.addTime(5);
+		
+		assertTrue(luxembourg.isOnline());
+		assertFalse(luxembourg.isFull());
+		luxembourg.giveBackBike(paul);
+		luxembourg.giveBackBike(jacques);
+		
+		assertTrue(luxembourg.isFull());
+		
+		Time.addTime(5);;
+		
+		odeon.giveBackBike(pierre);
+		
+		assertEquals(luxembourg.getUsers().size(), 0);
+		assertEquals(pierre.getAllRide().get(pierre.getAllRide().size()-1).getPrice(), 1);
+		
+		User user1 = new User();
+		User user2 = new User();
+		
+		chatelet.takeBike(new MechanicalBike(), user1);
+		chatelet.takeBike(new MechanicalBike(), user2);
+		
+		pierre.takeARide(odeon.getCoordinates(), new GPSCoordinate(11,16), new PreferPlusStationStrategy(), new ElectricalBike(), paris);
+		paul.takeARide(odeon.getCoordinates(), new GPSCoordinate(11,16), new PreferPlusStationStrategy(), new ElectricalBike(), paris);
+		jacques.takeARide(odeon.getCoordinates(), new GPSCoordinate(11,16), new PreferPlusStationStrategy(), new ElectricalBike(), paris);
+		assertEquals(pierre.getRide().getListStation().get(0), odeon);
+		assertEquals(paul.getRide().getListStation().get(0), odeon);
+		assertEquals(jacques.getRide().getListStation().get(0), odeon);
+		assertEquals(pierre.getRide().getListStation().get(1), chatelet);
+		assertEquals(paul.getRide().getListStation().get(1), chatelet);
+		assertEquals(jacques.getRide().getListStation().get(1), chatelet);
+		
+		Time.addTime(2);
+		
+		odeon.takeBike(new ElectricalBike(), pierre);
+		odeon.takeBike(new ElectricalBike(), paul);
+		odeon.takeBike(new ElectricalBike(), jacques);
+		
+		Time.addTime(64);
+		
+		chatelet.giveBackBike(pierre);
+		chatelet.giveBackBike(paul);
+		chatelet.giveBackBike(jacques);
+		
+		assertEquals(pierre.getAllRide().get(pierre.getAllRide().size()-1).getPrice(), 4);
+		assertEquals(paul.getAllRide().get(paul.getAllRide().size()-1).getPrice(), 1);	
+		assertEquals(jacques.getAllRide().get(jacques.getAllRide().size()-1).getPrice(), 0);	
+
+		
+		
 	}
 	
 	@Test
@@ -233,24 +268,45 @@ public class ScenarioTest {
 		
 		//Creating users
 
-			User pierre = UserFactory.createUser("Pierre", "NoCard", "Paris");
+		User pierre = UserFactory.createUser("Pierre", "NoCard", "Paris");
 			
 		//Doing stuff
 			
-			pierre.setLocation(4, 4);
-			pierre.takeARide(pierre.getLocation(), new GPSCoordinate(21, 12), new FastestPath(), new MechanicalBike(), paris);
-			assertEquals(pierre.getRide().getListStation().get(0), opera);
-			assertEquals(pierre.getRide().getListStation().get(1), luxembourg);
-			
-			Time.addTime(2);
-			
-			opera.takeBike(new MechanicalBike(), pierre);
-			assertEquals(luxembourg.getUsers().size(), 1);
-			
-			Time.addTime(5);
-			
-			luxembourg.goOffline();
-			
+		pierre.setLocation(4, 4);
+		pierre.takeARide(pierre.getLocation(), new GPSCoordinate(21, 12), new FastestPath(), new MechanicalBike(), paris);
+		assertEquals(pierre.getRide().getListStation().get(0), opera);
+		assertEquals(pierre.getRide().getListStation().get(1), luxembourg);
+		
+		Time.addTime(2);
+		
+		opera.takeBike(new MechanicalBike(), pierre);
+		assertEquals(luxembourg.getUsers().size(), 1);
+		
+		Time.addTime(5);
+		
+		luxembourg.goOffline();
+		
+		Time.addTime(5);;
+		
+		odeon.giveBackBike(pierre);
+		
+		assertEquals(luxembourg.getUsers().size(), 0);
+		assertEquals(pierre.getAllRide().get(pierre.getAllRide().size()-1).getPrice(), 1);
+		
+		pierre.takeARide(odeon.getCoordinates(), new GPSCoordinate(11,16), new PreferPlusStationStrategy(), new ElectricalBike(), paris);
+		assertEquals(pierre.getRide().getListStation().get(0), odeon);
+		assertEquals(pierre.getRide().getListStation().get(1), chatelet);
+		
+		Time.addTime(2);
+		
+		odeon.takeBike(new ElectricalBike(), pierre);
+		
+		Time.addTime(70);
+		
+		chatelet.giveBackBike(pierre);
+		
+		assertEquals(pierre.getAllRide().get(pierre.getAllRide().size()-1).getPrice(), 4);		
+		
 	}
 
 }
