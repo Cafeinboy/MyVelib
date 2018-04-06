@@ -85,7 +85,7 @@ public abstract class FactoryCommandTerminal {
 			return "";
 		}
 		else if (words[0].equalsIgnoreCase("addstation") && words.length == 7) {
-			addStation(words[1], words[2], words[3], words[4], words[5], words[7]);
+			addStation(words[1], words[2], words[3], words[4], words[5], words[6]);
 			return "";
 		}
 		else if (words[0].equalsIgnoreCase("") && words.length == 1) {
@@ -204,6 +204,8 @@ public abstract class FactoryCommandTerminal {
 			
 			Station stat = StationFactory.createAStation(status, location, stationName, kindStation);
 			net.addStation(stat);
+			
+			System.out.println("Done correctly\n");
 		} catch (StationFactoryException e) {
 			
 		} catch (NetworkFactoryException e) {
@@ -389,19 +391,7 @@ public abstract class FactoryCommandTerminal {
 		
 		ReadAText.readAText(string);		
 	}
-	
-	private static void addTime(String time) {
 		
-		try {
-			int addTime = Integer.parseInt(time);
-			Time.addTime(addTime);
-			
-			System.out.println("Done correctly\n");
-		} catch (NumberFormatException e) {
-			System.out.println("An argument in the command is not correct, please try it again, or please read the Javadoc.\n");
-		}
-	}
-	
 	private static void haveARide(String xFirst, String yFirst, String xSecond, String ySecond, String rideStrategy, String kindBikeWish, String velibNetwork, String userID) {
 		
 		try {
@@ -437,5 +427,17 @@ public abstract class FactoryCommandTerminal {
 			System.out.println("An argument in the command is not correct, please try it again, or please read the Javadoc.\n");
 		}
 		
+	}
+	
+	private static void addTime(String time) {
+		
+		try {
+			int addTime = Integer.parseInt(time);
+			Time.addTime(addTime);
+			
+			System.out.println("Done correctly\n");
+		} catch (NumberFormatException e) {
+			System.out.println("An argument in the command is not correct, please try it again, or please read the Javadoc.\n");
+		}
 	}
 }

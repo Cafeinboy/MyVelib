@@ -12,6 +12,8 @@ adduser mali nocard paris
 adduser mali nocard paris
 adduser mali nocard paris
 
+addtime 10
+
 rentbike 1 9
 rentbike 2 9
 rentbike 3 9

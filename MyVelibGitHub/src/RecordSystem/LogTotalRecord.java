@@ -49,11 +49,11 @@ public class LogTotalRecord {
 			sumRateOfOccupation+= end-begin;
 			
 			if (record.getBeginningTime() >= minTime) {
-				numberOfReturnOperation++;
+				numberOfRentOperation++;
 			}
 			
 			if (record.getEndingTime() <= maxTime) {
-				numberOfRentOperation++;
+				numberOfReturnOperation++;
 			}			
 		}
 		
