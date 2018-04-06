@@ -444,7 +444,10 @@ public abstract class Station extends Observable {
 			if(bike instanceof MechanicalBike) {
 				if(this.numberOfMechanicalBike() == 0) {
 					System.out.println("No mechanical bike at this station");
-//					user.getRide().haveARide(bike);
+					if (user.getRide().getNet() != null) {
+						// we are computing again a ride if the user program it before
+						user.getRide().haveARide(bike);
+					}					
 				}
 				else {
 					ParkingSlot nextSlot = this.getSlotsWithMechanicalBike().get(0);
@@ -460,7 +463,10 @@ public abstract class Station extends Observable {
 			else if (bike instanceof ElectricalBike) {
 				if(this.numberOfElectricalBike() == 0) {
 					System.out.println("No electrical bike at this station");
-//					user.getRide().haveARide(bike);
+					if (user.getRide().getNet() != null) {
+						// we are computing again a ride if the user program it before
+						user.getRide().haveARide(bike);
+					}
 				}
 				else {
 					ParkingSlot nextSlot = this.getSlotsWithElectricalBike().get(0);
