@@ -118,9 +118,22 @@ public class User implements Observer, Functionnality {
 	 * @param bikeType
 	 */
 	public void takeARide(GPSCoordinate beginingPoint, GPSCoordinate finishingPoint, PlanningRideStrategy rideStrategy, Bike wishBike, Network net) {
-		this.ride = new Ride(beginingPoint, finishingPoint, rideStrategy, net);
-		this.ride.haveARide(wishBike);
-		this.ride.getListStation().get(1).addUser(this);
+		if (this.ride.getBike() == null) {
+			this.ride = new Ride(beginingPoint, finishingPoint, rideStrategy, net);
+			this.ride.haveARide(wishBike);
+			this.ride.getListStation().get(1).addUser(this);
+		}
+		else {
+			this.ride.getListStation().get(1).removeUser(this);
+			
+			Ride newRide = new Ride(beginingPoint, finishingPoint, rideStrategy, net);
+			newRide.haveARide(wishBike);
+
+			this.ride.setFinishingPoint(finishingPoint);
+			this.ride.setRideStrategy(rideStrategy);
+			this.ride.changeFinishingStation(newRide.getListStation().get(1));
+			this.ride.getListStation().get(1).addUser(this);
+		}
 	}
 
 	//Attention il va falloir appeler la fonction pour recalculer un trajet 

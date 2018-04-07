@@ -447,7 +447,7 @@ public abstract class Station extends Observable {
 				if(this.numberOfMechanicalBike() == 0) {
 					System.out.println("No mechanical bike at this station");
 					if (user.getRide().getNet() != null) {
-						// we are computing again a ride if the user program it before
+						// we are computing again a ride if the user plan it before
 						user.getRide().haveARide(bike);
 					}					
 				}
@@ -466,7 +466,7 @@ public abstract class Station extends Observable {
 				if(this.numberOfElectricalBike() == 0) {
 					System.out.println("No electrical bike at this station");
 					if (user.getRide().getNet() != null) {
-						// we are computing again a ride if the user program it before
+						// we are computing again a ride if the user plan it before
 						user.getRide().haveARide(bike);
 					}
 				}

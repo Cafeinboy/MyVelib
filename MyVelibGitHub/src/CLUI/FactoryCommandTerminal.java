@@ -26,13 +26,20 @@ public abstract class FactoryCommandTerminal {
 		else if (words[0].equalsIgnoreCase("help") && words.length == 1) {
 			help();
 			return "";
-		}else if (words[0].equalsIgnoreCase("setup") && words.length == 2) {
+		}
+		else if (words[0].equalsIgnoreCase("setupempty") && words.length == 2) {
+			setupEmptyVelibNetwork(words[1]);
+			return "";
+		}
+		else if (words[0].equalsIgnoreCase("setup") && words.length == 2) {
 			setupVelibNetwork(words[1]);
 			return "";
-		}else if (words[0].equalsIgnoreCase("setup") && words.length == 6) {
+		}
+		else if (words[0].equalsIgnoreCase("setup") && words.length == 6) {
 			setupNetworkFromSpecification(words[1], words[2], words[3], words[4], words[5]);
 			return "";
-		}else if (words[0].equalsIgnoreCase("addUser") && words.length == 4) {
+		}
+		else if (words[0].equalsIgnoreCase("addUser") && words.length == 4) {
 			addUser(words[1], words[2], words[3]);
 			return "";
 		}
@@ -101,6 +108,8 @@ public abstract class FactoryCommandTerminal {
 	
 	private static void help() {
 		System.out.println("Hi, you have asked help so I am here. You can see bellow all the commad available and the arguments required");
+		System.out.println("          setupempty <velibnetworkName>\n"
+				+ "To create a myVelib network with given name and nothing else. You just have a town, a system.\n");
 		System.out.println("          setup <velibnetworkName>\n"
 				+ "To create a myVelib network with given name and consisting of 10 standard stations each of which has 10 parking slots"
 				+ "and such that stations are arranged on a square grid whose of side 4km and initially populated with a 75%"
@@ -147,6 +156,12 @@ public abstract class FactoryCommandTerminal {
 		
 	}
 	
+	public static void setupEmptyVelibNetwork(String name) {
+		
+		FactoryCommandTerminal.setupNetworkFromSpecification(name, "0", "0", "0", "0");
+		
+	}	
+	
 	public static void setupNetworkFromSpecification(String name, String nStations, String nSlots, String sideSquare, String nBikes) {
 		
 		try {
@@ -181,6 +196,20 @@ public abstract class FactoryCommandTerminal {
 			    if (net.getStations().get(randomNum).addBikeWithReturnInformation(new MechanicalBike())) {
 			    	totalBikes++;
 			    }
+			    
+			    boolean flag = true;
+			    for (Station stat : net.getStations()) {
+					if (!stat.isFull()) {
+						flag = false;
+						break;
+					}
+				}
+			    
+			    if (flag && totalBikes != nBikes1) {
+			    	System.err.println("Too much bike and not enough parking slots, be careful and retry");
+			    	Network.entireNet.remove(net);
+			    	break;
+			    	}
 			}
 			
 			System.out.println("Done correctly\n");
