@@ -193,6 +193,27 @@ public abstract class Station extends Observable {
 		
 	}
 	
+	public static Station findAStationFromName(String name) throws StationFindException {
+		
+		Station stat = null;
+		for (Network net : Network.entireNet) {
+			for (Station statSearch : net.getStations()) {
+				if (statSearch.getName() == name) {
+					stat = statSearch;
+					break;
+				}
+			}
+		}
+		
+		
+		if (stat == null) {
+			throw new StationFindException();
+		}
+		
+		return stat;
+		
+	}
+	
 	/**
 	 * Adds a bike to the station, if possible, and puts it in the first
 	 * free parking slot

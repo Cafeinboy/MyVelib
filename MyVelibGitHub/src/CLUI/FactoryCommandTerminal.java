@@ -47,7 +47,15 @@ public abstract class FactoryCommandTerminal {
 			addSlot(words[1], words[2]);
 			return "";
 		}
+		else if (words[0].equalsIgnoreCase("addSlotName") && words.length == 3) {
+			addSlot(words[1], words[2]);
+			return "";
+		}
 		else if (words[0].equalsIgnoreCase("addBike") && words.length == 4) {
+			addBike(words[1], words[2], words[3]);
+			return "";
+		}
+		else if (words[0].equalsIgnoreCase("addBikeName") && words.length == 4) {
 			addBike(words[1], words[2], words[3]);
 			return "";
 		}
@@ -133,6 +141,8 @@ public abstract class FactoryCommandTerminal {
 				+ "To add a user with name userName and card cardType (i.e. ‘‘none’’ if the user has no card) to a myVelib network velibnetworkName.\n");
 		System.out.println("          addSlot <stationID> <quantityOfSlots>\n"
 				+ "To add slots with a quantity quantityOfSlots, at a station with the ID stationID.\n");
+		System.out.println("          addSlotName <stationName> <quantityOfSlots>\n"
+				+ "To add slots with a quantity quantityOfSlots, at a station with the name stationName.\n");
 		System.out.println("          addBike <stationID> <kindBike> <quantityOfBikes>\n"
 				+ "To add certain bike kindBike with a quantity quantityOfBikes, at a station with the ID stationID.\n");
 		System.out.println("          offline <velibnetworkName> <stationID>\n"
@@ -286,6 +296,21 @@ public abstract class FactoryCommandTerminal {
 		} 
 	}
 	
+	public static void addSlotName(String stationName, String quantity) {
+		
+		try {
+			
+			int quant = Integer.parseInt(quantity);
+			
+			Station station = Station.findAStationFromName(stationName);
+			
+			station.addNParkingSlot(quant);
+			
+		} catch (StationFindException e) {
+		} catch (NumberFormatException e) {
+		} 
+	}
+	
 	public static void addBike(String stationID, String kindBike, String quantity) {
 		
 		try {
@@ -313,6 +338,18 @@ public abstract class FactoryCommandTerminal {
 		} catch (NumberFormatException e) {
 		} catch (BikeFactoryException e) {
 		} 
+	}
+	
+	public static void addBikeName(String stationName, String kindBike, String quantity) {
+		
+		try {
+						
+			Station station = Station.findAStationFromName(stationName);
+			
+			addBike(String.valueOf(station.getID()), kindBike, quantity);
+			
+		} catch (StationFindException e) {
+		}
 	}
 	
 	public static void goOffline(String velibNet, String IDStation) {
