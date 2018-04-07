@@ -2,25 +2,43 @@ setupempty Paris
 
 addStation true 5 5 Opéra Paris plus
 addSlot 1 10
+addBike 1 mechanical 4
+addBike 1 electrical 4
 
 addStation true 11 17 Châtelet Paris plus
 addSlot 2 10
+addBike 2 mechanical 4
+addBike 2 electrical 4
 
 addStation true 20 11 Luxembourg Paris plus
 addSlot 3 10
+addBike 3 mechanical 4
+addBike 3 electrical 4
 
 addStation true 25 5 Odéon Paris plus
 addSlot 4 10
+addBike 4 mechanical 4
+addBike 4 electrical 4
 
 addStation true 8 18 Montparnasse Paris standard
 addSlot 5 10
+addBike 5 mechanical 4
+addBike 5 electrical 4
 
 addStation true 10 15 Invalides Paris standard
 addSlot 6 10
+addBike 6 mechanical 4
+addBike 6 electrical 4
 
 addStation true 24 4 Défense Paris standard
 addSlot 7 10
+addBike 7 mechanical 4
+addBike 7 electrical 4
 
-addBike 1 mechanical 4
+
+addUser Pierre NoCard Paris
+addUser Paul Vlibre Paris
+addUser Jacques Vmax Paris
+
 
 display Paris
