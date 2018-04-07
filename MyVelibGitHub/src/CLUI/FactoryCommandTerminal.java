@@ -25,6 +25,10 @@ public abstract class FactoryCommandTerminal {
 		if (words[0].equalsIgnoreCase("exit") && words.length == 1) {
 			return "exit";
 		}
+		else if (words[0].equalsIgnoreCase("scene") && words.length == 1) {
+			scenario("ScenarioTXT\\ScenarioTestBike");
+			return "";
+		}
 		else if (words[0].equalsIgnoreCase("help") && words.length == 1) {
 			help();
 			return "";
@@ -543,7 +547,8 @@ public abstract class FactoryCommandTerminal {
 	
 	private static void sortStation(String velibNetwork, String kindOfSort) {
 		
-		sortStationMinMax(velibNetwork, kindOfSort, "0" , String.valueOf(Integer.MAX_VALUE));
+		
+		sortStationMinMax(velibNetwork, kindOfSort, "0" , String.valueOf(Time.getTimeInMinuteSinceCreation()));
 		
 	}
 	

@@ -25,7 +25,7 @@ public class MostUsedStation implements StrategySort{
 			double time1 = result1.get(0) + result1.get(1);
 			ArrayList<Double> result2 = s2.getAllRecord().balanceStation(this.minTime, this.maxTime, s1.getNumberOfSpots());
 			double time2 = result2.get(0) + result2.get(1);
-			return (int) (time1-time2);
+			return (int) (time2-time1);
 		}
 		
 	}

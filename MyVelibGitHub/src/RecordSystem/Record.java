@@ -12,6 +12,7 @@ public class Record {
 	private int beginningTime;
 	private int endingTime;
 	private ParkingSlot slot;
+	private boolean add;
 	
 	public Record() {
 		super();
@@ -20,11 +21,12 @@ public class Record {
 		this.slot = new ParkingSlot();
 	}
 
-	public Record(int beginningTime, ParkingSlot slot) {
+	public Record(int beginningTime, ParkingSlot slot, Boolean add) {
 		super();
 		this.beginningTime = beginningTime;
 		this.endingTime = Integer.MAX_VALUE;
 		this.slot = slot;
+		this.add = add;
 	}
 
 	public int getBeginningTime() {
@@ -50,5 +52,9 @@ public class Record {
 	public void setSlot(ParkingSlot slot) {
 		this.slot = slot;
 	}
-	
+
+	public boolean isAdd() {
+		return add;
+	}
+
 }

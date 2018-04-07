@@ -40,24 +40,24 @@ public class LogTotalRecord {
 	public ArrayList<Double> balanceStation(int minTime, int maxTime, int numberOfSlots) {
 		int numberOfRentOperation = 0;
 		int numberOfReturnOperation = 0;
-		double averageRateOfOccupation = 0;
+		double averageRateOfOccupation = 0.0;
 		int sumRateOfOccupation = 0;
 		
 		for (Record record : log) {
 			int begin = Math.max(record.getBeginningTime(),minTime);
 			int end = Math.min(record.getEndingTime(),maxTime);
-			sumRateOfOccupation+= end-begin;
+			sumRateOfOccupation+= (double) end-begin;
 			
-			if (record.getBeginningTime() >= minTime) {
-				numberOfRentOperation++;
+			if (record.getBeginningTime() >= minTime && !record.isAdd()) {
+				numberOfReturnOperation++;
 			}
 			
 			if (record.getEndingTime() <= maxTime) {
-				numberOfReturnOperation++;
+				numberOfRentOperation++;
 			}			
 		}
 		
-		averageRateOfOccupation = (double) sumRateOfOccupation/numberOfSlots;
+		averageRateOfOccupation = (double) sumRateOfOccupation/ (double) numberOfSlots;
 		
 		return new ArrayList<Double>(Arrays.asList((double) numberOfRentOperation, (double) numberOfReturnOperation, averageRateOfOccupation ));		
 	}

@@ -25,7 +25,7 @@ public class LeastOccupiedStation {
 			double average1 = result1.get(2);
 			ArrayList<Double> result2 = s2.getAllRecord().balanceStation(this.minTime, this.maxTime, s1.getNumberOfSpots());
 			double average2 = result2.get(2);
-			return (int) (average2-average1);
+			return (int) (average1-average2);
 		}
 		
 	}

@@ -155,7 +155,7 @@ public abstract class Station extends Observable {
 	
 	public String toStringBalance() {
 		ArrayList<Double> list = this.getAllRecord().balanceStation(0, Time.getTimeInMinuteSinceCreation(), this.getNumberOfSpots());
-		return "Station : " + this.name + "\n     Number Of Rent Operation : " + list.get(0) + "\n     Number Of Return Operation : " + list.get(1)
+		return "Station : " + this.name  + ": ID : " + this.getID() + "\n     Number Of Rent Operation : " + list.get(0) + "\n     Number Of Return Operation : " + list.get(1)
 			+ "\n     Average Rate Of Occupation : " + list.get(2) + "\n";
 	}
 	
@@ -227,7 +227,7 @@ public abstract class Station extends Observable {
 		else {
 			ParkingSlot nextSpot = this.getFreeSlots().get(0);
 			nextSpot.giveBike(bike);
-			this.allRecord.addRecord(new Record(Time.getTimeInMinuteSinceCreation(), nextSpot));
+			this.allRecord.addRecord(new Record(Time.getTimeInMinuteSinceCreation(), nextSpot, true));
 			if(this.numberOfFreeSpots() == 0) {
 				this.getFull();
 			}
@@ -241,7 +241,7 @@ public abstract class Station extends Observable {
 		else {
 			ParkingSlot nextSpot = this.getFreeSlots().get(0);
 			nextSpot.giveBike(bike);
-			this.allRecord.addRecord(new Record(Time.getTimeInMinuteSinceCreation(), nextSpot));
+			this.allRecord.addRecord(new Record(Time.getTimeInMinuteSinceCreation(), nextSpot, true));
 			if(this.numberOfFreeSpots() == 0) {
 				this.getFull();
 			}
@@ -435,7 +435,7 @@ public abstract class Station extends Observable {
 			else {
 				ParkingSlot nextSpot = this.getFreeSlots().get(0);
 				nextSpot.giveBike(bike);
-				this.allRecord.addRecord(new Record(Time.getTimeInMinuteSinceCreation(), nextSpot));
+				this.allRecord.addRecord(new Record(Time.getTimeInMinuteSinceCreation(), nextSpot, false));
 				user.putAnEndToTheRide(this);
 				if(this.numberOfFreeSpots() == 0) {
 					this.getFull();
