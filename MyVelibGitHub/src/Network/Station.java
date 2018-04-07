@@ -33,6 +33,7 @@ public abstract class Station extends Observable {
 	
 	public Station() {
 		super();
+		this.parkingSlots = new ArrayList<ParkingSlot>();
 		this.users = new ArrayList<User>();
 	}
 	

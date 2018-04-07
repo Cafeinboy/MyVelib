@@ -33,6 +33,7 @@ public class PreservationOfUniformityStrategy implements PlanningRideStrategy{
 	 */
 	@Override
 	public ArrayList<Station> planARide(GPSCoordinate beginingPoint, GPSCoordinate finishingPoint, Bike bike, Network net) {
+		
 		ArrayList<Station> availableStation = net.getAvailableStations();
 		double distanceBeg = GPSCoordinate.distance(availableStation.get(0).getCoordinates(),beginingPoint);
 		Station stationBeg = availableStation.get(0);
@@ -89,6 +90,7 @@ public class PreservationOfUniformityStrategy implements PlanningRideStrategy{
 		else {
 			return new ArrayList<Station>(Arrays.asList(stationPreserveBeg,stationPreserveFin));
 		}
+
 	}
 
 }

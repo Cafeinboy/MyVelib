@@ -35,7 +35,7 @@ public class FastestPath implements PlanningRideStrategy{
 	 * Return the list of two stations, in the first place the begin station, in the second place the end station.
 	 */
 	public ArrayList<Station> planARide(GPSCoordinate beginingPoint, GPSCoordinate finishingPoint, Bike bike, Network net) {
-
+		
 		ArrayList<Station> availableStation = net.getAvailableStations();
 		
 		double timeMin = GPSCoordinate.distance(availableStation.get(0).getCoordinates(),beginingPoint)/4. + GPSCoordinate.distance(availableStation.get(0).getCoordinates(),finishingPoint)/4.;
@@ -56,8 +56,6 @@ public class FastestPath implements PlanningRideStrategy{
 		}
 		
 		return new ArrayList<Station>(Arrays.asList(stationBeg,stationFin));
-	}
-	
-	
+	}	
 
 }

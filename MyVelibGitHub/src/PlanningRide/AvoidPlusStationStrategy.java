@@ -59,7 +59,6 @@ public class AvoidPlusStationStrategy implements PlanningRideStrategy{
 		}
 		
 		return new ArrayList<Station>(Arrays.asList(stationBeg,stationFin));
-		
 	}
 
 }

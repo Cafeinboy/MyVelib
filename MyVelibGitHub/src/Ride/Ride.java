@@ -1,6 +1,7 @@
 package Ride;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 import Bike.Bike;
 import GPSCoordinate.*;
@@ -143,8 +144,22 @@ public class Ride implements RideStrategyInterface{
 	//New /!\
 	@Override
 	public void haveARide(Bike wishBike) {
-		this.listStation = this.rideStrategy.planARide(this.beginingPoint,this.finishingPoint, wishBike, this.net);
+		if (!net.isAKindBike(wishBike)) {
+			System.err.println("This kind of bike does not exist in the system. Maybe all have been rented.");
+			this.listStation =  new ArrayList<Station>(Arrays.asList(null, null));
+		}
+		else {
+			this.listStation = this.rideStrategy.planARide(this.beginingPoint,this.finishingPoint, wishBike, this.net);
+		}
 	}
+
+	@Override
+	public String toString() {
+		return "Ride [beginingPoint=" + beginingPoint + ", finishingPoint=" + finishingPoint + ", beginingTime="
+				+ beginingTime + ", endingTime=" + endingTime + ", bike=" + bike + ", price=" + price
+				+ ", rideStrategy=" + rideStrategy + ", listStation=" + listStation + ", net=" + net + "]";
+	}
+	
 	
 
 }

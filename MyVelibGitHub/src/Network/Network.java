@@ -2,6 +2,7 @@ package Network;
 
 import java.util.ArrayList;
 
+import Bike.Bike;
 import Exception.NetworkFactoryException;
 import GPSCoordinate.GPSCoordinate;
 import User.User;
@@ -116,6 +117,29 @@ public class Network {
 	
 	
 	//Methods
+	
+	public boolean isAKindBike(Bike bike) {
+		
+		if (bike == null) {
+			return false;
+		}
+		
+		for (Station stat : this.getStations()) {
+			for (ParkingSlot park : stat.getParkingSlots()) {
+				
+				if (park.getBike() == null) {
+					
+				}
+				else {
+					if (bike.getClass() == park.getBike().getClass()) {
+						return true;
+					}
+				}
+				
+			}
+		}
+		return false;
+	}
 	
 	public static Network findANetworkFromName(String name) throws NetworkFactoryException {
 		
