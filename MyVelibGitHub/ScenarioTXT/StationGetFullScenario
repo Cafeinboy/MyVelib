@@ -1,23 +1,26 @@
 setupempty Paris
 
 addStation true 5 5 Opéra Paris plus
-addSlotName Opéra 10
+addSlot 1 10
 
 addStation true 11 17 Châtelet Paris plus
-addSlotName Châtelet 10
+addSlot 2 10
 
 addStation true 20 11 Luxembourg Paris plus
-addSlotName Luxembourg 10
+addSlot 3 10
 
 addStation true 25 5 Odéon Paris plus
-addSlotName Odéon 10
+addSlot 4 10
 
 addStation true 8 18 Montparnasse Paris standard
-addSlotName Montparnasse 10
+addSlot 5 10
 
 addStation true 10 15 Invalides Paris standard
+addSlot 6 10
 
 addStation true 24 4 Défense Paris standard
+addSlot 7 10
 
+addBike 1 mechanical 4
 
 display Paris
