@@ -9,7 +9,7 @@ public class StationFactoryException extends Exception {
 
 	public StationFactoryException() {
 		super();
-		System.err.println("Something went wrong when creating the user, rectify the entry. Read the Javadoc.\n");
+		System.err.println("Something went wrong when creating the station, rectify the entry. Read the Javadoc.\n");
 	}
 
 }

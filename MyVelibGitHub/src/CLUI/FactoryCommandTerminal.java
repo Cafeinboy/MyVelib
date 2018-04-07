@@ -1,5 +1,6 @@
 package CLUI;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 import Bike.Bike;
@@ -8,6 +9,7 @@ import Bike.MechanicalBike;
 import Exception.*;
 import GPSCoordinate.GPSCoordinate;
 import Network.*;
+import Network.SortNetwork.SortFactory;
 import PlanningRide.PlanningRideFactory;
 import PlanningRide.PlanningRideStrategy;
 import ReadFile.ReadAText;
@@ -92,7 +94,11 @@ public abstract class FactoryCommandTerminal {
 			return "";
 		}
 		else if (words[0].equalsIgnoreCase("sortStation") && words.length == 3) {
-			sortStation();
+			sortStation(words[1], words[2]);
+			return "";
+		}
+		else if (words[0].equalsIgnoreCase("sortStation") && words.length == 5) {
+			sortStationMinMax(words[1], words[2], words[3], words[4]);
 			return "";
 		}
 		else if (words[0].equalsIgnoreCase("scenario") && words.length == 2) {
@@ -135,8 +141,8 @@ public abstract class FactoryCommandTerminal {
 				+ " parking slots and such that stations are arranged on a square grid whose of side "
 				+ "sidearea and initially populated with a nbikes mechanical bikes randomly distributed over the nstations stations.\n");
 		System.out.println("          addStation <statusStation> <xPosition> <yPosition> <stationName> <velibNetwork> <kindStation>\n"
-				+ "To add a ceratin station with a name stationName, in a network welinNetwork, at a certain position (xPoistion, yPosition) with a certain availibility status "
-				+ "and a certain characteristics kindStation.\n");
+				+ "To add a ceratin station with a name stationName, in a network welinNetwork, at a certain position (xPoistion, yPosition) with a "
+				+ "certain availibility status and a certain characteristics kindStation.\n");
 		System.out.println("          addUser <userName> <cardType> <velibnetworkName>\n"
 				+ "To add a user with name userName and card cardType (i.e. ‘‘none’’ if the user has no card) to a myVelib network velibnetworkName.\n");
 		System.out.println("          addSlot <stationID> <quantityOfSlots>\n"
@@ -164,6 +170,9 @@ public abstract class FactoryCommandTerminal {
 				+ "To display the statistics (as of Section 2.4) of user stationID of a myVelib network velibnetwork.\n");
 		System.out.println("          sortStation <velibnetworkName> <sortpolicy>\n"
 				+ "To display the stations in increasing order w.r.t. to the sorting policy (as of Section 2.4) of user sortpolicy.\n");
+		System.out.println("          sortStation <velibnetworkName> <sortpolicy> <minTime> <maxTime>\n"
+				+ "To display the stations in increasing order w.r.t. to the sorting policy (as of Section 2.4) of user sortpolicy taking into account "
+				+ "the results between minTime and maxTime.\n");
 		System.out.println("          display <velibnetworkName>\n"
 				+ "To display the entire status (stations, parking bays, users) of an a myVelib network velibnetworkName.\n");
 		System.out.println("          haveARide <xFirst> <yFirst> <xSecond> <ySecond> <rideStrategy> <kindBikeWish> <velibNetwork> <userID>\n"
@@ -519,10 +528,36 @@ public abstract class FactoryCommandTerminal {
 		
 	}
 	
-	private static void sortStation() {
+	private static void sortStation(String velibNetwork, String kindOfSort) {
 		
-		System.out.println("Not yet implemented");
+		sortStationMinMax(velibNetwork, kindOfSort, "0" , String.valueOf(Integer.MAX_VALUE));
 		
+	}
+	
+	private static void sortStationMinMax(String velibNetwork, String kindOfSort, String minTime, String maxTime) {
+		
+		try {
+			
+			Network net = Network.findANetworkFromName(velibNetwork);
+			int min = Integer.parseInt(minTime);
+			int max = Integer.parseInt(maxTime);
+			
+			ArrayList<Station> ordered = SortFactory.sortAList(kindOfSort, min, max, net);
+			
+			for(int i=0; i < ordered.size(); i++){
+			    System.out.println(ordered.get(i).toStringBalance());
+			} 
+			
+			System.out.println("Done correctly\n");
+			
+		} catch (NumberFormatException e) {
+			System.out.println("An argument in the command is not correct, please try it again, or please read the Javadoc.\n");
+		} catch (SortFactoryException e) {
+
+		} catch (NetworkFactoryException e) {
+
+		}
+				
 	}
 	
 
@@ -554,6 +589,7 @@ public abstract class FactoryCommandTerminal {
 			
 			user.takeARide(beginingPoint, finishingPoint, strategy, bike, net);
 			
+			System.out.println("Done correctly\n");
 			
 		} catch (NumberFormatException e) {
 			System.out.println("An argument in the command is not correct, please try it again, or please read the Javadoc.\n");
