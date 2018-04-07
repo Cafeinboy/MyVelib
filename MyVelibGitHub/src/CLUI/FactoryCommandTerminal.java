@@ -333,6 +333,7 @@ public abstract class FactoryCommandTerminal {
 			while (totalBike != quant) {
 				Bike bike = BikeFactory.createABike(kindBike);
 				if(station.addBikeWithReturnInformation(bike)) {
+					totalBike++;
 				}
 				else {
 					System.err.println("The station is full, stop adding bikes, or add slots before");
