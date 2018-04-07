@@ -149,7 +149,6 @@ public class User implements Observer, Functionnality {
 			Ride newRide = new Ride(oldRide.getListStation().get(0).getCoordinates(), oldRide.getFinishingPoint(), oldRide.getRideStrategy(), oldRide.getListStation().get(1).knowHisNetwork());
 			newRide.haveARide(oldRide.getWishBike());
 			this.getRide().setListStation(new ArrayList<Station>(Arrays.asList(oldRide.getListStation().get(0), newRide.getListStation().get(1))));
-			System.out.println("\n\n\n"+newRide);
 			System.out.println("Your new destination station is " + this.getRide().getListStation().get(1).getName());
 		}
 		else {
