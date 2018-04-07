@@ -408,6 +408,8 @@ public abstract class Station extends Observable {
 				Ride newRide = new Ride(oldRide.getListStation().get(1).getCoordinates(), oldRide.getFinishingPoint(), oldRide.getRideStrategy(), oldRide.getListStation().get(1).knowHisNetwork());
 				newRide.haveARide(oldRide.getBike());
 				user.getRide().setListStation(new ArrayList<Station>(Arrays.asList(oldRide.getListStation().get(0), newRide.getListStation().get(1))));
+				this.removeUser(user);
+				user.getRide().getListStation().get(1).addUser(user);
 			}
 			else {
 				ParkingSlot nextSpot = this.getFreeSlots().get(0);
