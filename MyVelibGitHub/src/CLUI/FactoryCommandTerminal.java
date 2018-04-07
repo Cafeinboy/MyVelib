@@ -43,6 +43,14 @@ public abstract class FactoryCommandTerminal {
 			addUser(words[1], words[2], words[3]);
 			return "";
 		}
+		else if (words[0].equalsIgnoreCase("addSlot") && words.length == 3) {
+			addSlot(words[1], words[2]);
+			return "";
+		}
+		else if (words[0].equalsIgnoreCase("addBike") && words.length == 4) {
+			addBike(words[1], words[2], words[3]);
+			return "";
+		}
 		else if (words[0].equalsIgnoreCase("offline") && words.length == 3) {
 			goOffline(words[1], words[2]);
 			return "";
@@ -118,10 +126,15 @@ public abstract class FactoryCommandTerminal {
 				+ "To create a myVelib network with given name and consisting of nstations standard stations each of which has nslots"
 				+ " parking slots and such that stations are arranged on a square grid whose of side "
 				+ "sidearea and initially populated with a nbikes mechanical bikes randomly distributed over the nstations stations.\n");
-		System.out.println("          addStation <statusStation> <xPosition> <yPosition> <stationName> <velibNetwork>\n"
-				+ "To add a station with a name stationName, in a network welinNetwork, at a certain position (xPoistion, yPosition) with a certain availibility status.\n");
+		System.out.println("          addStation <statusStation> <xPosition> <yPosition> <stationName> <velibNetwork> <kindStation>\n"
+				+ "To add a ceratin station with a name stationName, in a network welinNetwork, at a certain position (xPoistion, yPosition) with a certain availibility status "
+				+ "and a certain characteristics kindStation.\n");
 		System.out.println("          addUser <userName> <cardType> <velibnetworkName>\n"
 				+ "To add a user with name userName and card cardType (i.e. ‘‘none’’ if the user has no card) to a myVelib network velibnetworkName.\n");
+		System.out.println("          addSlot <stationID> <quantityOfSlots>\n"
+				+ "To add slots with a quantity quantityOfSlots, at a station with the ID stationID.\n");
+		System.out.println("          addBike <stationID> <kindBike> <quantityOfBikes>\n"
+				+ "To add certain bike kindBike with a quantity quantityOfBikes, at a station with the ID stationID.\n");
 		System.out.println("          offline <velibnetworkName> <stationID>\n"
 				+ "To put offline the station stationID of the myVelib network velibnetworkName.\n");
 		System.out.println("          online <velibnetworkName> <stationID>\n"
@@ -254,6 +267,51 @@ public abstract class FactoryCommandTerminal {
 			System.out.println("Done correctly\n");
 		} catch (UserFactoryException e) {
 		} catch (NetworkFactoryException e) {
+		} 
+	}
+	
+	public static void addSlot(String stationID, String quantity) {
+		
+		try {
+			
+			int quant = Integer.parseInt(quantity);
+			int IDstation = Integer.parseInt(stationID);
+			
+			Station station = Station.findAStationFromID(IDstation);
+			
+			station.addNParkingSlot(quant);
+			
+		} catch (StationFindException e) {
+		} catch (NumberFormatException e) {
+		} 
+	}
+	
+	public static void addBike(String stationID, String kindBike, String quantity) {
+		
+		try {
+			
+			int quant = Integer.parseInt(quantity);
+			int IDstation = Integer.parseInt(stationID);
+			
+			Station station = Station.findAStationFromID(IDstation);
+			
+			int totalBike = 0;
+			
+			while (totalBike != quant) {
+				Bike bike = BikeFactory.createABike(kindBike);
+				if(station.addBikeWithReturnInformation(bike)) {
+				}
+				else {
+					System.err.println("The station is full, stop adding bikes, or add slots before");
+					break;
+				}
+			}
+			
+			System.out.println("Done correctly\n");
+			
+		} catch (StationFindException e) {
+		} catch (NumberFormatException e) {
+		} catch (BikeFactoryException e) {
 		} 
 	}
 	
