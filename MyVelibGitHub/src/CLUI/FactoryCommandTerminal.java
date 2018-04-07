@@ -194,6 +194,7 @@ public abstract class FactoryCommandTerminal {
 	public static void addStation( String statusStation, String xPosition, String yPosition, String stationName, String velibNetwork, String kindStation) {
 		
 		try {
+			
 			Network net = Network.findANetworkFromName(velibNetwork);
 			
 			double xPos = Double.parseDouble(xPosition);
@@ -206,6 +207,7 @@ public abstract class FactoryCommandTerminal {
 			net.addStation(stat);
 			
 			System.out.println("Done correctly\n");
+			
 		} catch (StationFactoryException e) {
 			
 		} catch (NetworkFactoryException e) {
