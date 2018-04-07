@@ -48,7 +48,7 @@ public abstract class FactoryCommandTerminal {
 			return "";
 		}
 		else if (words[0].equalsIgnoreCase("addSlotName") && words.length == 3) {
-			addSlot(words[1], words[2]);
+			addSlotName(words[1], words[2]);
 			return "";
 		}
 		else if (words[0].equalsIgnoreCase("addBike") && words.length == 4) {
@@ -56,7 +56,7 @@ public abstract class FactoryCommandTerminal {
 			return "";
 		}
 		else if (words[0].equalsIgnoreCase("addBikeName") && words.length == 4) {
-			addBike(words[1], words[2], words[3]);
+			addBikeName(words[1], words[2], words[3]);
 			return "";
 		}
 		else if (words[0].equalsIgnoreCase("offline") && words.length == 3) {
