@@ -1,0 +1,12 @@
+scenario ScenarioTXT\SetupNetwork
+
+haveARide 4 4 21 12 fastestPath mechanical Paris 1
+addtime 2
+rentBike 1 1 mechanical
+addtime 5
+
+offline Paris 3
+
+addtime 5
+
+returnBike 1 4

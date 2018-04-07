@@ -172,7 +172,7 @@ public abstract class FactoryCommandTerminal {
 		System.out.println("          returnBike <userID> <stationID> <time>\n"
 				+ "To let the user userID returning a bike to station stationID at a given instant of time time (if no parking bay is "
 				+ "available should behave accordingly). This command should display the cost of the rent.\n");
-		System.out.println("          returnBike <userID> <stationID> <time>\n"
+		System.out.println("          returnBike <userID> <stationID>\n"
 				+ "To let the user userID returning a bike to station stationID at this time (if no parking bay is "
 				+ "available should behave accordingly). This command should display the cost of the rent.\n");
 		System.out.println("          displayStation <velibnetworkName> <stationID>\n"
@@ -475,7 +475,7 @@ public abstract class FactoryCommandTerminal {
 			stat.giveBackBike(user);
 			Time.setTimeInMinuteSinceCreation(timeOfSimulation);
 			
-			System.out.println("The price of the course was : " + user.getAllRide().get(user.getAllRide().size() -1).getPrice());
+			System.out.println("The price of the course for " + user.getName() + " going from " + user.getAllRide().get(user.getAllRide().size()-1).getListStation().get(0).getName() + " to " + user.getAllRide().get(user.getAllRide().size()-1).getListStation().get(1).getName() + " was : " + user.getAllRide().get(user.getAllRide().size() -1).getPrice());
 			
 			System.out.println("Done correctly\n");
 		} catch (NumberFormatException e) {
