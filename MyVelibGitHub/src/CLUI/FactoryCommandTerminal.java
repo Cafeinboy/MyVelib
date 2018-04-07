@@ -116,7 +116,7 @@ public abstract class FactoryCommandTerminal {
 		}
 		else {
 			System.out.println("Wrong command ! \n"
-					+ "A problem has occurred retry your command\n\n");
+					+ "A problem has occurred retry your command\n");
 			return "";
 		}
 		
