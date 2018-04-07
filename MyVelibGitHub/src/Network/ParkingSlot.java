@@ -1,7 +1,6 @@
 package Network;
 
 import Bike.Bike;
-import Bike.MechanicalBike;
 
 public class ParkingSlot {
 	

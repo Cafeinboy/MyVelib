@@ -607,8 +607,6 @@ public abstract class FactoryCommandTerminal {
 			
 			user.takeARide(beginingPoint, finishingPoint, strategy, bike, net);
 			
-			System.out.println(user.getRide());
-			
 			System.out.println("Done correctly\n");
 			
 		} catch (NumberFormatException e) {
