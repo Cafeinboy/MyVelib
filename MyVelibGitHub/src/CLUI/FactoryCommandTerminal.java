@@ -81,6 +81,10 @@ public abstract class FactoryCommandTerminal {
 			returnABike(words[1], words[2], words[3]);
 			return "";
 		}
+		else if (words[0].equalsIgnoreCase("returnBike") && words.length == 3) {
+			returnABikeTimeCurrent(words[1], words[2]);
+			return "";
+		}
 		else if (words[0].equalsIgnoreCase("displayStation") && words.length == 3) {
 			displayStation(words[1], words[2]);
 			return "";
@@ -163,6 +167,9 @@ public abstract class FactoryCommandTerminal {
 						+ "To let the user userID renting a bike (kind choosen by kindBike) from station stationID (if no bikes are available should behave accordingly).\n");
 		System.out.println("          returnBike <userID> <stationID> <time>\n"
 				+ "To let the user userID returning a bike to station stationID at a given instant of time time (if no parking bay is "
+				+ "available should behave accordingly). This command should display the cost of the rent.\n");
+		System.out.println("          returnBike <userID> <stationID> <time>\n"
+				+ "To let the user userID returning a bike to station stationID at this time (if no parking bay is "
 				+ "available should behave accordingly). This command should display the cost of the rent.\n");
 		System.out.println("          displayStation <velibnetworkName> <stationID>\n"
 				+ "To display the statistics (as of Section 2.4) of station stationID of a myVelib network velibnetwork.\n");
@@ -440,6 +447,12 @@ public abstract class FactoryCommandTerminal {
 		} catch (BikeFactoryException e) {
 			
 		}
+	}
+	
+	public static void returnABikeTimeCurrent(String userID, String stationID) {
+		
+		returnABike(userID, stationID, String.valueOf(Time.getTimeInMinuteSinceCreation()));
+		
 	}
 	
 	public static void returnABike(String userID, String stationID, String time) {
