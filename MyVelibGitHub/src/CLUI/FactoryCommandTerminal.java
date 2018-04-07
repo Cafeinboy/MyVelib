@@ -84,6 +84,10 @@ public abstract class FactoryCommandTerminal {
 			haveARide(words[1], words[2], words[3], words[4], words[5], words[6], words[7], words[8]);
 			return "";
 		}
+		else if (words[0].equalsIgnoreCase("addstation") && words.length == 7) {
+			addStation(words[1], words[2], words[3], words[4], words[5], words[6]);
+			return "";
+		}
 		else if (words[0].equalsIgnoreCase("") && words.length == 1) {
 			return "";
 		}
@@ -105,6 +109,8 @@ public abstract class FactoryCommandTerminal {
 				+ "To create a myVelib network with given name and consisting of nstations standard stations each of which has nslots"
 				+ " parking slots and such that stations are arranged on a square grid whose of side "
 				+ "sidearea and initially populated with a nbikes mechanical bikes randomly distributed over the nstations stations.\n");
+		System.out.println("          addStation <statusStation> <xPosition> <yPosition> <stationName> <velibNetwork>\n"
+				+ "To add a station with a name stationName, in a network welinNetwork, at a certain position (xPoistion, yPosition) with a certain availibility status.\n");
 		System.out.println("          addUser <userName> <cardType> <velibnetworkName>\n"
 				+ "To add a user with name userName and card cardType (i.e. ‘‘none’’ if the user has no card) to a myVelib network velibnetworkName.\n");
 		System.out.println("          offline <velibnetworkName> <stationID>\n"
@@ -126,7 +132,7 @@ public abstract class FactoryCommandTerminal {
 				+ "To display the stations in increasing order w.r.t. to the sorting policy (as of Section 2.4) of user sortpolicy.\n");
 		System.out.println("          display <velibnetworkName>\n"
 				+ "To display the entire status (stations, parking bays, users) of an a myVelib network velibnetworkName.\n");
-		System.out.println("          haveARide <String xFirst> <String yFirst> <String xSecond> <String ySecond> <String rideStrategy> <String kindBikeWish> <String velibNetwork> <String userID>\n"
+		System.out.println("          haveARide <xFirst> <yFirst> <xSecond> <ySecond> <rideStrategy> <kindBikeWish> <velibNetwork> <userID>\n"
 				+ "To have a ride to a user in a certain network, a certain strategy, a certain wish bike, between two points the "
 				+ "first (begining) and the second (finishing). Each point has two coordinates x and y.\n");
 		System.out.println("          scenario <fileName>\n"
@@ -185,6 +191,33 @@ public abstract class FactoryCommandTerminal {
 		
 	}
 	
+	public static void addStation( String statusStation, String xPosition, String yPosition, String stationName, String velibNetwork, String kindStation) {
+		
+		try {
+			
+			Network net = Network.findANetworkFromName(velibNetwork);
+			
+			double xPos = Double.parseDouble(xPosition);
+			double yPos = Double.parseDouble(yPosition);
+			GPSCoordinate location = new GPSCoordinate(xPos, yPos);
+			
+			boolean status = Boolean.parseBoolean(statusStation);
+			
+			Station stat = StationFactory.createAStation(status, location, stationName, kindStation);
+			net.addStation(stat);
+			
+			System.out.println("Done correctly\n");
+			
+		} catch (StationFactoryException e) {
+			
+		} catch (NetworkFactoryException e) {
+			
+		} catch (NumberFormatException e) {
+			
+		}
+		
+	}
+	
 	public static void addUser(String name, String cardType, String velibNetwork) {
 				
 		try {
@@ -206,7 +239,7 @@ public abstract class FactoryCommandTerminal {
 			System.out.println("Done correctly\n");
 		} catch (NumberFormatException e) {
 			System.out.println("An argument in the command is not correct, please try it again, or please read the Javadoc.\n");
-		} catch (StationFactoryException e) {
+		} catch (StationFindException e) {
 			
 		} catch (NetworkFactoryException e) {
 			
@@ -225,7 +258,7 @@ public abstract class FactoryCommandTerminal {
 			System.out.println("Done correctly\n");
 		} catch (NumberFormatException e) {
 			System.out.println("An argument in the command is not correct, please try it again, or please read the Javadoc.\n");
-		} catch (StationFactoryException e) {
+		} catch (StationFindException e) {
 			
 		} catch (NetworkFactoryException e) {
 			
@@ -256,7 +289,7 @@ public abstract class FactoryCommandTerminal {
 			System.out.println("An argument in the command is not correct, please try it again, or please read the Javadoc.\n");
 		} catch (UserFindFactoryException e) {
 			
-		} catch (StationFactoryException e) {
+		} catch (StationFindException e) {
 			
 		} catch (BikeFactoryException e) {
 			
@@ -286,7 +319,7 @@ public abstract class FactoryCommandTerminal {
 			System.out.println("An argument in the command is not correct, please try it again, or please read the Javadoc.\n");
 		} catch (UserFindFactoryException e) {
 			
-		} catch (StationFactoryException e) {
+		} catch (StationFindException e) {
 			
 		}
 	}
@@ -304,7 +337,7 @@ public abstract class FactoryCommandTerminal {
 			System.out.println("Done correctly\n");
 		} catch (NetworkFactoryException e) {
 			
-		} catch (StationFactoryException e) {
+		} catch (StationFindException e) {
 			
 		} catch (NumberFormatException e) {
 			System.out.println("An argument in the command is not correct, please try it again, or please read the Javadoc.\n");
@@ -360,19 +393,7 @@ public abstract class FactoryCommandTerminal {
 		
 		ReadAText.readAText(string);		
 	}
-	
-	private static void addTime(String time) {
 		
-		try {
-			int addTime = Integer.parseInt(time);
-			Time.addTime(addTime);
-			
-			System.out.println("Done correctly\n");
-		} catch (NumberFormatException e) {
-			System.out.println("An argument in the command is not correct, please try it again, or please read the Javadoc.\n");
-		}
-	}
-	
 	private static void haveARide(String xFirst, String yFirst, String xSecond, String ySecond, String rideStrategy, String kindBikeWish, String velibNetwork, String userID) {
 		
 		try {
@@ -408,5 +429,17 @@ public abstract class FactoryCommandTerminal {
 			System.out.println("An argument in the command is not correct, please try it again, or please read the Javadoc.\n");
 		}
 		
+	}
+	
+	private static void addTime(String time) {
+		
+		try {
+			int addTime = Integer.parseInt(time);
+			Time.addTime(addTime);
+			
+			System.out.println("Done correctly\n");
+		} catch (NumberFormatException e) {
+			System.out.println("An argument in the command is not correct, please try it again, or please read the Javadoc.\n");
+		}
 	}
 }

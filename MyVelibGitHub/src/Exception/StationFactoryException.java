@@ -1,6 +1,6 @@
 package Exception;
 
-public class StationFactoryException extends Exception{
+public class StationFactoryException extends Exception {
 
 	/**
 	 * Just to say at the client there is a problem with the command.
@@ -9,7 +9,7 @@ public class StationFactoryException extends Exception{
 
 	public StationFactoryException() {
 		super();
-		System.out.println("This station does not exist, rectify the entrance.\n");
+		System.err.println("Something went wrong when creating the user, rectify the entry. Read the Javadoc.\n");
 	}
 
 }
