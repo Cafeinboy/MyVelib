@@ -3,18 +3,9 @@ scenario ScenarioTXT\SetupNetwork
 haveARide 4 4 21 12 fastestPath mechanical Paris 1
 addtime 2
 rentBike 1 1 mechanical
-
-haveARide 26 5 21 12 preferPlusStation electrical Paris 2
-haveARide 24 4 21 12 fastestPath mechanical Paris 1
-addtime 2
-
-rentBike 2 4 electrical
-rentBike 3 7 electrical
-
 addtime 5
 
-returnBike 2 3
-returnBike 3 3
+offline Paris 3
 
 addtime 5
 
