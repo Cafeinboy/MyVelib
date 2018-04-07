@@ -267,7 +267,7 @@ public abstract class FactoryCommandTerminal {
 		} catch (NetworkFactoryException e) {
 			
 		} catch (NumberFormatException e) {
-			
+			System.out.println("An argument in the command is not correct, please try it again, or please read the Javadoc.\n");
 		}
 		
 	}
@@ -278,7 +278,9 @@ public abstract class FactoryCommandTerminal {
 			UserFactory.createUser(name,cardType,velibNetwork);	
 			System.out.println("Done correctly\n");
 		} catch (UserFactoryException e) {
+			
 		} catch (NetworkFactoryException e) {
+			
 		} 
 	}
 	
@@ -294,7 +296,9 @@ public abstract class FactoryCommandTerminal {
 			station.addNParkingSlot(quant);
 			
 		} catch (StationFindException e) {
+			
 		} catch (NumberFormatException e) {
+			System.out.println("An argument in the command is not correct, please try it again, or please read the Javadoc.\n");
 		} 
 	}
 	
@@ -309,7 +313,9 @@ public abstract class FactoryCommandTerminal {
 			station.addNParkingSlot(quant);
 			
 		} catch (StationFindException e) {
+			
 		} catch (NumberFormatException e) {
+			System.out.println("An argument in the command is not correct, please try it again, or please read the Javadoc.\n");
 		} 
 	}
 	
@@ -337,8 +343,11 @@ public abstract class FactoryCommandTerminal {
 			System.out.println("Done correctly\n");
 			
 		} catch (StationFindException e) {
+			
 		} catch (NumberFormatException e) {
+			System.out.println("An argument in the command is not correct, please try it again, or please read the Javadoc.\n");
 		} catch (BikeFactoryException e) {
+			
 		} 
 	}
 	
@@ -351,6 +360,7 @@ public abstract class FactoryCommandTerminal {
 			addBike(String.valueOf(station.getID()), kindBike, quantity);
 			
 		} catch (StationFindException e) {
+			
 		}
 	}
 	
@@ -517,7 +527,8 @@ public abstract class FactoryCommandTerminal {
 
 	private static void scenario(String string) {
 		
-		ReadAText.readAText(string);		
+		ReadAText.readAText(string);	
+		
 	}
 		
 	private static void haveARide(String xFirst, String yFirst, String xSecond, String ySecond, String rideStrategy, String kindBikeWish, String velibNetwork, String userID) {
@@ -546,13 +557,13 @@ public abstract class FactoryCommandTerminal {
 		} catch (NumberFormatException e) {
 			System.out.println("An argument in the command is not correct, please try it again, or please read the Javadoc.\n");
 		} catch (UserFindFactoryException e) {
-			System.out.println("An argument in the command is not correct, please try it again, or please read the Javadoc.\n");
+			
 		} catch (NetworkFactoryException e) {
-			System.out.println("An argument in the command is not correct, please try it again, or please read the Javadoc.\n");
+			
 		} catch (BikeFactoryException e) {
-			System.out.println("An argument in the command is not correct, please try it again, or please read the Javadoc.\n");
+			
 		} catch (PlanningRideFactoryException e) {
-			System.out.println("An argument in the command is not correct, please try it again, or please read the Javadoc.\n");
+			
 		}
 		
 	}
