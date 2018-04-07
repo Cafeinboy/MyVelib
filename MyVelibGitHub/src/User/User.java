@@ -118,8 +118,9 @@ public class User implements Observer, Functionnality {
 	 * @param bikeType
 	 */
 	public void takeARide(GPSCoordinate beginingPoint, GPSCoordinate finishingPoint, PlanningRideStrategy rideStrategy, Bike wishBike, Network net) {
-		if (this.ride.getBike() == null) {
+		if (this.ride.getBike() == null) {			
 			this.ride = new Ride(beginingPoint, finishingPoint, rideStrategy, net);
+			this.ride.setWishBike(wishBike);
 			this.ride.haveARide(wishBike);
 			this.ride.getListStation().get(1).addUser(this);
 		}
@@ -144,10 +145,11 @@ public class User implements Observer, Functionnality {
 			String message = (String) arg;
 			System.out.println(message);
 			Ride oldRide = this.getRide();
+			System.out.println(oldRide);
 			Ride newRide = new Ride(oldRide.getListStation().get(0).getCoordinates(), oldRide.getFinishingPoint(), oldRide.getRideStrategy(), oldRide.getListStation().get(1).knowHisNetwork());
-			newRide.haveARide(oldRide.getBike());
+			newRide.haveARide(oldRide.getWishBike());
 			this.getRide().setListStation(new ArrayList<Station>(Arrays.asList(oldRide.getListStation().get(0), newRide.getListStation().get(1))));
-	
+			System.out.println("\n\n\n"+newRide);
 			System.out.println("Your new destination station is " + this.getRide().getListStation().get(1).getName());
 		}
 		else {

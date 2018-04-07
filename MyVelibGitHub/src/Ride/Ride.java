@@ -18,7 +18,8 @@ public class Ride implements RideStrategyInterface{
 	private GPSCoordinate finishingPoint;
 	private int beginingTime;
 	private int endingTime;
-	private Bike bike;
+	private Bike wishBike;
+	private Bike realBike;
 	private int price;
 	private PlanningRideStrategy rideStrategy;
 	private ArrayList<Station> listStation;
@@ -79,11 +80,11 @@ public class Ride implements RideStrategyInterface{
 	}
 
 	public Bike getBike() {
-		return bike;
+		return realBike;
 	}
 
 	public void setBike(Bike bike) {
-		this.bike = bike;
+		this.realBike = bike;
 	}
 	
 	public ArrayList<Station> getListStation() {
@@ -118,7 +119,16 @@ public class Ride implements RideStrategyInterface{
 		this.rideStrategy = rideStrategy;
 	}
 	
+	public Bike getWishBike() {
+		return wishBike;
+	}
+
+	public void setWishBike(Bike wishBike) {
+		this.wishBike = wishBike;
+	}
+	
 	//Methods
+
 
 	/**
 	 * Changes the beginning station of the ride, is used if there are no more
@@ -156,10 +166,9 @@ public class Ride implements RideStrategyInterface{
 	@Override
 	public String toString() {
 		return "Ride [beginingPoint=" + beginingPoint + ", finishingPoint=" + finishingPoint + ", beginingTime="
-				+ beginingTime + ", endingTime=" + endingTime + ", bike=" + bike + ", price=" + price
-				+ ", rideStrategy=" + rideStrategy + ", listStation=" + listStation + ", net=" + net + "]";
+				+ beginingTime + ", endingTime=" + endingTime + ", wishBike=" + wishBike + ", realBike=" + realBike
+				+ ", price=" + price + ", rideStrategy=" + rideStrategy + ", listStation=" + listStation + ", net="
+				+ net + "]";
 	}
-	
-	
 
 }

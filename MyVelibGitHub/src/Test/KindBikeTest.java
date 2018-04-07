@@ -86,20 +86,26 @@ Network net1 = new Network("Paris");
 		}
 		for(int k = 0; k < 4; k++) {
 			defense.addBike(new MechanicalBike());
+//			defense.addBike(new ElectricalBike());
 		}
 		net1.addStation(defense);
-				
+		
 		System.out.println(net1.isAKindBike(new ElectricalBike()));
-		
-//		net1.getStations().get(3).goOffline();
-		
+			
 		User user = UserFactory.createUser("BroulQ", "nocard", "paris");
+		//PreferPlusStation strategy
+		user.takeARide(new GPSCoordinate(3,3), new GPSCoordinate(25,4), new PreferPlusStationStrategy(), new MechanicalBike(), net1);
+		assertEquals(user.getRide().getListStation().get(0), net1.getStations().get(0));
+		assertEquals(user.getRide().getListStation().get(1), net1.getStations().get(3));
 		
 		user.takeARide(new GPSCoordinate(3,3), new GPSCoordinate(25,3.9), new PreferPlusStationStrategy(), new MechanicalBike(), net1);
 		assertEquals(user.getRide().getListStation().get(0), net1.getStations().get(0));
 		assertEquals(user.getRide().getListStation().get(1), net1.getStations().get(3));
 		
-		assertTrue(!net1.isAKindBike(new ElectricalBike()));
+		net1.getStations().get(3).goOffline();
+		user.takeARide(new GPSCoordinate(3,3), new GPSCoordinate(25,4), new PreferPlusStationStrategy(), new MechanicalBike(), net1);
+		assertEquals(user.getRide().getListStation().get(0), net1.getStations().get(0));
+		assertEquals(user.getRide().getListStation().get(1), net1.getStations().get(6));
 	}
 
 }
