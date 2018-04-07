@@ -145,6 +145,8 @@ public abstract class FactoryCommandTerminal {
 				+ "To add slots with a quantity quantityOfSlots, at a station with the name stationName.\n");
 		System.out.println("          addBike <stationID> <kindBike> <quantityOfBikes>\n"
 				+ "To add certain bike kindBike with a quantity quantityOfBikes, at a station with the ID stationID.\n");
+		System.out.println("          addBike <stationName> <kindBike> <quantityOfBikes>\n"
+				+ "To add certain bike kindBike with a quantity quantityOfBikes, at a station with a name stationName.\n");
 		System.out.println("          offline <velibnetworkName> <stationID>\n"
 				+ "To put offline the station stationID of the myVelib network velibnetworkName.\n");
 		System.out.println("          online <velibnetworkName> <stationID>\n"
