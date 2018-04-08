@@ -166,11 +166,11 @@ public class PlaningRideTest {
 		
 		user.takeARide(new GPSCoordinate(5,4), new GPSCoordinate(10,16), new ShortestPath(), new MechanicalBike(), net1);
 		assertEquals(user.getRide().getListStation().get(0), net1.getStations().get(0));
-		assertEquals(user.getRide().getListStation().get(1), net1.getStations().get(1));
+		assertEquals(user.getRide().getListStation().get(1), net1.getStations().get(5));
 		
 		user.takeARide(new GPSCoordinate(5,4), new GPSCoordinate(25,4), new ShortestPath(), new MechanicalBike(), net1);
 		assertEquals(user.getRide().getListStation().get(0), net1.getStations().get(0));
-		assertEquals(user.getRide().getListStation().get(1), net1.getStations().get(1));
+		assertEquals(user.getRide().getListStation().get(1), net1.getStations().get(6));
 	
 		//FastestPath strategy
 		
