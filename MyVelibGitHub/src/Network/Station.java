@@ -432,7 +432,6 @@ public abstract class Station extends Observable {
 				if (user.getRide().getNet() != null) {
 					// we are computing again a ride if the user plan it before
 					Ride oldRide = user.getRide();
-					System.out.println(oldRide);
 					Ride newRide = new Ride(oldRide.getListStation().get(1).getCoordinates(), oldRide.getFinishingPoint(), oldRide.getRideStrategy(), oldRide.getListStation().get(1).knowHisNetwork());
 					newRide.haveARide(oldRide.getWishBike());
 					user.getRide().setListStation(new ArrayList<Station>(Arrays.asList(oldRide.getListStation().get(0), newRide.getListStation().get(1))));
