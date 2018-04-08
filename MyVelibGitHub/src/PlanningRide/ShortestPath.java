@@ -36,7 +36,7 @@ public class ShortestPath implements PlanningRideStrategy{
 		
 		ArrayList<Station> availableStation = net.getAvailableStations();
 		
-		double distanceMin = GPSCoordinate.distance(availableStation.get(0).getCoordinates(),beginingPoint) + GPSCoordinate.distance(availableStation.get(1).getCoordinates(),finishingPoint);
+		double distanceMin = GPSCoordinate.distance(availableStation.get(0).getCoordinates(),beginingPoint) + GPSCoordinate.distance(availableStation.get(0).getCoordinates(),availableStation.get(1).getCoordinates()) + GPSCoordinate.distance(availableStation.get(1).getCoordinates(),finishingPoint);
 		Station stationBeg = availableStation.get(0);
 		Station stationFin = availableStation.get(1);
 		
