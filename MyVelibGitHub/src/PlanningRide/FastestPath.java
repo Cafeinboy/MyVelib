@@ -38,7 +38,7 @@ public class FastestPath implements PlanningRideStrategy{
 		
 		ArrayList<Station> availableStation = net.getAvailableStations();
 		
-		double timeMin = GPSCoordinate.distance(availableStation.get(0).getCoordinates(),beginingPoint)/4. + GPSCoordinate.distance(availableStation.get(0).getCoordinates(),finishingPoint)/4.;
+		double timeMin = GPSCoordinate.distance(availableStation.get(0).getCoordinates(),beginingPoint)/4. + GPSCoordinate.distance(availableStation.get(0).getCoordinates(),availableStation.get(1).getCoordinates())/bike.getSpeed() + GPSCoordinate.distance(availableStation.get(0).getCoordinates(),finishingPoint)/4.;
 		Station stationBeg = availableStation.get(0);
 		Station stationFin = availableStation.get(0);
 		
