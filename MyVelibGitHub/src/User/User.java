@@ -148,7 +148,6 @@ public class User implements Observer, Functionnality {
 			String message = (String) arg;
 			System.out.println(message);
 			Ride oldRide = this.getRide();
-			System.out.println("\n\n" + oldRide + "\n\n");
 			Ride newRide = new Ride(oldRide.getListStation().get(0).getCoordinates(), oldRide.getFinishingPoint(), oldRide.getRideStrategy(), oldRide.getListStation().get(1).knowHisNetwork());
 			newRide.setWishBike(oldRide.getWishBike());
 			newRide.haveARide(oldRide.getWishBike());
