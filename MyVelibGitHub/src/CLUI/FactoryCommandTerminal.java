@@ -656,7 +656,7 @@ public abstract class FactoryCommandTerminal {
 			GPSCoordinate beginingPoint = new GPSCoordinate(xFirst1, yFirst1);
 			
 			double xSecond1 = Double.parseDouble(xSecond);
-			double ySecond1 = Double.parseDouble(xSecond);
+			double ySecond1 = Double.parseDouble(ySecond);
 			GPSCoordinate finishingPoint = new GPSCoordinate(xSecond1, ySecond1);
 			
 			PlanningRideStrategy strategy = PlanningRideFactory.createAStrategy(rideStrategy);
