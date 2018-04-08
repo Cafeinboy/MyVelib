@@ -5,6 +5,7 @@ import java.util.Random;
 
 import Bike.Bike;
 import Bike.BikeFactory;
+import Bike.ElectricalBike;
 import Bike.MechanicalBike;
 import Exception.*;
 import GPSCoordinate.GPSCoordinate;
@@ -238,7 +239,12 @@ public abstract class FactoryCommandTerminal {
 			int totalBikes = 0;
 			while (totalBikes != nBikes1) {
 			    int randomNum = new Random().nextInt(nStations1);
-			    if (net.getStations().get(randomNum).addBikeWithReturnInformation(new MechanicalBike())) {
+			    Bike nextBike = new MechanicalBike();
+			    int isElectrical = new Random().nextInt(10);
+			    if(isElectrical >= 7) {
+			    	nextBike = new ElectricalBike();
+			    }
+			    if (net.getStations().get(randomNum).addBikeWithReturnInformation(nextBike)) {
 			    	totalBikes++;
 			    }
 			    
