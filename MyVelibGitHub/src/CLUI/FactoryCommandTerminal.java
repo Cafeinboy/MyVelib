@@ -220,6 +220,10 @@ public abstract class FactoryCommandTerminal {
 			double x = 0;
 			double y = 0;
 			
+			if (sideSquare1 == 0) {
+				throw new SideSquareException();
+			}
+			
 			//Creating network and all stations required
 			Network net = new Network(name);
 			for (int i = 0; i < nStations1; i++) {
@@ -236,16 +240,16 @@ public abstract class FactoryCommandTerminal {
 			}
 			
 			//Distributing the bikes on the system randomly
-			int totalBikes = 0;
-			while (totalBikes != nBikes1) {
+			int mechanicalBike = (int) ((double)nBikes1*0.7);
+			int electricalBike = nBikes1 - mechanicalBike;
+			
+			int totalMechanicalBikes = 0;
+			while (totalMechanicalBikes != mechanicalBike) {
 			    int randomNum = new Random().nextInt(nStations1);
 			    Bike nextBike = new MechanicalBike();
-			    int isElectrical = new Random().nextInt(10);
-			    if(isElectrical >= 7) {
-			    	nextBike = new ElectricalBike();
-			    }
+			    
 			    if (net.getStations().get(randomNum).addBikeWithReturnInformation(nextBike)) {
-			    	totalBikes++;
+			    	totalMechanicalBikes++;
 			    }
 			    
 			    boolean flag = true;
@@ -256,7 +260,31 @@ public abstract class FactoryCommandTerminal {
 					}
 				}
 			    
-			    if (flag && totalBikes != nBikes1) {
+			    if (flag && totalMechanicalBikes != mechanicalBike) {
+			    	System.err.println("Too much bike and not enough parking slots, be careful and retry");
+			    	Network.entireNet.remove(net);
+			    	break;
+			    	}
+			}
+			
+			int totalElectricalBikes = 0;
+			while (totalElectricalBikes != electricalBike) {
+			    int randomNum = new Random().nextInt(nStations1);
+			    Bike nextBike = new ElectricalBike();
+			    
+			    if (net.getStations().get(randomNum).addBikeWithReturnInformation(nextBike)) {
+			    	totalElectricalBikes++;
+			    }
+			    
+			    boolean flag = true;
+			    for (Station stat : net.getStations()) {
+					if (!stat.isFull()) {
+						flag = false;
+						break;
+					}
+				}
+			    
+			    if (flag && totalElectricalBikes != electricalBike) {
 			    	System.err.println("Too much bike and not enough parking slots, be careful and retry");
 			    	Network.entireNet.remove(net);
 			    	break;
@@ -267,6 +295,8 @@ public abstract class FactoryCommandTerminal {
 			
 		} catch (NumberFormatException e) {
 			System.out.println("An argument in the command is not correct, please try it again, or please read the Javadoc.\n");
+		} catch (SideSquareException e) {
+			
 		}
 		
 	}
