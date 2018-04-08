@@ -421,7 +421,7 @@ public abstract class Station extends Observable {
 	
 	
 	
-	public void giveBackBike(User user) {
+	public boolean giveBackBike(User user) {
 		if(user.getRide().getRealBike() != null) {
 			Bike bike = user.getRide().getRealBike();
 			if(this.isFull() || !this.isOnline()) {
@@ -435,7 +435,8 @@ public abstract class Station extends Observable {
 					user.getRide().setListStation(new ArrayList<Station>(Arrays.asList(oldRide.getListStation().get(0), newRide.getListStation().get(1))));
 					this.removeUser(user);
 					user.getRide().getListStation().get(1).addUser(user);
-				}					
+				}
+				return false;
 			}
 			else {
 				ParkingSlot nextSpot = this.getFreeSlots().get(0);
@@ -448,13 +449,13 @@ public abstract class Station extends Observable {
 				if(this instanceof PlusStation) {
 					user.getCard().addTimecredit(5);
 				}
-				
-
+				return true;
 			}
 			
 		}
 		else {
 			System.err.println("User does not have a bike");
+			return false;
 		}
 	}
 	

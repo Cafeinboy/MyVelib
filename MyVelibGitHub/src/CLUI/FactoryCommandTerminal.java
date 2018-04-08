@@ -478,11 +478,14 @@ public abstract class FactoryCommandTerminal {
 			
 			int timeOfSimulation = Time.getTimeInMinuteSinceCreation();
 			Time.setTimeInMinuteSinceCreation(time1);
-			stat.giveBackBike(user);
+			boolean flag = stat.giveBackBike(user);
 			Time.setTimeInMinuteSinceCreation(timeOfSimulation);
 			
-			if(user.getRide().getRealBike() == null) {
-				System.out.println("The price of the course for " + user.getName() + " going from " + user.getAllRide().get(user.getAllRide().size()-1).getListStation().get(0).getName() + " to " + user.getAllRide().get(user.getAllRide().size()-1).getListStation().get(1).getName() + " was : " + user.getAllRide().get(user.getAllRide().size() -1).getPrice());
+			if(flag) {
+				System.out.println("The price of the course for " + user.getName() + " going from " + 
+			user.getAllRide().get(user.getAllRide().size()-1).getListStation().get(0).getName() + 
+			" to " + user.getAllRide().get(user.getAllRide().size()-1).getListStation().get(1).getName() + " was : " + 
+			user.getAllRide().get(user.getAllRide().size() -1).getPrice());
 			}
 			else {
 				System.out.println("Impossible station full");
