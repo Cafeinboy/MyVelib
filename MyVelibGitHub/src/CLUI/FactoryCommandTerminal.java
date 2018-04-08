@@ -146,52 +146,52 @@ public abstract class FactoryCommandTerminal {
 				+ "and such that stations are arranged on a square grid with a 4km width. Initially 75% of the parking slots are occupied,\n"
 				+ "with 70% of mechanical bikes and 30% of electrical bikes randomly distributed over the 10 stations.\n");
 		System.out.println("          setup <name> <nstations> <nslots> <sidearea> <nbikes> \n"
-				+ "To create a myVelib network with a given name and consisting of <nstations> standard stations each of which has <nslots>"
+				+ "To create a myVelib network with a given name and consisting of nstations standard stations each of which has nslots"
 				+ " parking slots and such that the stations are arranged on a square grid whose side is "
-				+ "<sidearea> and initially populated with 0.7*nbikes mechanical bikes and 0.3*nbikes electrical bikes randomly distributed over the <nstations> stations.\n");
+				+ "sidearea and initially populated with 0.7*nbikes mechanical bikes and 0.3*nbikes electrical bikes randomly distributed over the nstations stations.\n");
 		System.out.println("          addStation <statusStation> <xPosition> <yPosition> <stationName> <velibNetwork> <kindStation>\n"
-				+ "To add a ceratin station with a name <stationName>, in a network <velibNetwork>, at a certain position (xPosition, yPosition) with a "
-				+ "certain availibility <statusStation> and a certain characteristic <kindStation>.\n");
+				+ "To add a ceratin station with a name stationName, in a network velibNetwork, at a certain position (xPosition, yPosition) with a "
+				+ "certain availibility statusStation and a certain characteristic kindStation.\n");
 		System.out.println("          addUser <userName> <cardType> <velibnetworkName>\n"
-				+ "To add a user with name <userName> and card <cardType> (i.e. 'none' if the user has no card) to a myVelib network <velibnetworkName>.\n");
+				+ "To add a user with name userName and card cardType (i.e. 'none' if the user has no card) to a myVelib network velibnetworkName.\n");
 		System.out.println("          addSlot <stationID> <quantityOfSlots>\n"
-				+ "To add <quantityOfSlots> slots, to a station with the ID <stationID>.\n");
+				+ "To add quantityOfSlots slots, to a station with the ID stationID.\n");
 		System.out.println("          addSlotName <stationName> <quantityOfSlots>\n"
-				+ "To add <quantityOfSlots> slots, at a station with the name <stationName>.\n");
+				+ "To add quantityOfSlots slots, at a station with the name stationName.\n");
 		System.out.println("          addBike <stationID> <kindBike> <quantityOfBikes>\n"
-				+ "To add certain bike kindBike with a quantity quantityOfBikes, at a station with the ID stationID.\n");
+				+ "To add a certain bike kindBike with a quantity quantityOfBikes, at a station with the ID stationID.\n");
 		System.out.println("          addBike <stationName> <kindBike> <quantityOfBikes>\n"
-				+ "To add certain bike kindBike with a quantity quantityOfBikes, at a station with a name stationName.\n");
+				+ "To add a certain bike kindBike with a quantity quantityOfBikes, at a station with the name stationName.\n");
 		System.out.println("          offline <velibnetworkName> <stationID>\n"
 				+ "To put offline the station stationID of the myVelib network velibnetworkName.\n");
 		System.out.println("          online <velibnetworkName> <stationID>\n"
 				+ "To put online the station stationID of the myVelib network velibnetworkName.\n");
 		System.out.println("          rentBike <userID> <stationID>\n"
-				+ "To let the user userID renting a mechanical bike from station stationID (if no bikes are available should behave accordingly).\n");
+				+ "To let the user userID rent a mechanical bike from the station stationID (if no bikes are available should behave accordingly).\n");
 		System.out.println("          rentBike <userID> <stationID> <kindBike>\n"
-						+ "To let the user userID renting a bike (kind choosen by kindBike) from station stationID (if no bikes are available should behave accordingly).\n");
+				+ "To let the user userID rent a bike (kind chosen by kindBike) from the station stationID (if no bikes are available should behave accordingly).\n");
 		System.out.println("          returnBike <userID> <stationID> <time>\n"
-				+ "To let the user userID returning a bike to station stationID at a given instant of time time (if no parking bay is "
+				+ "To let the user userID return a bike to the station stationID at a given instant of time time (if no parking bay is "
 				+ "available should behave accordingly). This command should display the cost of the rent.\n");
 		System.out.println("          returnBike <userID> <stationID>\n"
-				+ "To let the user userID returning a bike to station stationID at this time (if no parking bay is "
+				+ "To let the user userID return a bike to the station stationID at the current time (if no parking bay is "
 				+ "available should behave accordingly). This command should display the cost of the rent.\n");
 		System.out.println("          displayStation <velibnetworkName> <stationID>\n"
-				+ "To display the statistics (as of Section 2.4) of station stationID of a myVelib network velibnetwork.\n");
+				+ "To display the statistics (as of Section 2.4) of the station stationID of a myVelib network velibnetwork.\n");
 		System.out.println("          displayUser <velibnetworkName> <userID>\n"
-				+ "To display the statistics (as of Section 2.4) of user stationID of a myVelib network velibnetwork.\n");
+				+ "To display the statistics (as of Section 2.4) of the user stationID of a myVelib network velibnetwork.\n");
 		System.out.println("          sortStation <velibnetworkName> <sortpolicy>\n"
 				+ "To display the stations in increasing order w.r.t. to the sorting policy (as of Section 2.4) of user sortpolicy.\n");
 		System.out.println("          sortStation <velibnetworkName> <sortpolicy> <minTime> <maxTime>\n"
 				+ "To display the stations in increasing order w.r.t. to the sorting policy (as of Section 2.4) of user sortpolicy taking into account "
 				+ "the results between minTime and maxTime.\n");
 		System.out.println("          display <velibnetworkName>\n"
-				+ "To display the entire status (stations, parking bays, users) of an a myVelib network velibnetworkName.\n");
+				+ "To display the entire status (stations, parking bays, users) of a myVelib network velibnetworkName.\n");
 		System.out.println("          haveARide <xFirst> <yFirst> <xSecond> <ySecond> <rideStrategy> <kindBikeWish> <velibNetwork> <userID>\n"
-				+ "To have a ride to a user in a certain network, a certain strategy, a certain wish bike, between two points the "
+				+ "To let a user have a ride in a certain network, with a certain strategy, a certain wish bike, and between two points : the "
 				+ "first (begining) and the second (finishing). Each point has two coordinates x and y.\n");
 		System.out.println("          scenario <fileName>\n"
-				+ "To launch a scenario from a text file by giving his name if it has been upload in the folder scenario (for example ScenarioTXT\\SmallScenario), else you have to indicate the "
+				+ "To launch a scenario from a text file by giving his name if it has been upload in the folder scenario (for example ScenarioTXT\\StationFullScenario), else you have to indicate the "
 				+ "complete path.\n");
 		
 	}
