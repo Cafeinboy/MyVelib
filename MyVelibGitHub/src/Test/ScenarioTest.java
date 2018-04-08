@@ -116,7 +116,7 @@ public class ScenarioTest {
 		Time.addTime(2);
 		
 		opera.takeBike(new MechanicalBike(),  pierre);
-		assertTrue(pierre.getRide().getBike() instanceof MechanicalBike);
+		assertTrue(pierre.getRide().getRealBike() instanceof MechanicalBike);
 		
 		paul.setLocation(26,5);
 		paul.takeARide(paul.getLocation(), new GPSCoordinate(21, 12), new PreferPlusStationStrategy(), new ElectricalBike(), paris);
@@ -131,10 +131,10 @@ public class ScenarioTest {
 		Time.addTime(2);
 		
 		odeon.takeBike(new ElectricalBike(),  paul);
-		assertTrue(paul.getRide().getBike() instanceof ElectricalBike);
+		assertTrue(paul.getRide().getRealBike() instanceof ElectricalBike);
 		
 		defense.takeBike(new ElectricalBike(),  jacques);
-		assertTrue(jacques.getRide().getBike() instanceof ElectricalBike);
+		assertTrue(jacques.getRide().getRealBike() instanceof ElectricalBike);
 		
 		Time.addTime(5);
 		

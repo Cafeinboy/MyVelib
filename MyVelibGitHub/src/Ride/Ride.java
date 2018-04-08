@@ -79,10 +79,7 @@ public class Ride implements RideStrategyInterface{
 		this.endingTime = endingTime;
 	}
 
-	public Bike getBike() {
-		if (realBike !=null) {
-			return realBike;
-		}
+	public Bike getWishBike() {
 		return wishBike;
 	}
 	

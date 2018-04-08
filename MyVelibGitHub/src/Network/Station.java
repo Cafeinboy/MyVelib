@@ -434,7 +434,7 @@ public abstract class Station extends Observable {
 					Ride oldRide = user.getRide();
 					System.out.println(oldRide);
 					Ride newRide = new Ride(oldRide.getListStation().get(1).getCoordinates(), oldRide.getFinishingPoint(), oldRide.getRideStrategy(), oldRide.getListStation().get(1).knowHisNetwork());
-					newRide.haveARide(oldRide.getBike());
+					newRide.haveARide(oldRide.getWishBike());
 					user.getRide().setListStation(new ArrayList<Station>(Arrays.asList(oldRide.getListStation().get(0), newRide.getListStation().get(1))));
 					this.removeUser(user);
 					user.getRide().getListStation().get(1).addUser(user);
@@ -452,7 +452,6 @@ public abstract class Station extends Observable {
 				if(this instanceof PlusStation) {
 					user.getCard().addTimecredit(5);
 				}
-				System.out.println(this);
 				return true;
 			}
 			
