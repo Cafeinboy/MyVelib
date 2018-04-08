@@ -11,17 +11,28 @@ import Time.Time;
 public abstract class Bike implements BikeStrategyCardInterface {
 	
 	private int rentTime;
+	private int ID;
+	
+	private static int uniqID = 0;
 	
 	public Bike() {
 		super();
 		this.rentTime = 0;
+		uniqID++;
+		this.ID = uniqID;
 	}
 
 	public Bike(int rentTime) {
 		super();
 		this.rentTime = rentTime;
+		uniqID++;
+		this.ID = uniqID;
 	}
 	
+	public int getID() {
+		return ID;
+	}
+
 	public int getRentTime() {
 		return rentTime;
 	}
