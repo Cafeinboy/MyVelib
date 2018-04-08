@@ -29,7 +29,7 @@ public abstract class FactoryCommandTerminal {
 			return "exit";
 		}
 		else if (words[0].equalsIgnoreCase("scene") && words.length == 1) {
-			scenario("ScenarioTXT\\testScenarioN");
+			scenario("ScenarioTXT\\testScenario1");
 			return "";
 		}
 		else if (words[0].equalsIgnoreCase("changesetout") && words.length == 2) {
