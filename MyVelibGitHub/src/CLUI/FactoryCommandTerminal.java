@@ -138,26 +138,26 @@ public abstract class FactoryCommandTerminal {
 	}
 	
 	private static void help() {
-		System.out.println("Hi, you have asked help so I am here. You can see bellow all the commad available and the arguments required");
+		System.out.println("Hi, you have for asked help so I am here. You can see below all the available commands and the required arguments\n\n");
 		System.out.println("          setupempty <velibnetworkName>\n"
-				+ "To create a myVelib network with given name and nothing else. You just have a town, a system.\n");
+				+ "To create a myVelib network with a given name and nothing else. You just have a town, a system.\n");
 		System.out.println("          setup <velibnetworkName>\n"
-				+ "To create a myVelib network with given name and consisting of 10 standard stations each of which has 10 parking slots"
-				+ "and such that stations are arranged on a square grid whose of side 4km and initially populated with a 75%"
-				+ " mechanical bikes randomly distributed over the 10 stations.\n");
+				+ "To create a myVelib network with a given name and consisting of 10 standard stations each of which has 10 parking slots"
+				+ "and such that stations are arranged on a square grid with a 4km width. Initially 75% of the parking slots are occupied,\n"
+				+ "with 70% of mechanical bikes and 30% of electrical bikes randomly distributed over the 10 stations.\n");
 		System.out.println("          setup <name> <nstations> <nslots> <sidearea> <nbikes> \n"
-				+ "To create a myVelib network with given name and consisting of nstations standard stations each of which has nslots"
-				+ " parking slots and such that stations are arranged on a square grid whose of side "
-				+ "sidearea and initially populated with a nbikes mechanical bikes randomly distributed over the nstations stations.\n");
+				+ "To create a myVelib network with a given name and consisting of <nstations> standard stations each of which has <nslots>"
+				+ " parking slots and such that the stations are arranged on a square grid which side is "
+				+ "<sidearea> and initially populated with <nbikes> mechanical bikes randomly distributed over the <nstations> stations.\n");
 		System.out.println("          addStation <statusStation> <xPosition> <yPosition> <stationName> <velibNetwork> <kindStation>\n"
-				+ "To add a ceratin station with a name stationName, in a network welinNetwork, at a certain position (xPoistion, yPosition) with a "
-				+ "certain availibility status and a certain characteristics kindStation.\n");
+				+ "To add a ceratin station with a name <stationName>, in a network <velibNetwork>, at a certain position (xPosition, yPosition) with a "
+				+ "certain availibility <statusStation> and a certain characteristic <kindStation>.\n");
 		System.out.println("          addUser <userName> <cardType> <velibnetworkName>\n"
-				+ "To add a user with name userName and card cardType (i.e. ‘‘none’’ if the user has no card) to a myVelib network velibnetworkName.\n");
+				+ "To add a user with name <userName> and card <cardType> (i.e. 'none' if the user has no card) to a myVelib network <velibnetworkName>.\n");
 		System.out.println("          addSlot <stationID> <quantityOfSlots>\n"
-				+ "To add slots with a quantity quantityOfSlots, at a station with the ID stationID.\n");
+				+ "To add <quantityOfSlots> slots, to a station with the ID <stationID>.\n");
 		System.out.println("          addSlotName <stationName> <quantityOfSlots>\n"
-				+ "To add slots with a quantity quantityOfSlots, at a station with the name stationName.\n");
+				+ "To add <quantityOfSlots> slots, at a station with the name <stationName>.\n");
 		System.out.println("          addBike <stationID> <kindBike> <quantityOfBikes>\n"
 				+ "To add certain bike kindBike with a quantity quantityOfBikes, at a station with the ID stationID.\n");
 		System.out.println("          addBike <stationName> <kindBike> <quantityOfBikes>\n"
