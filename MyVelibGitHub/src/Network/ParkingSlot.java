@@ -1,6 +1,8 @@
 package Network;
 
 import Bike.Bike;
+import RecordSystem.Record;
+import Time.Time;
 
 public class ParkingSlot {
 	
@@ -74,6 +76,18 @@ public class ParkingSlot {
 	}
 
 	public void setOutOfOrder(boolean outOfOrder) {
+		if (outOfOrder && this.bike == null) {
+			Station station = this.findIsStation();
+			if (station != null) {
+				station.getAllRecord().addRecord(new Record(Time.getTimeInMinuteSinceCreation(), this, false));
+			}
+		}
+		else if (!outOfOrder && this.bike == null ) {
+			Station station = this.findIsStation();
+			if (station != null) {
+				station.getAllRecord().putAnEndForARecord(this);
+			}
+		}
 		this.outOfOrder = outOfOrder;
 	}
 
@@ -126,6 +140,22 @@ public class ParkingSlot {
 			return this.slotID == parkSlot.getSlotID();
 		}
 		return false;
+	}
+	
+	public Station findIsStation() {
+		Station stat = null;
+		
+		for (Network net : Network.entireNet) {
+			for (Station station : net.getStations()) {
+				for (ParkingSlot park : station.getParkingSlots()) {
+					if (park.getSlotID() == this.getSlotID()) {
+						return stat;
+					}
+				}
+				
+			}
+		}
+		return null;
 	}
 	
 }
