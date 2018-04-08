@@ -668,6 +668,8 @@ public abstract class FactoryCommandTerminal {
 			int ID = Integer.parseInt(userID);
 			User user = User.findAUserFromID(ID);
 			
+			user.setLocation(xFirst1, yFirst1);
+			
 			user.takeARide(beginingPoint, finishingPoint, strategy, bike, net);
 			
 			System.out.println("Done correctly\n");

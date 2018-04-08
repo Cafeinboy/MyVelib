@@ -149,11 +149,14 @@ public abstract class Station extends Observable {
 	}
 	
 
+	
+	
 	@Override
 	public String toString() {
-		return "Station : " + this.name + ";\n Parking Bays : " + this.getParkingSlots() + "\n";
+		return "Station [status=" + status + ", full=" + full + ", parkingSlots=" + parkingSlots + ", allRecord="
+				+ allRecord + ", users=" + users + "]";
 	}
-	
+
 	public String toStringBalance() {
 		ArrayList<Double> list = this.getAllRecord().balanceStation(0, Time.getTimeInMinuteSinceCreation(), this.getNumberOfSpots());
 		return "Station : " + this.name  + ": ID : " + this.getID() + "\n     Number Of Rent Operation : " + list.get(0) + "\n     Number Of Return Operation : " + list.get(1)
@@ -449,6 +452,7 @@ public abstract class Station extends Observable {
 				if(this instanceof PlusStation) {
 					user.getCard().addTimecredit(5);
 				}
+				System.out.println(this);
 				return true;
 			}
 			
