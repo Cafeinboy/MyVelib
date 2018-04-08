@@ -29,7 +29,7 @@ public class PlaningRideTest {
 		
 		Network net1 = new Network("Paris");
 		
-		PlusStation opera = new PlusStation(true, new GPSCoordinate(5,5), "Opï¿½ra");
+		PlusStation opera = new PlusStation(true, new GPSCoordinate(5,5), "Opéra");
 		for(int k = 0; k < 10; k++) {
 			opera.addParkingSlot(new ParkingSlot(opera));
 		}
@@ -41,7 +41,7 @@ public class PlaningRideTest {
 		
 		net1.addStation(opera);
 		
-		PlusStation chatelet = new PlusStation(true, new GPSCoordinate(11,17), "Chï¿½telet");
+		PlusStation chatelet = new PlusStation(true, new GPSCoordinate(11,17), "Châtelet");
 		for(int k = 0; k < 10; k++) {
 			chatelet.addParkingSlot(new ParkingSlot(chatelet));
 		}
@@ -61,7 +61,7 @@ public class PlaningRideTest {
 		}
 		net1.addStation(luxembourg);
 		
-		PlusStation odeon = new PlusStation(true, new GPSCoordinate(25,5), "Odï¿½on");
+		PlusStation odeon = new PlusStation(true, new GPSCoordinate(25,5), "Odéon");
 		for(int k = 0; k < 10; k++) {
 			odeon.addParkingSlot(new ParkingSlot(odeon));
 		}
@@ -91,7 +91,7 @@ public class PlaningRideTest {
 		}
 		net1.addStation(invalides);
 		
-		StandardStation defense = new StandardStation(true, new GPSCoordinate(24,4), "Dï¿½fense");
+		StandardStation defense = new StandardStation(true, new GPSCoordinate(24,4), "Défense");
 		for(int k = 0; k < 10; k++) {
 			defense.addParkingSlot(new ParkingSlot(defense));
 		}
@@ -160,17 +160,15 @@ public class PlaningRideTest {
 		net1.getStations().get(5).setStatus(true);
 		
 		//ShortestPath strategy
-		
-		//Ne marche pas dans cette version, la version correcte existe mais dans un autre projet,
-		//elle arrive asap
+
 		
 		user.takeARide(new GPSCoordinate(5,4), new GPSCoordinate(10,16), new ShortestPath(), new MechanicalBike(), net1);
 		assertEquals(user.getRide().getListStation().get(0), net1.getStations().get(0));
-		assertEquals(user.getRide().getListStation().get(1), net1.getStations().get(1));
+		assertEquals(user.getRide().getListStation().get(1), net1.getStations().get(5));
 		
 		user.takeARide(new GPSCoordinate(5,4), new GPSCoordinate(25,4), new ShortestPath(), new MechanicalBike(), net1);
 		assertEquals(user.getRide().getListStation().get(0), net1.getStations().get(0));
-		assertEquals(user.getRide().getListStation().get(1), net1.getStations().get(1));
+		assertEquals(user.getRide().getListStation().get(1), net1.getStations().get(6));
 	
 		//FastestPath strategy
 		
