@@ -27,6 +27,17 @@ rentbike 10 9
 
 addtime 90
 
+returnbike 1 1
+returnbike 2 1
+returnbike 3 1
+returnbike 4 1
+returnbike 5 1
+returnbike 6 1
+returnbike 7 1
+returnbike 8 1
+returnbike 9 1
+returnbike 10 1
+
 sortstation paris mostused
 lol
 lol

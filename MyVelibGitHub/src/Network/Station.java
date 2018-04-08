@@ -422,16 +422,20 @@ public abstract class Station extends Observable {
 	
 	
 	public void giveBackBike(User user) {
-		if(user.getRide().getBike() != null) {
-			Bike bike = user.getRide().getBike();
+		if(user.getRide().getRealBike() != null) {
+			Bike bike = user.getRide().getRealBike();
 			if(this.isFull() || !this.isOnline()) {
 				System.out.println("You cannot return a bike here");
-				Ride oldRide = user.getRide();
-				Ride newRide = new Ride(oldRide.getListStation().get(1).getCoordinates(), oldRide.getFinishingPoint(), oldRide.getRideStrategy(), oldRide.getListStation().get(1).knowHisNetwork());
-				newRide.haveARide(oldRide.getBike());
-				user.getRide().setListStation(new ArrayList<Station>(Arrays.asList(oldRide.getListStation().get(0), newRide.getListStation().get(1))));
-				this.removeUser(user);
-				user.getRide().getListStation().get(1).addUser(user);
+				if (user.getRide().getNet() != null) {
+					// we are computing again a ride if the user plan it before
+					Ride oldRide = user.getRide();
+					System.out.println(oldRide);
+					Ride newRide = new Ride(oldRide.getListStation().get(1).getCoordinates(), oldRide.getFinishingPoint(), oldRide.getRideStrategy(), oldRide.getListStation().get(1).knowHisNetwork());
+					newRide.haveARide(oldRide.getBike());
+					user.getRide().setListStation(new ArrayList<Station>(Arrays.asList(oldRide.getListStation().get(0), newRide.getListStation().get(1))));
+					this.removeUser(user);
+					user.getRide().getListStation().get(1).addUser(user);
+				}					
 			}
 			else {
 				ParkingSlot nextSpot = this.getFreeSlots().get(0);
@@ -464,13 +468,13 @@ public abstract class Station extends Observable {
 	 * @param bikeType
 	 */
 	public void takeBike(Bike bike, User user) {
-		if(user.getRide().getBike() == null) {
+		if(user.getRide().getRealBike() == null) {
 			if(bike instanceof MechanicalBike) {
 				if(this.numberOfMechanicalBike() == 0) {
 					System.out.println("No mechanical bike at this station");
 					if (user.getRide().getNet() != null) {
 						// we are computing again a ride if the user plan it before
-						user.getRide().haveARide(bike);
+						System.out.println(user.getRide());
 					}					
 				}
 				else {

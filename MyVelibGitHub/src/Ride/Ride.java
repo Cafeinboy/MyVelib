@@ -80,6 +80,13 @@ public class Ride implements RideStrategyInterface{
 	}
 
 	public Bike getBike() {
+		if (realBike !=null) {
+			return realBike;
+		}
+		return wishBike;
+	}
+	
+	public Bike getRealBike() {
 		return realBike;
 	}
 
@@ -119,10 +126,6 @@ public class Ride implements RideStrategyInterface{
 		this.rideStrategy = rideStrategy;
 	}
 	
-	public Bike getWishBike() {
-		return wishBike;
-	}
-
 	public void setWishBike(Bike wishBike) {
 		this.wishBike = wishBike;
 	}
@@ -153,8 +156,8 @@ public class Ride implements RideStrategyInterface{
 
 	//New /!\
 	@Override
-	public void haveARide(Bike wishBike) {
-		if (!net.isAKindBike(wishBike)) {
+	public void haveARide(Bike wantedBike) {
+		if (!net.isAKindBike(wantedBike)) {
 			System.err.println("This kind of bike does not exist in the system. Maybe all have been rented.");
 			this.listStation =  new ArrayList<Station>(Arrays.asList(null, null));
 		}

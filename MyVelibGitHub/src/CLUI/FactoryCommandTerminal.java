@@ -27,7 +27,7 @@ public abstract class FactoryCommandTerminal {
 			return "exit";
 		}
 		else if (words[0].equalsIgnoreCase("scene") && words.length == 1) {
-			scenario("ScenarioTXT\\ScenarioTestBike");
+			scenario("ScenarioTXT\\BikeTest");
 			return "";
 		}
 		else if (words[0].equalsIgnoreCase("help") && words.length == 1) {
@@ -481,7 +481,12 @@ public abstract class FactoryCommandTerminal {
 			stat.giveBackBike(user);
 			Time.setTimeInMinuteSinceCreation(timeOfSimulation);
 			
-			System.out.println("The price of the course for " + user.getName() + " going from " + user.getAllRide().get(user.getAllRide().size()-1).getListStation().get(0).getName() + " to " + user.getAllRide().get(user.getAllRide().size()-1).getListStation().get(1).getName() + " was : " + user.getAllRide().get(user.getAllRide().size() -1).getPrice());
+			if(user.getRide().getRealBike() == null) {
+				System.out.println("The price of the course for " + user.getName() + " going from " + user.getAllRide().get(user.getAllRide().size()-1).getListStation().get(0).getName() + " to " + user.getAllRide().get(user.getAllRide().size()-1).getListStation().get(1).getName() + " was : " + user.getAllRide().get(user.getAllRide().size() -1).getPrice());
+			}
+			else {
+				System.out.println("Impossible station full");
+			}
 			
 			System.out.println("Done correctly\n");
 		} catch (NumberFormatException e) {

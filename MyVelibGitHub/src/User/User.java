@@ -118,7 +118,7 @@ public class User implements Observer, Functionnality {
 	 * @param bikeType
 	 */
 	public void takeARide(GPSCoordinate beginingPoint, GPSCoordinate finishingPoint, PlanningRideStrategy rideStrategy, Bike wishBike, Network net) {
-		if (this.ride.getBike() == null) {			
+		if (this.ride.getRealBike() == null) {			
 			this.ride = new Ride(beginingPoint, finishingPoint, rideStrategy, net);
 			this.ride.setWishBike(wishBike);
 			this.ride.haveARide(wishBike);
@@ -146,7 +146,7 @@ public class User implements Observer, Functionnality {
 			System.out.println(message);
 			Ride oldRide = this.getRide();
 			Ride newRide = new Ride(oldRide.getListStation().get(0).getCoordinates(), oldRide.getFinishingPoint(), oldRide.getRideStrategy(), oldRide.getListStation().get(1).knowHisNetwork());
-			newRide.haveARide(oldRide.getWishBike());
+			newRide.haveARide(oldRide.getBike());
 			this.getRide().setListStation(new ArrayList<Station>(Arrays.asList(oldRide.getListStation().get(0), newRide.getListStation().get(1))));
 			System.out.println("Your new destination station is " + this.getRide().getListStation().get(1).getName());
 		}
@@ -195,6 +195,7 @@ public class User implements Observer, Functionnality {
 	public void putAnEndToTheRide(Station finishingStation) {
 		int price = this.getPriceOfTheRide();
 		this.ride.setPrice(price);
+		this.ride.setNet(finishingStation.knowHisNetwork());
 		
 		this.ride.setEndingTime(Time.getTimeInMinuteSinceCreation());
 		
