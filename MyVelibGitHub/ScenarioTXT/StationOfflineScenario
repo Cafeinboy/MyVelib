@@ -1,4 +1,4 @@
-scenario ScenarioTXT\SetupNetworkParis
+scenario ScenarioTXT\my_velib.ini
 
 haveARide 4 4 20 10 preferPlusStation mechanical Paris 1
 addtime 2
