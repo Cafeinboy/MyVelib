@@ -135,6 +135,8 @@ public class User implements Observer, Functionnality {
 			this.ride.changeFinishingStation(newRide.getListStation().get(1));
 			this.ride.getListStation().get(1).addUser(this);
 		}
+		System.out.println("Go to : " + this.ride.getListStation().get(0).getName() + " to take a bike. And return your bike at : "
+				+ this.ride.getListStation().get(1).getName());
 	}
 
 	//Attention il va falloir appeler la fonction pour recalculer un trajet 
