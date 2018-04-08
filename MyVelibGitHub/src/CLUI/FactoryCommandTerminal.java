@@ -28,8 +28,8 @@ public abstract class FactoryCommandTerminal {
 		if (words[0].equalsIgnoreCase("exit") && words.length == 1) {
 			return "exit";
 		}
-		else if (words[0].equalsIgnoreCase("scene") && words.length == 1) {
-			scenario("ScenarioTXT\\testScenario1");
+		else if (words[0].equalsIgnoreCase("runtest") && words.length == 2) {
+			scenario("ScenarioTXT\\"+ words[1]);
 			return "";
 		}
 		else if (words[0].equalsIgnoreCase("changesetout") && words.length == 2) {
