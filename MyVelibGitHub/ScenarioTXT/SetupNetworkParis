@@ -1,11 +1,11 @@
 setupempty Paris
 
-addStation true 5 5 Opéra Paris plus
+addStation true 5 5 Opï¿½ra Paris plus
 addSlot 1 10
 addBike 1 mechanical 4
 addBike 1 electrical 4
 
-addStation true 11 17 Châtelet Paris plus
+addStation true 11 17 Chï¿½telet Paris plus
 addSlot 2 10
 addBike 2 mechanical 4
 addBike 2 electrical 4
@@ -15,7 +15,7 @@ addSlot 3 10
 addBike 3 mechanical 4
 addBike 3 electrical 4
 
-addStation true 25 5 Odéon Paris plus
+addStation true 25 5 Odï¿½on Paris plus
 addSlot 4 10
 addBike 4 mechanical 4
 addBike 4 electrical 4
@@ -30,7 +30,7 @@ addSlot 6 10
 addBike 6 mechanical 4
 addBike 6 electrical 4
 
-addStation true 24 4 Défense Paris standard
+addStation true 24 4 Dï¿½fense Paris standard
 addSlot 7 10
 addBike 7 mechanical 4
 addBike 7 electrical 4

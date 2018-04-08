@@ -149,11 +149,14 @@ public abstract class Station extends Observable {
 	}
 	
 
+	
+	
 	@Override
 	public String toString() {
-		return "Station : " + this.name + ";\n Parking Bays : " + this.getParkingSlots() + "\n";
+		return "Station [status=" + status + ", full=" + full + ", parkingSlots=" + parkingSlots + ", allRecord="
+				+ allRecord + ", users=" + users + "]";
 	}
-	
+
 	public String toStringBalance() {
 		ArrayList<Double> list = this.getAllRecord().balanceStation(0, Time.getTimeInMinuteSinceCreation(), this.getNumberOfSpots());
 		return "Station : " + this.name  + ": ID : " + this.getID() + "\n     Number Of Rent Operation : " + list.get(0) + "\n     Number Of Return Operation : " + list.get(1)
@@ -431,7 +434,7 @@ public abstract class Station extends Observable {
 					Ride oldRide = user.getRide();
 					System.out.println(oldRide);
 					Ride newRide = new Ride(oldRide.getListStation().get(1).getCoordinates(), oldRide.getFinishingPoint(), oldRide.getRideStrategy(), oldRide.getListStation().get(1).knowHisNetwork());
-					newRide.haveARide(oldRide.getBike());
+					newRide.haveARide(oldRide.getWishBike());
 					user.getRide().setListStation(new ArrayList<Station>(Arrays.asList(oldRide.getListStation().get(0), newRide.getListStation().get(1))));
 					this.removeUser(user);
 					user.getRide().getListStation().get(1).addUser(user);
