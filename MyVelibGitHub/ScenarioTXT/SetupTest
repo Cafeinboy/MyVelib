@@ -1,10 +1,10 @@
 
-setup paris
-adduser paul nocard paris
-adduser paul nocard paris
-adduser sophie vlibre paris
-
 setup newyork
-adduser john vmax newyork
+adduser paul nocard newyork
+adduser paul nocard newyork
+adduser sophie vlibre newyork
 
-display paris
+setup losangeles
+adduser john vmax losangeles
+
+display newyork

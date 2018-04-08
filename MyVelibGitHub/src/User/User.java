@@ -126,7 +126,7 @@ public class User implements Observer, Functionnality {
 		}
 		else {
 			this.ride.getListStation().get(1).removeUser(this);
-			this.ride.haveARide(wishBike);
+			this.ride.setWishBike(wishBike);
 			
 			Ride newRide = new Ride(beginingPoint, finishingPoint, rideStrategy, net);
 			newRide.haveARide(wishBike);

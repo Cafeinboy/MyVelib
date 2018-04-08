@@ -1,16 +1,16 @@
 
-setup paris
+setup toulouse
 
-adduser mali nocard paris
-adduser mali nocard paris
-adduser mali nocard paris
-adduser mali nocard paris
-adduser mali nocard paris
-adduser mali nocard paris
-adduser mali nocard paris
-adduser mali nocard paris
-adduser mali nocard paris
-adduser mali nocard paris
+adduser mali nocard toulouse
+adduser mali nocard toulouse
+adduser mali nocard toulouse
+adduser mali nocard toulouse
+adduser mali nocard toulouse
+adduser mali nocard toulouse
+adduser mali nocard toulouse
+adduser mali nocard toulouse
+adduser mali nocard toulouse
+adduser mali nocard toulouse
 
 addtime 10
 
@@ -51,6 +51,6 @@ rentbike 2 1
 rentbike 3 1
 
 
-sortstation paris mostused
+sortstation toulouse mostused
 
-displayUser paris 1
+displayUser toulouse 1
