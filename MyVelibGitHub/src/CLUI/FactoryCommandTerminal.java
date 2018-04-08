@@ -148,7 +148,7 @@ public abstract class FactoryCommandTerminal {
 		System.out.println("          setup <name> <nstations> <nslots> <sidearea> <nbikes> \n"
 				+ "To create a myVelib network with given name and consisting of nstations standard stations each of which has nslots"
 				+ " parking slots and such that stations are arranged on a square grid whose of side "
-				+ "sidearea and initially populated with a nbikes mechanical bikes randomly distributed over the nstations stations.\n");
+				+ "sidearea and initially populated with a 0.7*nbikes mechanical bikes and 0.3*nbikes electrical bikes randomly distributed over the nstations stations.\n");
 		System.out.println("          addStation <statusStation> <xPosition> <yPosition> <stationName> <velibNetwork> <kindStation>\n"
 				+ "To add a ceratin station with a name stationName, in a network welinNetwork, at a certain position (xPoistion, yPosition) with a "
 				+ "certain availibility status and a certain characteristics kindStation.\n");
