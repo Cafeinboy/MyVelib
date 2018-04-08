@@ -1,5 +1,6 @@
 package CLUI;
 
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -13,6 +14,7 @@ import Network.*;
 import Network.SortNetwork.SortFactory;
 import PlanningRide.PlanningRideFactory;
 import PlanningRide.PlanningRideStrategy;
+import ReadFile.ChangeSetOut;
 import ReadFile.ReadAText;
 import Time.Time;
 import User.*;
@@ -27,7 +29,11 @@ public abstract class FactoryCommandTerminal {
 			return "exit";
 		}
 		else if (words[0].equalsIgnoreCase("scene") && words.length == 1) {
-			scenario("ScenarioTXT\\BikeTest");
+			scenario("ScenarioTXT\\testScenarioN");
+			return "";
+		}
+		else if (words[0].equalsIgnoreCase("changesetout") && words.length == 2) {
+			changeSetOut(words[1]);
 			return "";
 		}
 		else if (words[0].equalsIgnoreCase("help") && words.length == 1) {
@@ -145,6 +151,8 @@ public abstract class FactoryCommandTerminal {
 				+ "To create a myVelib network with a given name and consisting of 10 standard stations each of which has 10 parking slots"
 				+ "and such that stations are arranged on a square grid with a 4km width. Initially 75% of the parking slots are occupied,\n"
 				+ "with 70% of mechanical bikes and 30% of electrical bikes randomly distributed over the 10 stations.\n");
+		System.out.println("          changesetout <pathOfFile>\n"
+				+ "To change where to write the answer of the program, into the file pathOfFile.\n");
 		System.out.println("          setup <name> <nstations> <nslots> <sidearea> <nbikes> \n"
 				+ "To create a myVelib network with a given name and consisting of nstations standard stations each of which has nslots"
 				+ " parking slots and such that the stations are arranged on a square grid whose side is "
@@ -160,7 +168,7 @@ public abstract class FactoryCommandTerminal {
 				+ "To add quantityOfSlots slots, at a station with the name stationName.\n");
 		System.out.println("          addBike <stationID> <kindBike> <quantityOfBikes>\n"
 				+ "To add a certain bike kindBike with a quantity quantityOfBikes, at a station with the ID stationID.\n");
-		System.out.println("          addBike <stationName> <kindBike> <quantityOfBikes>\n"
+		System.out.println("          addBikeName <stationName> <kindBike> <quantityOfBikes>\n"
 				+ "To add a certain bike kindBike with a quantity quantityOfBikes, at a station with the name stationName.\n");
 		System.out.println("          offline <velibnetworkName> <stationID>\n"
 				+ "To put offline the station stationID of the myVelib network velibnetworkName.\n");
@@ -196,6 +204,17 @@ public abstract class FactoryCommandTerminal {
 		
 	}
 	
+	public static void changeSetOut(String name) {
+		
+		try {
+			ChangeSetOut.change(name);
+			System.out.println("Done correctly\n");
+		} catch (FileNotFoundException e) {
+			System.err.println("This file does not exist.\n");
+		}
+		
+	}
+	
 	public static void setupVelibNetwork(String name) {
 		
 		FactoryCommandTerminal.setupNetworkFromSpecification(name, "10", "10", "4", "75");
@@ -204,7 +223,7 @@ public abstract class FactoryCommandTerminal {
 	
 	public static void setupEmptyVelibNetwork(String name) {
 		
-		FactoryCommandTerminal.setupNetworkFromSpecification(name, "0", "0", "0", "0");
+		FactoryCommandTerminal.setupNetworkFromSpecification(name, "0", "0", "1", "0");
 		
 	}	
 	

@@ -11,6 +11,7 @@ public abstract class CLUIrequest {
 
 		System.out.println("Hi, this is the new system Velib");
 		System.out.println("You can ask help by tipping help");
+		System.out.println("To launch the scenario just write 'scene'");
 		System.out.println("So, what do you want to do ?");
 					
 		while (!str.equals("exit")) {
