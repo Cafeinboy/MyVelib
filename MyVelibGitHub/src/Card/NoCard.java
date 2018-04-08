@@ -5,7 +5,7 @@ import Bike.MechanicalBike;
 
 /**
  * No card, type of Card
- * @author Kévin HIVET
+ * @author Kï¿½vin HIVET
  *
  */
 public class NoCard extends Card{
